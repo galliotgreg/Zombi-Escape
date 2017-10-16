@@ -17,6 +17,7 @@ public class ZombieBehaviour : MonoBehaviour {
     private float aimThreshold = 2;
 
     private float hitTimer = -1;
+	private PlayerBehaviour inCollisionPlayer = null;
 
     [SerializeField]
     private GameObject target = null;
@@ -70,8 +71,11 @@ public class ZombieBehaviour : MonoBehaviour {
 
 	private void handleHitTimer()
 	{
-		if( this.hitTimer >= 0 )
+		if (this.hitTimer >= 0) {
 			this.hitTimer -= Time.deltaTime;
+		} else if ( this.inCollisionPlayer != null ) {
+			this.hitPlayer ( this.inCollisionPlayer );
+		}
 	}
 
 	private void hitPlayer(PlayerBehaviour player)
@@ -80,7 +84,6 @@ public class ZombieBehaviour : MonoBehaviour {
 		{
 			player.dealDamage ( this.hitDamage );
 			this.hitTimer = this.hitRateSec;
-			Debug.Log( "Zombie : Damage" );
 		}
 	}
 
@@ -91,8 +94,11 @@ public class ZombieBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter2D( Collision2D collision )
 	{
-		Debug.Log( "Zombie : Collision" );
-		PlayerBehaviour player = collision.gameObject.GetComponent<PlayerBehaviour> ();
-		this.hitPlayer ( player );
+		this.inCollisionPlayer = collision.gameObject.GetComponent<PlayerBehaviour> ();
+	}
+
+	void OnCollisionExit2D( Collision2D collision )
+	{
+		this.inCollisionPlayer = null;
 	}
 }
