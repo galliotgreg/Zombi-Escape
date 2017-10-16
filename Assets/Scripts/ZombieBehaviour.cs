@@ -87,14 +87,15 @@ public class ZombieBehaviour : MonoBehaviour {
 	{
 		if( this.hitTimer < 0 && player != null )
 		{
-			player.dealDamage ( this.hitDamage );
+			player.handleDealDamage ( this.hitDamage );
 			this.hitTimer = this.hitRateSec;
 		}
 	}
 
 	public void dealDamage(float damages)
 	{
-		this.lifePoints -= damages;
+        Debug.Log("Hit : " + this.name);
+        this.lifePoints -= damages;
 	}
 
 	void OnCollisionEnter2D( Collision2D collision )
