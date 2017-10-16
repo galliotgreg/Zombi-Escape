@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField]
     private float hitDamage = 20;
 
-    private float cooldown = -1;
+    private float hitCooldown = -1;
 
     public float HitRate
     {
@@ -106,16 +106,16 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void handleFire()
     {
-        if (cooldown < 0)  
+        if (hitCooldown < 0)  
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 fire();
-                cooldown = hitRate;
+                hitCooldown = hitRate;
             }
         } else
         {
-            cooldown -= Time.deltaTime;
+            hitCooldown -= Time.deltaTime;
         }
     }
 
