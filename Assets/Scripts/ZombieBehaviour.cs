@@ -22,6 +22,11 @@ public class ZombieBehaviour : MonoBehaviour {
     [SerializeField]
     private GameObject target = null;
 
+	public void setTarget(GameObject newTarget)
+	{
+		this.target = newTarget;
+	}
+
     // Use this for initialization
     void Start () {
 		
