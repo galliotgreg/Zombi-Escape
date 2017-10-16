@@ -59,11 +59,11 @@ public class ZombieBehaviour : MonoBehaviour {
 			if (cross.z < 0) { angle = -angle; }
 			if (angle > 0 && angle < 180 - aimThreshold)
 			{
-				this.transform.Rotate(0, 0, Time.deltaTime * angularSpeed);
+				this.transform.Rotate(0, 0, -Time.deltaTime * angularSpeed);
 			}
 			if (angle < 0 && angle > -180 + aimThreshold)
 			{
-				this.transform.Rotate(0, 0, -Time.deltaTime * angularSpeed);
+				this.transform.Rotate(0, 0, Time.deltaTime * angularSpeed);
 			}
 
 			//manage move
