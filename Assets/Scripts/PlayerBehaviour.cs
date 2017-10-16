@@ -7,6 +7,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private PlayerModel model = null;
     private PlayerView view = null;
 
+    [SerializeField]
     private float hitCooldown = -1;
 
     // Use this for initialization
@@ -20,6 +21,15 @@ public class PlayerBehaviour : MonoBehaviour {
     void Update()
     {
         handleDeath();
+        updateCoolDown();
+    }
+
+    private void updateCoolDown()
+    {
+        if (hitCooldown > 0)
+        {
+            hitCooldown -= Time.deltaTime;
+        }
     }
 
     private void handleDeath()
@@ -63,9 +73,6 @@ public class PlayerBehaviour : MonoBehaviour {
             this.view.fire();
 
             hitCooldown = this.model.HitRate;
-        } else
-        {
-            hitCooldown -= Time.deltaTime;
         }
     }
 
