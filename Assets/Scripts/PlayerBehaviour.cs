@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
     [SerializeField]
-    private float hitRate = 1;
+    private float hitRate = 1;              //Nb bullets / seconds
     [SerializeField]
     private float lifePoints = 100;
     [SerializeField]
@@ -13,6 +13,8 @@ public class PlayerBehaviour : MonoBehaviour {
     private float angularSpeed = 90;
     [SerializeField]
     private float hitDamage = 20;
+
+    private float cooldown = -1;
 
     public float HitRate
     {
@@ -88,6 +90,32 @@ public class PlayerBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        handleMotion();
+        handleFire();
+    }
+
+    private void handleFire()
+    {
+        if (cooldown < 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                fire();
+                cooldown = hitRate;
+            }
+        } else
+        {
+            cooldown -= Time.deltaTime;
+        }
+    }
+
+    private void fire()
+    {
+        Debug.Log("Fire");
+    }
+
+    private void handleMotion()
+    {
         if (Input.GetKey(KeyCode.UpArrow))
         {
             this.transform.position += this.transform.right * Time.deltaTime * moveSpeed;
@@ -104,5 +132,10 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             this.transform.Rotate(0, 0, Time.deltaTime * angularSpeed);
         }
+    }
+
+    public void dealDamage(float damages)
+    {
+        this.lifePoints -= damages;
     }
 }
