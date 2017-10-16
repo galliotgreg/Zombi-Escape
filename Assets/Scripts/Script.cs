@@ -11,6 +11,6 @@ public class Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        Debug.Log("Bonjour greg");
 	}
 }
