@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -90,13 +91,22 @@ public class PlayerBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        handleDeath();
         handleMotion();
         handleFire();
     }
 
+    private void handleDeath()
+    {
+        if (this.lifePoints <= 0)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+    }
+
     private void handleFire()
     {
-        if (cooldown < 0)
+        if (cooldown < 0)  
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -112,6 +122,13 @@ public class PlayerBehaviour : MonoBehaviour {
     private void fire()
     {
         Debug.Log("Fire");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit : " + hit.collider.name);
+            ZombieBehaviour zombie = hit.collider.GetComponent<ZombieBehaviour>();
+            zombie.dealDamage(hitDamage);
+        }
     }
 
     private void handleMotion()
