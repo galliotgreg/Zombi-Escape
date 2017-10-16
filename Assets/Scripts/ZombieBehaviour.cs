@@ -4,28 +4,53 @@ using UnityEngine;
 
 public class ZombieBehaviour : MonoBehaviour {
     private ZombieModel model = null;
+    private ZombieView view = null;
 
     private float hitTimer = -1;
 	private PlayerBehaviour inCollisionPlayer = null;
 
     [SerializeField]
     private GameObject target = null;
+    [SerializeField]
+    private float aimThreshold = 2;
 
-	public void setTarget(GameObject newTarget)
-	{
-		this.target = newTarget;
-	}
+    public GameObject Target
+    {
+        get
+        {
+            return target;
+        }
+
+        set
+        {
+            target = value;
+        }
+    }
+
+    public float AimThreshold
+    {
+        get
+        {
+            return aimThreshold;
+        }
+
+        set
+        {
+            aimThreshold = value;
+        }
+    }
 
     // Use this for initialization
     void Start () {
         this.model = this.gameObject.GetComponent<ZombieModel>();
+        this.view = this.gameObject.GetComponent<ZombieView>();
     }
 
 	// Update is called once per frame
 	void Update()
 	{
 		handleLifeState();
-		handleMotion();
+		//handleMotion();
 		handleHitTimer();
 	}
 
@@ -33,58 +58,54 @@ public class ZombieBehaviour : MonoBehaviour {
 	{
 		if( this.model.LifePoints <= 0 )
 		{
-			GameObject.Destroy(this.gameObject);
+            this.view.die();
+            this.model.die();
 		}
 	}
 
-	private void handleMotion()
-	{
-		if (target != null)
-		{
-			//Manage look at
-			Vector3 trgDir = target.transform.position - this.transform.position;
-			float angle = Vector3.Angle(trgDir, this.transform.right);
-			Vector3 cross = Vector3.Cross(trgDir, this.transform.right);
-			if (cross.z < 0) { angle = -angle; }
-			if (angle > 0 && angle < 180 - model.AimThreshold)
-			{
-				this.transform.Rotate(0, 0, -Time.deltaTime * model.AngularSpeed);
-			}
-			if (angle < 0 && angle > -180 + model.AimThreshold)
-			{
-				this.transform.Rotate(0, 0, Time.deltaTime * model.AngularSpeed);
-			}
+    public void turnLeft()
+    {
+        this.view.turnLeft();
+        this.model.turnLeft();
+    }
 
-			//manage move
-			if (Vector2.Dot(trgDir, this.transform.right) > 0)
-			{
-				this.transform.position += this.transform.right * Time.deltaTime * model.MoveSpeed;
-			}
-		}
-	}
+    public void turnRight()
+    {
+        this.view.turnRight();
+        this.model.turnRight();
+    }
+
+    public void moveFwd()
+    {
+        this.view.moveFwd();
+        this.model.moveFwd();
+    }
 
 	private void handleHitTimer()
 	{
 		if (this.hitTimer >= 0) {
 			this.hitTimer -= Time.deltaTime;
 		} else if ( this.inCollisionPlayer != null ) {
-			this.hitPlayer ( this.inCollisionPlayer );
+			this.handleHitPlayer ( this.inCollisionPlayer );
 		}
 	}
 
-	private void hitPlayer(PlayerBehaviour player)
+	private void handleHitPlayer(PlayerBehaviour player)
 	{
 		if( this.hitTimer < 0 && player != null )
 		{
-			player.handleDealDamage ( this.model.HitDamage );
+            //TODO : see how to give player in another way
+            this.view.hitPlayer(player);
+            this.model.hitPlayer(player);
+
 			this.hitTimer = this.model.HitRateSec;
 		}
 	}
 
-	public void dealDamage(float damages)
+	public void handleDealDamage(float damages)
 	{
-        Debug.Log("Hit : " + this.name);
-        this.model.LifePoints -= damages;
+        this.view.dealDamage(damages);
+        this.model.dealDamage(damages);
 	}
 
 	void OnCollisionEnter2D( Collision2D collision )

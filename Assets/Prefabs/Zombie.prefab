@@ -20,8 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4392654983472974}
   - component: {fileID: 212143290082633792}
-  - component: {fileID: 114972857517389678}
   - component: {fileID: 61929666417059840}
+  - component: {fileID: 114776825327867898}
+  - component: {fileID: 114127403229641252}
+  - component: {fileID: 114972857517389678}
+  - component: {fileID: 114373476812208378}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -67,6 +70,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.18, y: 2.94}
   m_EdgeRadius: 0
+--- !u!114 &114127403229641252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678513198478470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09967abcb987cce47a34666c95c92ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114373476812208378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678513198478470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aca27b2c910a1a43b246663221af9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114776825327867898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678513198478470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a23ab3bbc6c7f6408fc6832e052a499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitRateSec: 2
+  lifePoints: 100
+  moveSpeed: 2
+  angularSpeed: 90
+  hitDamage: 20
 --- !u!114 &114972857517389678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,13 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61840935e03cdc49b197ad64d9542f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitRateSec: 2
-  lifePoints: 100
-  moveSpeed: 2
-  angularSpeed: 90
-  hitDamage: 20
-  aimThreshold: 5
   target: {fileID: 0}
+  aimThreshold: 2
 --- !u!212 &212143290082633792
 SpriteRenderer:
   m_ObjectHideFlags: 1

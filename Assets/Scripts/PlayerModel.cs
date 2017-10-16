@@ -116,7 +116,7 @@ public class PlayerModel : MonoBehaviour {
         if (hit.collider != null)
         {
             ZombieBehaviour zombie = hit.collider.GetComponent<ZombieBehaviour>();
-            zombie.dealDamage(this.HitDamage);
+            zombie.handleDealDamage(this.HitDamage);
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +14,6 @@ public class ZombieModel : MonoBehaviour {
     private float angularSpeed = 90;
     [SerializeField]
     private float hitDamage = 20;
-    [SerializeField]
-    private float aimThreshold = 2;
 
     public float HitRateSec
     {
@@ -81,26 +80,43 @@ public class ZombieModel : MonoBehaviour {
         }
     }
 
-    public float AimThreshold
+    public void die()
     {
-        get
-        {
-            return aimThreshold;
-        }
+        GameObject.Destroy(this.gameObject);
+    }
 
-        set
-        {
-            aimThreshold = value;
-        }
+    public void turnLeft()
+    {
+        this.transform.Rotate(0, 0, -Time.deltaTime * angularSpeed);
+    }
+
+    public void turnRight()
+    {
+        this.transform.Rotate(0, 0, Time.deltaTime * angularSpeed);
+    }
+
+    public void moveFwd()
+    {
+        this.transform.position += this.transform.right * Time.deltaTime * moveSpeed;
     }
 
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void hitPlayer(PlayerBehaviour player)
+    {
+        player.handleDealDamage(hitDamage);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
+
+    public void dealDamage(float damages)
+    {
+        this.lifePoints -= damages;
+    }
 }

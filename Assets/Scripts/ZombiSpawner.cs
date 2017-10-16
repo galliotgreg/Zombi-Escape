@@ -23,7 +23,7 @@ public class ZombiSpawner : MonoBehaviour {
             GameObject zombie = GameObject.Instantiate(zombiePrefab);
             ZombieBehaviour zombieBehaviour = zombie.GetComponent<ZombieBehaviour>();
             GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-            zombieBehaviour.setTarget(player);
+            zombieBehaviour.Target = player;
 
             spawnCooldown = frequency;
         } else
