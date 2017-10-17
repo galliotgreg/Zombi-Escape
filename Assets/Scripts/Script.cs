@@ -13,5 +13,6 @@ public class Script : MonoBehaviour {
 	void Update () {
         Debug.Log("Bonjour greg");
 		Debug.Log("Bonjour edwyn");
+        Debug.Log("Bonjour valentin");
 	}
 }
