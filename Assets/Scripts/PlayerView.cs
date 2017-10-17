@@ -17,36 +17,36 @@ public class PlayerView : MonoBehaviour {
 
     public void fire()
     {
-        Debug.Log("Fire");
+        //Debug.Log("Fire");
     }
 
     public void moveFwd()
     {
-        Debug.Log("TODO : Trigger move forward sprite animation");
+        //Debug.Log("TODO : Trigger move forward sprite animation");
     }
 
     public void moveBck()
     {
-        Debug.Log("TODO : Trigger move back sprite animation");
+        //Debug.Log("TODO : Trigger move back sprite animation");
     }
 
     public void turnLeft()
     {
-        Debug.Log("TODO : Trigger turn left sprite animation");
+        //Debug.Log("TODO : Trigger turn left sprite animation");
     }
 
     public void turnRight()
     {
-        Debug.Log("TODO : Trigger turn right sprite animation");
+        //Debug.Log("TODO : Trigger turn right sprite animation");
     }
 
     public void die()
     {
-        Debug.Log("TODO : Trigger die sprite animation");
+        //Debug.Log("TODO : Trigger die sprite animation");
     }
 
     public void dealDamage(float damages)
     {
-        Debug.Log("TODO : Trigger Blood Particle Effect");
+        //Debug.Log("TODO : Trigger Blood Particle Effect");
     }
 }
