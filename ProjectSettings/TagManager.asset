@@ -19,6 +19,12 @@ TagManager:
   - 
   - 
   - 
+  - Walls
+  - ZombieHitbox
+  - ZombieWallCapsule
+  - ZombieTarget
+  - ZombieGrabBox
+  - PlayerHitBox
   - 
   - 
   - 
