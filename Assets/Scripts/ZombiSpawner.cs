@@ -25,6 +25,11 @@ public class ZombiSpawner : MonoBehaviour {
             GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
             zombieBehaviour.Target = player;
 
+            ZombieAIInput zombieIAInput = zombie.GetComponent<ZombieAIInput>();
+            float r = Random.value;
+            float angle = 360 * r;
+            zombieIAInput.RoamDirection = Quaternion.Euler(0, 0, angle) * Vector3.right;
+            Debug.Log(angle);
             spawnCooldown = frequency;
         } else
         {
