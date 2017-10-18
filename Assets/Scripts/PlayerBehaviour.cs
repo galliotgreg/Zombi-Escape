@@ -76,9 +76,30 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
+    public void StopFire()
+    {      
+        this.view.StopFire();            
+    }
+
+    public void reloadGun()
+    {
+        this.model.reload();
+        this.view.reload();
+    }
+
+    public void StopReloadGun()
+    {        
+        this.view.StopReload();
+    }
+
     public void handleDealDamage(float damages)
     {
         this.model.dealDamage(damages);
         this.view.dealDamage(damages);
+    }
+
+    public void idle()
+    {
+        this.view.idle();
     }
 }

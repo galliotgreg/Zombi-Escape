@@ -5,39 +5,58 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private Animator anim;    
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();             
+    }
 
     public void fire()
     {
-        Debug.Log("Fire");
+        anim.SetBool("isShooting", true);
+        //Enable the spaming for space button, no need to wait the end of the shotting animation
+        anim.Play("Shoot", -1, 0f);        
+    }
+
+    public void StopFire()
+    {
+        anim.SetBool("isShooting", false);
+    }
+
+    public void reload()
+    {
+        anim.SetBool("isReloading", true);
+    }
+
+    public void StopReload()
+    {
+        anim.SetBool("isReloading", false);
     }
 
     public void moveFwd()
     {
-        Debug.Log("TODO : Trigger move forward sprite animation");
+        anim.SetBool("isWalking", true);        
     }
 
     public void moveBck()
     {
-        Debug.Log("TODO : Trigger move back sprite animation");
+        anim.SetBool("isWalking", true);
     }
 
     public void turnLeft()
     {
-        Debug.Log("TODO : Trigger turn left sprite animation");
+        anim.SetBool("isWalking", true);
     }
 
     public void turnRight()
     {
-        Debug.Log("TODO : Trigger turn right sprite animation");
+        anim.SetBool("isWalking", true);
+    }
+
+    public void idle()
+    {
+        anim.SetBool("isWalking", false);
     }
 
     public void die()

@@ -120,6 +120,11 @@ public class PlayerModel : MonoBehaviour {
         }
     }
 
+    public void reload()
+    {
+        //add some ammos to the gun
+    }
+
     // Use this for initialization
     void Start () {
 		

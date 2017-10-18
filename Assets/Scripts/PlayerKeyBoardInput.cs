@@ -18,6 +18,21 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         {
             this.controller.handleFire();
         }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            this.controller.StopFire();
+        }
+
+
+        //Manage Reload
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            this.controller.reloadGun();
+        }
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            this.controller.StopReloadGun();
+        }
 
         //Manage Motion
         if (Input.GetKey(KeyCode.UpArrow))
@@ -35,6 +50,10 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             this.controller.turnRight();
+        }
+        else
+        {
+            this.controller.idle();
         }
     }
 }
