@@ -112,15 +112,12 @@ public class PlayerModel : MonoBehaviour {
 
     public void fire()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
-        if (hit.collider != null)
         int zombieHitBoxLayerMask = 1 << LayerMask.NameToLayer("ZombieHitbox");
         int wallLayerMask = 1 << LayerMask.NameToLayer("Walls");
         int mask = zombieHitBoxLayerMask | wallLayerMask;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Mathf.Infinity, mask);
         if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("ZombieHitbox"))
         {
-            ZombieBehaviour zombie = hit.collider.GetComponent<ZombieBehaviour>();
             Debug.Log("Hit");
             ZombieBehaviour zombie = hit.collider.GetComponentInParent<ZombieBehaviour>();
             zombie.handleDealDamage(this.HitDamage);

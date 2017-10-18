@@ -61,13 +61,11 @@ public class PlayerView : MonoBehaviour {
 
     public void die()
     {
-        Debug.Log("TODO : Trigger die sprite animation");
         //Debug.Log("TODO : Trigger die sprite animation");
     }
 
     public void dealDamage(float damages)
     {
-        Debug.Log("TODO : Trigger Blood Particle Effect");
         //Debug.Log("TODO : Trigger Blood Particle Effect");
     }
 }
