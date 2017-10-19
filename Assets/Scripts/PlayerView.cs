@@ -9,6 +9,7 @@ public class PlayerView : MonoBehaviour {
     private AudioSource audioSource;
     public ParticleSystem gunFire;
     public AudioClip gunShot;
+    public AudioClip reloadSound;
     
 
     private void Awake()
@@ -39,8 +40,10 @@ public class PlayerView : MonoBehaviour {
     }
 
     public void reload()
-    {
-        anim.SetBool("isReloading", true);
+    {    
+        //Todo : Eviter le spam
+        audioSource.PlayOneShot(reloadSound);
+        anim.SetBool("isReloading", true);                      
     }
 
     public void StopReload()
