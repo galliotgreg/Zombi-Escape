@@ -6,11 +6,15 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour {
 
     private Animator anim;
+    private AudioSource audioSource;
     public ParticleSystem gunFire;
+    public AudioClip gunShot;
+    
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void fire()
@@ -19,16 +23,17 @@ public class PlayerView : MonoBehaviour {
         //Enable the spaming for space button, no need to wait the end of the shotting animation
         anim.Play("Shoot", -1, 0f);
 
+        // Affiche les particules
         gunFire.gameObject.SetActive(true);
-        //gunFire.Play();
-
-
-
+        // Joue la piste sonore
+        audioSource.PlayOneShot(gunShot);
+        
     }
 
     public void StopFire()
     {
         anim.SetBool("isShooting", false);
+        // Désactive les particules
         gunFire.gameObject.SetActive(false);
 
     }
