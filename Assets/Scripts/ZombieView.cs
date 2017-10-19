@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ZombieView : MonoBehaviour {
 
+    private Animator anim;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -22,22 +24,24 @@ public class ZombieView : MonoBehaviour {
 
     public void moveFwd()
     {
-       //Debug.Log("TODO : Trigger move forward sprite animation");
+        //Todo : A tester
+        //anim.SetBool("isMoving", true);
     }
 
     public void turnLeft()
     {
-        //Debug.Log("TODO : Trigger turn left sprite animation");
+      
     }
 
     public void turnRight()
     {
-        //Debug.Log("TODO : Trigger turn right sprite animation");
+        
     }
 
     public void hitPlayer(PlayerBehaviour player)
     {
-        //Debug.Log("TODO : Trigger hit player sprite animation");
+        //Todo : A tester
+        //anim.SetBool("isAttacking", true);
     }
 
     public void dealDamage(float damages)
