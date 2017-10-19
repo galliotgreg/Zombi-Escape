@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerFeetView : MonoBehaviour {
 
-    private Animator anim;
+    private Animator anim;    
 
     // Use this for initialization
     void Awake () {

@@ -5,23 +5,32 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour {
 
-    private Animator anim;    
+    private Animator anim;
+    public ParticleSystem gunFire;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();             
+        anim = GetComponent<Animator>();
     }
 
     public void fire()
     {
         anim.SetBool("isShooting", true);
         //Enable the spaming for space button, no need to wait the end of the shotting animation
-        anim.Play("Shoot", -1, 0f);        
+        anim.Play("Shoot", -1, 0f);
+
+        gunFire.gameObject.SetActive(true);
+        //gunFire.Play();
+
+
+
     }
 
     public void StopFire()
     {
         anim.SetBool("isShooting", false);
+        gunFire.gameObject.SetActive(false);
+
     }
 
     public void reload()
