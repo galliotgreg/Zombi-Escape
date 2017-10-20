@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunFire: {fileID: 198896779112008628}
   gunShot: {fileID: 8300000, guid: d3247579c549643a5b3a95f9224eaf3c, type: 3}
+  reloadSound: {fileID: 8300000, guid: cef0fa03af5b747f0abe82cde0b2bccc, type: 3}
 --- !u!114 &114119856049114406
 MonoBehaviour:
   m_ObjectHideFlags: 1
