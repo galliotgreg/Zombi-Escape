@@ -35,4 +35,9 @@ public class PlayerFeetView : MonoBehaviour {
     {
         anim.SetBool("isWalking", false);
     }
+
+    public void idle()
+    {        
+        anim.SetBool("isWalking", false);
+    }
 }

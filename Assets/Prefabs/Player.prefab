@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitRate: 0.3
-  lifePoints: 100
+  lifePoints: 100000
   moveSpeed: 2
   angularSpeed: 180
   hitDamage: 50

@@ -74,7 +74,7 @@ public class PlayerView : MonoBehaviour {
     }
 
     public void idle()
-    {
+    {      
         anim.SetBool("isWalking", false);
     }
 

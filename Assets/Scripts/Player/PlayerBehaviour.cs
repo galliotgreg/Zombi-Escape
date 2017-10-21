@@ -105,7 +105,8 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     public void idle()
-    {
+    {        
         this.view.idle();
+        this.feetView.idle();
     }
 }

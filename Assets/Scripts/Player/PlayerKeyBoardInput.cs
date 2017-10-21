@@ -35,24 +35,29 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         }
 
         //Manage Motion 
+        bool isMoving = false;
         if (Input.GetKey(KeyCode.Z))
         {         
             this.controller.moveFwd();
+            isMoving = true;
         }
         else if (Input.GetKey(KeyCode.S))
         {         
             this.controller.moveBck();
+            isMoving = true;
         }
         if (Input.GetKey(KeyCode.Q))
         {         
             this.controller.turnLeft();
+            isMoving = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {            
             this.controller.turnRight();
+            isMoving = true;
         }
-        else
-        {
+        if(!isMoving)
+        {           
             this.controller.idle();
         }
     }

@@ -9,7 +9,7 @@ public class ZombieView : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        anim = this.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -24,28 +24,24 @@ public class ZombieView : MonoBehaviour {
 
     public void moveFwd()
     {
-        //Todo : A tester
-        //anim.SetBool("isMoving", true);
+        anim.SetBool("isMoving", true);
     }
 
     public void turnLeft()
-    {
-      
+    {        
     }
 
     public void turnRight()
-    {
-        
+    {        
     }
 
     public void hitPlayer(PlayerBehaviour player)
     {
-        //Todo : A tester
-        //anim.SetBool("isAttacking", true);
+        anim.SetTrigger("isAttackingPlayer");
     }
 
     public void dealDamage(float damages)
-    {
+    {        
         //Debug.Log("Hit : " + this.name);
     }
 }
