@@ -46,8 +46,9 @@ public class GameState : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        this.nbPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
