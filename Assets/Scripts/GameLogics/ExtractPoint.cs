@@ -18,7 +18,7 @@ public class ExtractPoint : MonoBehaviour {
 
 		if (this.nbPlayersInRange == GameState.instance.NbPlayers)
         {
-            Debug.Log("Victory!");
+            NavigationManager.instance.LoadScene("victoryScene");
         }
 	}
 

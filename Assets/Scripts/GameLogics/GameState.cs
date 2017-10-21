@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ public class GameState : MonoBehaviour {
     [SerializeField]
     private int nbPlayers = 1;
 
+    private GameObject[] players;
+
     public int NbPlayers
     {
         get
@@ -43,15 +46,30 @@ public class GameState : MonoBehaviour {
     }
 
 
-
     // Use this for initialization
     void Start () {
-        this.nbPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
 
+        this.players = GameObject.FindGameObjectsWithTag("Player");
+        this.nbPlayers = this.players.Length;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        handleGameOver();
 	}
+
+    private void handleGameOver()
+    {
+        PlayerModel playerModel;
+        foreach (GameObject player in  players)
+        {
+            playerModel = player.GetComponent<PlayerModel>();
+            if (playerModel.LifePoints > 0)
+            {
+                return;
+            }
+        }
+
+        NavigationManager.instance.LoadScene("gameOverScene");
+    }
 }
