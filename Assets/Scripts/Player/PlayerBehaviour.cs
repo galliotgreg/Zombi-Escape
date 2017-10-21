@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour {
     private PlayerModel model = null;
     private PlayerView view = null;
+    private PlayerFeetView feetView = null;
 
     [SerializeField]
     private float hitCooldown = -1;
@@ -15,6 +16,7 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         this.model = this.gameObject.GetComponent<PlayerModel>();
         this.view = this.gameObject.GetComponent<PlayerView>();
+        this.feetView = this.GetComponentInChildren<PlayerFeetView>();
     }
 
     // Update is called once per frame
@@ -45,24 +47,28 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         this.model.moveFwd();
         this.view.moveFwd();
+        this.feetView.moveFwd();
     }
 
     public void moveBck()
     {
         this.model.moveBck();
         this.view.moveBck();
+        this.feetView.moveBck();
     }
 
     public void turnLeft()
     {
         this.model.turnLeft();
         this.view.turnLeft();
+        this.feetView.turnLeft();
     }
 
     public void turnRight()
     {
         this.model.turnRight();
         this.view.turnRight();
+        this.feetView.turnRight();
     }
 
     public void handleFire()

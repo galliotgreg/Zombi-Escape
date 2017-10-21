@@ -21,6 +21,7 @@ public class PlayerView : MonoBehaviour {
     public void fire()
     {
         anim.SetBool("isShooting", true);
+        Debug.Log("is Shooting True");
         //Enable the spaming for space button, no need to wait the end of the shotting animation
         anim.Play("Shoot", -1, 0f);
 
@@ -34,6 +35,7 @@ public class PlayerView : MonoBehaviour {
     public void StopFire()
     {
         anim.SetBool("isShooting", false);
+        Debug.Log("isShooting False");
         // Désactive les particules
         gunFire.gameObject.SetActive(false);
 

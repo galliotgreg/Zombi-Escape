@@ -15,11 +15,11 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     {
         //Manage Fire
         if (Input.GetKeyDown(KeyCode.Space))
-        {
+        {            
             this.controller.handleFire();
         }
         if (Input.GetKeyUp(KeyCode.Space))
-        {
+        {         
             this.controller.StopFire();
         }
 
@@ -34,21 +34,21 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             this.controller.StopReloadGun();
         }
 
-        //Manage Motion
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
+        //Manage Motion 
+        if (Input.GetKey(KeyCode.Z))
+        {         
             this.controller.moveFwd();
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
+        else if (Input.GetKey(KeyCode.S))
+        {         
             this.controller.moveBck();
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
+        if (Input.GetKey(KeyCode.Q))
+        {         
             this.controller.turnLeft();
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
+        else if (Input.GetKey(KeyCode.D))
+        {            
             this.controller.turnRight();
         }
         else
