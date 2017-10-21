@@ -92,12 +92,12 @@ public class PlayerModel : MonoBehaviour {
 
     public void turnLeft()
     {
-        this.transform.Rotate(0, 0, -Time.deltaTime * this.angularSpeed);
+        this.transform.Rotate(0, 0, Time.deltaTime * this.angularSpeed);
     }
 
     public void turnRight()
     {
-        this.transform.Rotate(0, 0, Time.deltaTime * this.angularSpeed);
+        this.transform.Rotate(0, 0, -Time.deltaTime * this.angularSpeed);
     }
 
     public void die()
