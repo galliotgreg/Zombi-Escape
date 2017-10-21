@@ -11,9 +11,9 @@ public class DetectTarget : MonoBehaviour {
         this.controller = gameObject.GetComponentInParent<ZombieBehaviour>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        GameObject player = collision.gameObject;
+        GameObject player = collider.gameObject;
         controller.Target = player;
     }
 }

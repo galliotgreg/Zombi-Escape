@@ -39,6 +39,7 @@ public class ZombieAIInput : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        this.RoamDirection = this.transform.right;
         this.controller = this.gameObject.GetComponent<ZombieBehaviour>();
     }
 	

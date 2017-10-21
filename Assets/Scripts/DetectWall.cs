@@ -11,7 +11,7 @@ public class DetectWall : MonoBehaviour {
         this.zombiAIInput = gameObject.GetComponentInParent<ZombieAIInput>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (zombiAIInput.AiState == ZombieAIInput.ZombieAIState.Roaming)
         {
@@ -22,7 +22,7 @@ public class DetectWall : MonoBehaviour {
             float maxAngle = 10;
             float angle = maxAngle * r;
             outDir = Quaternion.Euler(0, 0, angle) * outDir;
-            zombiAIInput.RoamDirection =  outDir;
+            zombiAIInput.RoamDirection = outDir;
         }
     }
 }
