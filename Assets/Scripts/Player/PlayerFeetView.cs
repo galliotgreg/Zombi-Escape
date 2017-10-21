@@ -14,20 +14,30 @@ public class PlayerFeetView : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Manage Motion
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            anim.SetBool("isWalking", true);
-            Debug.Log("Up");
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            anim.SetBool("isWalking", true);
-            Debug.Log("Down");
-        }
-        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            anim.SetBool("isWalking", false);
-        }
+    }
+
+    public void moveFwd()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
+    public void moveBck()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
+    public void turnLeft()
+    {
+        anim.SetBool("isWalking", false);
+    }
+
+    public void turnRight()
+    {
+        anim.SetBool("isWalking", false);
+    }
+
+    public void idle()
+    {        
+        anim.SetBool("isWalking", false);
     }
 }
