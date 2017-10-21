@@ -108,12 +108,12 @@ public class ZombieBehaviour : MonoBehaviour {
         this.model.dealDamage(damages);
 	}
 
-    private void OnTriggerEnter2D( Collision2D collision )
+    private void OnTriggerEnter2D( Collider2D collider )
 	{
-		this.inCollisionPlayer = collision.gameObject.GetComponent<PlayerBehaviour> ();
+		this.inCollisionPlayer = collider.gameObject.GetComponent<PlayerBehaviour> ();
 	}
 
-	void OnTriggerExit2D( Collision2D collision )
+	void OnTriggerExit2D(Collider2D collider)
 	{
 		this.inCollisionPlayer = null;
 	}
