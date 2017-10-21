@@ -9,7 +9,7 @@ public class ZombieAIInput : MonoBehaviour {
 
     private ZombieAIState aiState = ZombieAIState.Roaming;
 
-    private Vector3 roamDirection;
+    private Vector3 roamDirection = new Vector3(1, 0, 0);
 
     public Vector3 RoamDirection
     {
@@ -39,7 +39,6 @@ public class ZombieAIInput : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        this.RoamDirection = this.transform.right;
         this.controller = this.gameObject.GetComponent<ZombieBehaviour>();
     }
 	
