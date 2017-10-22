@@ -45,40 +45,55 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void moveFwd()
     {
-        this.model.moveFwd();
-        this.view.moveFwd();
-        this.feetView.moveFwd();
+        if (this.model.LifePoints > 0)
+        {
+            this.model.moveFwd();
+            this.view.moveFwd();
+            this.feetView.moveFwd();
+        }
+
     }
 
     public void moveBck()
     {
-        this.model.moveBck();
-        this.view.moveBck();
-        this.feetView.moveBck();
+        if (this.model.LifePoints > 0)
+        {
+            this.model.moveBck();
+            this.view.moveBck();
+            this.feetView.moveBck();
+        }
     }
 
     public void turnLeft()
     {
-        this.model.turnLeft();
-        this.view.turnLeft();
-        this.feetView.turnLeft();
+        if (this.model.LifePoints > 0)
+        {
+            this.model.turnLeft();
+            this.view.turnLeft();
+            this.feetView.turnLeft();
+        }
     }
 
     public void turnRight()
     {
-        this.model.turnRight();
-        this.view.turnRight();
-        this.feetView.turnRight();
+        if (this.model.LifePoints > 0)
+        {
+            this.model.turnRight();
+            this.view.turnRight();
+            this.feetView.turnRight();
+        }
     }
 
     public void handleFire()
     {
-        if (hitCooldown < 0)  
+        if (this.model.LifePoints > 0)
         {
-            this.model.fire();
-            this.view.fire();
-
-            hitCooldown = this.model.HitRate;
+            if (hitCooldown < 0)
+            {
+                this.model.fire();
+                this.view.fire();
+                hitCooldown = this.model.HitRate;
+            }
         }
     }
 

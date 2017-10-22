@@ -82,6 +82,7 @@ public class PlayerView : MonoBehaviour {
 
     public void die()
     {
+        anim.SetBool("isDead", true);
         //Debug.Log("TODO : Trigger die sprite animation");
     }
 
