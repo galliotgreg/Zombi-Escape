@@ -16,6 +16,11 @@ public class PlayerFeetView : MonoBehaviour {
 	void Update () {
     }
 
+    public void walkingClip()
+    {
+        SoundManager.instance.playeurWalk();
+    }
+
     public void moveFwd()
     {
         anim.SetBool("isWalking", true);

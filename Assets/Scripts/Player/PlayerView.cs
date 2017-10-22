@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour {
 
-    private Animator anim;
-    private AudioSource audioSource;
-    public ParticleSystem gunFire;
-    public AudioClip gunShot;
-    public AudioClip reloadSound;
-    
+    private Animator anim;    
+    public ParticleSystem gunFire;   
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();    
+    }
+
+    private void Start()
+    {
+       SoundManager.instance.inGameAmbienceClip();        
     }
 
     public void fire()
@@ -28,7 +28,9 @@ public class PlayerView : MonoBehaviour {
         // Affiche les particules
         gunFire.gameObject.SetActive(true);
         // Joue la piste sonore
-        audioSource.PlayOneShot(gunShot);
+
+        //audioSource.PlayOneShot(gunShot);
+        SoundManager.instance.handGunShot();
         
     }
 
@@ -44,9 +46,9 @@ public class PlayerView : MonoBehaviour {
     public void reload()
     {    
         //Todo : Eviter le spam
-        audioSource.PlayOneShot(reloadSound);
+        //audioSource.PlayOneShot(reloadSound);
         anim.SetBool("isReloading", true);                      
-    }
+    }   
 
     public void StopReload()
     {
@@ -86,5 +88,10 @@ public class PlayerView : MonoBehaviour {
     public void dealDamage(float damages)
     {
         //Debug.Log("TODO : Trigger Blood Particle Effect");
+    }
+
+    public void playHandGunReload()
+    {
+        SoundManager.instance.handGunReload();
     }
 }

@@ -44,4 +44,13 @@ public class ZombieView : MonoBehaviour {
     {        
         //Debug.Log("Hit : " + this.name);
     }
+
+    public void walkClip()
+    {
+        SoundManager.instance.zombieWalk();
+    }
+    public void attackClip()
+    {
+        SoundManager.instance.zombieAttack();
+    }
 }
