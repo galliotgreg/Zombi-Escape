@@ -103,7 +103,7 @@ public class PlayerModel : MonoBehaviour {
     public void die()
     {
         SoundManager.instance.playeurDeath();
-        GameObject.Destroy(this.gameObject);
+        //GameObject.Destroy(this.gameObject);
     }
 
     public void dealDamage(float damages)
