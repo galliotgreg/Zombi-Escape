@@ -18,4 +18,8 @@ public class CameraTracking : MonoBehaviour {
             this.transform.position = new Vector3(trackedPlayer.transform.position.x, trackedPlayer.transform.position.y, this.transform.position.z);
         }
 	}
+
+	public void setTrackedPlayer( GameObject player ){
+		this.trackedPlayer = player;
+	}
 }
