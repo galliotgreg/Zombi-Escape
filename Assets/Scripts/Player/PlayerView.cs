@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour {
 
     private Animator anim;    
-    public ParticleSystem gunFire;   
+    public ParticleSystem gunFire;
+    public ParticleSystem playerBlood;
 
     private void Awake()
     {
@@ -88,7 +89,26 @@ public class PlayerView : MonoBehaviour {
 
     public void dealDamage(float damages)
     {
-        //Debug.Log("TODO : Trigger Blood Particle Effect");
+
+        Debug.Log("Player blood particle");
+        // Affiche les particules de sang        
+        playerBlood.gameObject.SetActive(true);
+        if (playerBlood.gameObject.active) {
+            Debug.Log("Player blood particle is active");
+        }
+        StartCoroutine(waitAndDisable());
+
+        //Debug.Log("Hit : " + this.name);
+    }
+
+    IEnumerator waitAndDisable()
+    {
+        yield return new WaitForSeconds(0.6f);
+        playerBlood.gameObject.SetActive(false);
+        if (!playerBlood.gameObject.active)
+        {
+            Debug.Log("Player blood particle is not active");
+        }
     }
 
     public void playHandGunReload()
