@@ -14,6 +14,32 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     [SerializeField]
     private float axisThreshold = 0.01f;
 
+    public int PlayerId
+    {
+        get
+        {
+            return playerId;
+        }
+
+        set
+        {
+            playerId = value;
+        }
+    }
+
+    public InputManager.KeyMapping KeyMapping
+    {
+        get
+        {
+            return keyMapping;
+        }
+
+        set
+        {
+            keyMapping = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         this.controller = this.gameObject.GetComponent<PlayerBehaviour>();
@@ -23,22 +49,22 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     void Update()
     {
         //Manage Fire
-        if (InputManager.instance.GetKeyDown(playerId, keyMapping, InputManager.ActionControl.Fire))
+        if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Fire))
         {            
             this.controller.handleFire();
         }
-        if (InputManager.instance.GetKeyUp(playerId, keyMapping, InputManager.ActionControl.Fire))
+        if (InputManager.instance.GetKeyUp(PlayerId, KeyMapping, InputManager.ActionControl.Fire))
         {         
             this.controller.StopFire();
         }
 
 
         //Manage Reload
-        if (InputManager.instance.GetKeyDown(playerId, keyMapping, InputManager.ActionControl.Reload))
+        if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Reload))
         {
             this.controller.reloadGun();
         }
-        if (InputManager.instance.GetKeyUp(playerId, keyMapping, InputManager.ActionControl.Reload))
+        if (InputManager.instance.GetKeyUp(PlayerId, KeyMapping, InputManager.ActionControl.Reload))
         {
             this.controller.StopReloadGun();
         }
@@ -47,18 +73,18 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         bool isMovingFwd = false;
         bool isMovingBck = false;
         bool isTurning = false;
-        if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.MoveFwd) > axisThreshold)
+        if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.MoveFwd) > axisThreshold)
         {         
             this.controller.moveFwd();
             isMovingFwd = true;
         }
-        else if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.MoveBck) < -axisThreshold)
+        else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.MoveBck) < -axisThreshold)
         {         
             this.controller.moveBck();
             isMovingBck = true;
         }
 
-        if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
+        if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
         {
             if (!isMovingBck)
             {
@@ -70,7 +96,7 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             }
             isTurning = true;
         }
-        else if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.TurnRight) < -axisThreshold)
+        else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnRight) < -axisThreshold)
         {
             if (!isMovingBck)
             {
