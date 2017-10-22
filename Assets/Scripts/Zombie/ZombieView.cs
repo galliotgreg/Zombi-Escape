@@ -6,6 +6,7 @@ using UnityEngine;
 public class ZombieView : MonoBehaviour {
 
     private Animator anim;
+    public ParticleSystem zombieBlood;
 
 	// Use this for initialization
 	void Start () {
@@ -41,8 +42,18 @@ public class ZombieView : MonoBehaviour {
     }
 
     public void dealDamage(float damages)
-    {        
+    {
+        // Affiche les particules de sang        
+        zombieBlood.gameObject.SetActive(true);
+
+        StartCoroutine(waitAndDisable());
         //Debug.Log("Hit : " + this.name);
+    }
+
+    IEnumerator waitAndDisable()
+    {
+        yield return new WaitForSeconds(0.6f);
+        zombieBlood.gameObject.SetActive(false);
     }
 
     public void walkClip()
