@@ -5,6 +5,15 @@ using UnityEngine;
 public class PlayerKeyBoardInput : MonoBehaviour {
     private PlayerBehaviour controller = null;
 
+    [SerializeField]
+    private int playerId = 0;
+
+    [SerializeField]
+    private InputManager.KeyMapping keyMapping = InputManager.KeyMapping.KeyBoard;
+
+    [SerializeField]
+    private float axisThreshold = 0.01f;
+
     // Use this for initialization
     void Start () {
         this.controller = this.gameObject.GetComponent<PlayerBehaviour>();
@@ -14,49 +23,66 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     void Update()
     {
         //Manage Fire
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (InputManager.instance.GetKeyDown(playerId, keyMapping, InputManager.ActionControl.Fire))
         {            
             this.controller.handleFire();
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (InputManager.instance.GetKeyUp(playerId, keyMapping, InputManager.ActionControl.Fire))
         {         
             this.controller.StopFire();
         }
 
 
         //Manage Reload
-        if (Input.GetKeyDown(KeyCode.R))
+        if (InputManager.instance.GetKeyDown(playerId, keyMapping, InputManager.ActionControl.Reload))
         {
             this.controller.reloadGun();
         }
-        if (Input.GetKeyUp(KeyCode.R))
+        if (InputManager.instance.GetKeyUp(playerId, keyMapping, InputManager.ActionControl.Reload))
         {
             this.controller.StopReloadGun();
         }
 
         //Manage Motion 
-        bool isMoving = false;
-        if (Input.GetKey(KeyCode.Z))
+        bool isMovingFwd = false;
+        bool isMovingBck = false;
+        bool isTurning = false;
+        if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.MoveFwd) > axisThreshold)
         {         
             this.controller.moveFwd();
-            isMoving = true;
+            isMovingFwd = true;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.MoveBck) < -axisThreshold)
         {         
             this.controller.moveBck();
-            isMoving = true;
+            isMovingBck = true;
         }
-        if (Input.GetKey(KeyCode.Q))
-        {         
-            this.controller.turnLeft();
-            isMoving = true;
+
+        if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
+        {
+            if (!isMovingBck)
+            {
+                this.controller.turnLeft();
+            }
+            else
+            {
+                this.controller.turnRight();
+            }
+            isTurning = true;
         }
-        else if (Input.GetKey(KeyCode.D))
-        {            
-            this.controller.turnRight();
-            isMoving = true;
+        else if (InputManager.instance.GetAxis(playerId, keyMapping, InputManager.ActionControl.TurnRight) < -axisThreshold)
+        {
+            if (!isMovingBck)
+            {
+                this.controller.turnRight();
+            }
+            else
+            {
+                this.controller.turnLeft();
+            }
+            isTurning = true;
         }
-        if(!isMoving)
+        if(!(isTurning || isMovingFwd || isMovingBck))
         {           
             this.controller.idle();
         }

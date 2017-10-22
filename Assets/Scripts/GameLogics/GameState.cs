@@ -48,7 +48,6 @@ public class GameState : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
         this.players = GameObject.FindGameObjectsWithTag("Player");
         this.nbPlayers = this.players.Length;
     }
