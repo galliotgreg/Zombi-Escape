@@ -39,6 +39,7 @@ public class ZombiSpawner : MonoBehaviour {
         {
             //Create Zombie
             GameObject zombie = GameObject.Instantiate(zombiePrefab);
+            zombie.transform.position = new Vector3(transform.position.x, transform.position.y, zombie.transform.position.z);
             activeZombies.Add(zombie);
 
             //Set random orientation
