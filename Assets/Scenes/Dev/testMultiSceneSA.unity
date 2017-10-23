@@ -4171,6 +4171,11 @@ Prefab:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 114684601293838412, guid: bdaeae923fd901844a960c6d60044e89,
+        type: 2}
+      propertyPath: keyMapping
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
   m_IsPrefabParent: 0
@@ -6399,10 +6404,10 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 108212894896477298, guid: bdaeae923fd901844a960c6d60044e89,
+    - target: {fileID: 114684601293838412, guid: bdaeae923fd901844a960c6d60044e89,
         type: 2}
-      propertyPath: m_Intensity
-      value: 7
+      propertyPath: playerId
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
