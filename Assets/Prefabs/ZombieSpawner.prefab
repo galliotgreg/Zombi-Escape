@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbf034b7fca2884b996d2adeaa8c88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 5
+  frequency: 0.3
   zombiePrefab: {fileID: 1678513198478470, guid: 837d8852ffe777249b5cd6d9cbd50031,
     type: 2}
+  nbActiveZombies: 0
