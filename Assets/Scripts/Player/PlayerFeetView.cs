@@ -33,12 +33,12 @@ public class PlayerFeetView : MonoBehaviour {
 
     public void turnLeft()
     {
-        anim.SetBool("isWalking", false);
+        anim.SetBool("isWalking", true);
     }
 
     public void turnRight()
     {
-        anim.SetBool("isWalking", false);
+        anim.SetBool("isWalking", true);
     }
 
     public void idle()

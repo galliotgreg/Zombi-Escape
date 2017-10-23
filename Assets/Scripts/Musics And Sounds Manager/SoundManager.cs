@@ -5,7 +5,10 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
 
 
-    public AudioSource playeurSource;
+    public AudioSource playerFxSource;
+    public AudioSource playerWalkSource;
+    public AudioSource playerDeathSource;
+
     public AudioSource musicSource;
     public AudioSource zombieSource;
 
@@ -52,19 +55,19 @@ public class SoundManager : MonoBehaviour {
 
     public void playeurWalk()
     {
-        RandomizeClips(playeurWalkClips, playeurSource);
+        RandomizeClips(playeurWalkClips, playerWalkSource);
     }
     public void playeurDeath()
     {
-        RandomizeClips(playeurDeathClips, playeurSource);
+        RandomizeClips(playeurDeathClips, playerDeathSource);
     }
     public void handGunShot()
     {
-        RandomizeClips(handGunShotClips,playeurSource);
+        RandomizeClips(handGunShotClips, playerFxSource);
     }
     public void handGunReload()
     {
-        RandomizeClips(handGunReloadClips, playeurSource);
+        RandomizeClips(handGunReloadClips, playerFxSource);
     }
 
 
@@ -96,6 +99,6 @@ public class SoundManager : MonoBehaviour {
         aSource.pitch = randomPitch;
         aSource.clip = clips[randomIndex];
 
-        aSource.Play();
+        aSource.PlayOneShot(clips[randomIndex]);
     }   
 }
