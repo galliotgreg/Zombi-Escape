@@ -64,6 +64,7 @@ public class GameState : MonoBehaviour {
         else                              // Stand Alone Scene
         {
             players = GameObject.FindGameObjectsWithTag("Player");
+            nbPlayers = players.Length;
         }
     }
 

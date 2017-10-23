@@ -923,6 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbPlayers: 1
+  cameraManagerPrefab: {fileID: 0}
 --- !u!4 &222385164
 Transform:
   m_ObjectHideFlags: 0
@@ -2181,11 +2182,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4522,11 +4523,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6377,11 +6378,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6637,11 +6638,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4995655482298264, guid: bdaeae923fd901844a960c6d60044e89, type: 2}
       propertyPath: m_LocalPosition.z
