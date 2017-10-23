@@ -39,7 +39,7 @@ public class CommonPanel : MonoBehaviour
     private void initMapDropDown()
     {
         //Get Map dropdown
-        mapSelect = retreiveChild("slt_map").GetComponent<Dropdown>();
+		mapSelect = GameObject.Find("slt_map").GetComponent<Dropdown>();
 
         //Get Level Scenes
         EditorBuildSettingsScene[] allScenes = EditorBuildSettings.scenes;

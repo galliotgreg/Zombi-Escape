@@ -34,8 +34,8 @@ public class LobbyManager : MonoBehaviour {
     private GameObject cameraPrefab;
     [SerializeField]
     private GameObject[] lobbyPlayers = new GameObject[4];
-    [SerializeField]
-    private bool[] readyTab = { false, false, false, false };
+	[SerializeField]
+	private UnityEngine.UI.Dropdown[] controlDropdowns;
 
     private CommonPanel commonPanel;
 
@@ -65,19 +65,6 @@ public class LobbyManager : MonoBehaviour {
         }
     }
 
-    public bool[] ReadyTab
-    {
-        get
-        {
-            return readyTab;
-        }
-
-        set
-        {
-            readyTab = value;
-        }
-    }
-
     public GameObject CameraPrefab
     {
         get
@@ -96,26 +83,34 @@ public class LobbyManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         commonPanel = GameObject.FindObjectOfType<CommonPanel>();
+		GameObject.Find("btn_start").GetComponent<UnityEngine.UI.Button>().interactable = false;
+	}
+
+	public void playersReady(){
+		PlayerPanel[] playerPanels = GameObject.FindObjectsOfType<PlayerPanel>();
+		foreach( PlayerPanel p in playerPanels ){
+			p.SetReady();
+		}
+		NavigationManager.instance.LoadScene(commonPanel.MapName);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (isOnLobbyPhase && arePlayerReady())
-        {
-            isOnLobbyPhase = false;
-            NavigationManager.instance.LoadScene(commonPanel.MapName);
-        }
+		// Verify if some player is enabled
+		if( somePlayerEnabled() ){
+			GameObject.Find("btn_start").GetComponent<UnityEngine.UI.Button>().interactable = true;
+		}
     }
 
-    private bool arePlayerReady()
-    {
-        foreach (bool readyState in readyTab)
-        {
-            if (!readyState)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+	private bool somePlayerEnabled()
+	{
+		foreach (UnityEngine.UI.Dropdown dropd in controlDropdowns)
+		{
+			if ( dropd != null && dropd.value != 0 )
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

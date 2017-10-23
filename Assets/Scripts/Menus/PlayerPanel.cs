@@ -61,8 +61,6 @@ public class PlayerPanel : MonoBehaviour {
         playerClass.interactable = false;
         Dropdown playerControl = retreiveChild("slt_control").GetComponent<Dropdown>();
         playerControl.interactable = false;
-        Button readyButton = retreiveChild("btn_ready").GetComponent<Button>();
-        readyButton.interactable = false;
 
         //Alter lobbyPlayer according to the values of the widgets
         lobbyPlayerPrefab = Instantiate(lobbyPlayerPrefab);
@@ -90,7 +88,6 @@ public class PlayerPanel : MonoBehaviour {
 
         //Notify LobbyManager
         LobbyManager.instance.LobbyPlayers[playerId] = lobbyPlayerPrefab;
-        LobbyManager.instance.ReadyTab[playerId] = true;
     }
 
     private GameObject retreiveChild(string name)
