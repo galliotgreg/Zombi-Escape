@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiCamera_Controller : MonoBehaviour {
+public class MultiCameraManager : MonoBehaviour {
 
 	// TODO Deal with audio listener. only one can be activated
 

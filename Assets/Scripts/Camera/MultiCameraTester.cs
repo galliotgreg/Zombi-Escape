@@ -8,7 +8,7 @@ public class MultiCameraTester : MonoBehaviour {
 	[SerializeField]
 	private GameObject[] players;
 	[SerializeField]
-	private MultiCamera_Controller multiCamera;
+	private MultiCameraManager multiCamera;
 
 	// Use this for initialization
 	void Start () {

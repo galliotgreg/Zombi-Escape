@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114444809440528528}
   - component: {fileID: 114180370291698518}
   m_Layer: 0
-  m_Name: MultiCamera
+  m_Name: MultiCameraManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

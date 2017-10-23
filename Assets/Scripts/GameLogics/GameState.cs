@@ -32,6 +32,11 @@ public class GameState : MonoBehaviour {
 
     private GameObject[] players;
 
+	// Camera Manager
+	private MultiCameraManager cameraManager;	// Controls the generation of multiple cameras
+	[SerializeField]
+	private MultiCameraManager cameraManagerPrefab;	// prefab for camera Manager
+
     public int NbPlayers
     {
         get
@@ -56,38 +61,14 @@ public class GameState : MonoBehaviour {
 
     private void setupCameras()
     {
-        if (players.Length == 4)
-        {
-            GameObject cameraObject = Instantiate(LobbyManager.instance.CameraPrefab);
-            CameraTracking cameraTracking = cameraObject.GetComponent<CameraTracking>();
-            cameraTracking.TrackedPlayer = players[0];
-            Camera camera = cameraObject.GetComponent<Camera>();
-            camera.rect = new Rect(0, 0, 0.499f, 0.499f);
-            AudioListener audioListener = cameraObject.GetComponent<AudioListener>();
-            audioListener.enabled = false;
-
-            cameraObject = Instantiate(LobbyManager.instance.CameraPrefab);
-            cameraTracking = cameraObject.GetComponent<CameraTracking>();
-            cameraTracking.TrackedPlayer = players[1];
-            camera = cameraObject.GetComponent<Camera>();
-            camera.rect = new Rect(0.5f, 0, 0.499f, 0.499f);
-            audioListener = cameraObject.GetComponent<AudioListener>();
-            audioListener.enabled = false;
-
-            cameraObject = Instantiate(LobbyManager.instance.CameraPrefab);
-            cameraTracking = cameraObject.GetComponent<CameraTracking>();
-            cameraTracking.TrackedPlayer = players[2];
-            camera = cameraObject.GetComponent<Camera>();
-            camera.rect = new Rect(0.5f, 0.5f, 0.499f, 0.499f);
-            audioListener = cameraObject.GetComponent<AudioListener>();
-            audioListener.enabled = false;
-
-            cameraObject = Instantiate(LobbyManager.instance.CameraPrefab);
-            cameraTracking = cameraObject.GetComponent<CameraTracking>();
-            cameraTracking.TrackedPlayer = players[3];
-            camera = cameraObject.GetComponent<Camera>();
-            camera.rect = new Rect(0, 0.5f, 0.499f, 0.499f);
-        }
+		if( this.cameraManagerPrefab != null ){
+			// Generate Manager based on prefab
+			this.cameraManager = GameObject.Instantiate( this.cameraManagerPrefab, this.transform );
+			// Set players to be tracked
+			this.cameraManager.setPlayers( new ArrayList( this.players ) );
+		} else {
+			Debug.LogError("Camera Manager prefab not found");
+		}
     }
 
     private void setupPlayers()
