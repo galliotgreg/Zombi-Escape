@@ -923,7 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbPlayers: 1
-  cameraManagerPrefab: {fileID: 114444809440528528, guid: 96969a66b0227864fa6926dafbe88422,
+  cameraManagerPrefab: {fileID: 1871927098575932, guid: 4d1034eefafddea44a2dd20f77d55c14,
     type: 2}
 --- !u!4 &222385164
 Transform:

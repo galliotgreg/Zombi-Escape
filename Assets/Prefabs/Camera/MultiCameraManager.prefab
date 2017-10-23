@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4206175833319994}
   - component: {fileID: 114444809440528528}
-  - component: {fileID: 114180370291698518}
   m_Layer: 0
   m_Name: MultiCameraManager
   m_TagString: Untagged
@@ -41,19 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114180370291698518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1871927098575932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed7e55eb34b78b44ac1e79d259dbf38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  multiCamera: {fileID: 114444809440528528}
 --- !u!114 &114444809440528528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -62,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871927098575932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30bc00a444a9ef547ab95242bcc5b93f, type: 3}
+  m_Script: {fileID: 11500000, guid: f4e8b8d06b0ab4f48ac128de3dd6e071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera_prefab: {fileID: 1691501455052442, guid: 55d217baf78fa2f45956282f8ec03dcf,

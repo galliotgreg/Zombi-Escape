@@ -39,6 +39,7 @@ public class InputManager : MonoBehaviour {
 
     public enum KeyMapping
     {
+		Disabled,
         KeyBoard,
         LogitechDualAction,
         LogitechF310,

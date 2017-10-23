@@ -72,6 +72,7 @@ public class PlayerPanel : MonoBehaviour {
         switch(playerControl.value)
         {
             case 0:
+				lobbyPlayer.KeyMap = InputManager.KeyMapping.Disabled;
                 break;
             case 1:
                 lobbyPlayer.KeyMap = InputManager.KeyMapping.KeyBoard;

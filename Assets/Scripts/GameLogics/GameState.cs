@@ -30,12 +30,12 @@ public class GameState : MonoBehaviour {
     [SerializeField]
     private int nbPlayers = 1;
 
-    private GameObject[] players;
+	private ArrayList players;				// players' gameobjects
 
 	// Camera Manager
-	private MultiCameraManager cameraManager;	// Controls the generation of multiple cameras
+	private GameObject cameraManager;	// Controls the generation of multiple cameras
 	[SerializeField]
-	private MultiCameraManager cameraManagerPrefab;	// prefab for camera Manager
+	private GameObject cameraManagerPrefab;	// prefab for camera Manager
 
     public int NbPlayers
     {
@@ -63,8 +63,8 @@ public class GameState : MonoBehaviour {
         }
         else                              // Stand Alone Scene
         {
-            players = GameObject.FindGameObjectsWithTag("Player");
-            nbPlayers = players.Length;
+			players = new ArrayList(GameObject.FindGameObjectsWithTag("Player"));
+			nbPlayers = players.Count;
         }
     }
 
@@ -74,7 +74,20 @@ public class GameState : MonoBehaviour {
 			// Generate Manager based on prefab
 			this.cameraManager = GameObject.Instantiate( this.cameraManagerPrefab, this.transform );
 			// Set players to be tracked
-			this.cameraManager.setPlayers( new ArrayList( this.players ) );
+			MultiCameraManager cManager = this.cameraManager.GetComponent<MultiCameraManager>();
+			if( cManager != null ){
+				ArrayList validPlayers = new ArrayList();
+				// Checking valid players
+				foreach( GameObject player in this.players ){
+					if( player != null && player.GetComponent<PlayerKeyBoardInput>().KeyMapping != InputManager.KeyMapping.Disabled ){
+						validPlayers.Add(player);
+					}
+				}
+				cManager.setPlayers( validPlayers );
+			}
+			else{
+				Debug.LogError("Camera Manager does not has a MultiCameraManager");
+			}
 		} else {
 			Debug.LogError("Camera Manager prefab not found");
 		}
@@ -83,21 +96,24 @@ public class GameState : MonoBehaviour {
     private void setupPlayers()
     {
         PlayerSpawner[] playerSpawners = GameObject.FindObjectsOfType<PlayerSpawner>();
-        this.players = new GameObject[playerSpawners.Length];
+		this.players = new ArrayList();
         foreach (PlayerSpawner spawner in playerSpawners)
         {
             //Create the player according to the values of the lobbyPlayer
             LobbyPlayer lobbyPlayer = LobbyManager.instance.LobbyPlayers[spawner.PlayerId].GetComponent<LobbyPlayer>();
-            GameObject player = Instantiate(LobbyManager.instance.PlayerPrefab);
-            PlayerKeyBoardInput input = player.GetComponent<PlayerKeyBoardInput>();
-            input.PlayerId = lobbyPlayer.PlayerId;
-            input.KeyMapping = lobbyPlayer.KeyMap;
+			// Creating only enabled players
+			if( lobbyPlayer.KeyMap != InputManager.KeyMapping.Disabled ){
+	            GameObject player = Instantiate(LobbyManager.instance.PlayerPrefab);
+	            PlayerKeyBoardInput input = player.GetComponent<PlayerKeyBoardInput>();
+	            input.PlayerId = lobbyPlayer.PlayerId;
+	            input.KeyMapping = lobbyPlayer.KeyMap;
 
-            //Locate the player
-            player.transform.position = spawner.transform.position;
-            this.players[spawner.PlayerId] = player;
+	            //Locate the player
+	            player.transform.position = spawner.transform.position;
+				this.players.Add( player );
+			}
         }
-        this.nbPlayers = this.players.Length;
+		this.nbPlayers = this.players.Count;
     }
 
     // Update is called once per frame
