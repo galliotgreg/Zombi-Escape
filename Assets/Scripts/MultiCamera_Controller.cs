@@ -7,7 +7,7 @@ public class MultiCamera_Controller : MonoBehaviour {
 	// TODO Deal with audio listener. only one can be activated
 
 	[SerializeField]
-	private GameObject playerCamera_prefab;	// PlayerCamera Prefab to be instantiated
+	private GameObject playerCamera_prefab;	// PlayerCamera Prefab to be instantiated for each player
 
 	private ArrayList playerCameras;		// cameras that follow players
 	private ArrayList players;				// players to be displayed
@@ -65,7 +65,7 @@ public class MultiCamera_Controller : MonoBehaviour {
 			// Spliting Screen
 			float x_split = (this.players.Count>1)?0.5f:1f;
 			float y_split = (this.players.Count>2)?0.5f:1f;
-			float border = 0.01f;
+			float border = 0.001f;
 			for( int i=0; i<this.playerCameras.Count; i++ ){
 				Camera cameraComponent = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
 				if( cameraComponent != null ){
