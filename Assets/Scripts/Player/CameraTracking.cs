@@ -34,5 +34,8 @@ public class CameraTracking : MonoBehaviour {
 
 	public void setTrackedPlayer( GameObject player ){
 		this.trackedPlayer = player;
+
+		HUD_Controller hud = this.GetComponentInChildren<HUD_Controller>();
+		hud.setPlayer( player );
 	}
 }

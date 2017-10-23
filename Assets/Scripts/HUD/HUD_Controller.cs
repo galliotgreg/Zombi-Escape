@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class HUD_Controller : MonoBehaviour {
 
 	[SerializeField]
-	private PlayerModel player = null;
+	private GameObject player = null;
 	[SerializeField]
-	private Text playerLife = null;
+	private GameObject playerLifeImage = null;
+	[SerializeField]
+	private Text playerLifeCounterText = null;
 
 	// Use this for initialization
 	void Start () {
@@ -18,9 +20,14 @@ public class HUD_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (player != null) {
-			playerLife.text = "Life: " + player.LifePoints.ToString ();
+			PlayerModel playerModel = player.GetComponent<PlayerModel>();
+			playerLifeImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LifePoints/(float)playerModel.LifePoints_Max, playerLifeImage.GetComponent<RectTransform>().anchorMax.y );
 		} else {
 			Debug.LogError ( "HUD : player not set" );
 		}
+	}
+
+	public void setPlayer( GameObject newPlayer ){
+		this.player = newPlayer;
 	}
 }
