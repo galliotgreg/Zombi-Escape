@@ -93,6 +93,7 @@ public class PlayerView : MonoBehaviour {
         Debug.Log("Player blood particle");
         // Affiche les particules de sang        
         playerBlood.gameObject.SetActive(true);
+
         if (playerBlood.gameObject.active) {
             Debug.Log("Player blood particle is active");
         }

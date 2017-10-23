@@ -17,6 +17,10 @@ public class HUD_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		playerLife.text = "Life: "+player.LifePoints.ToString();
+		if (player != null) {
+			playerLife.text = "Life: " + player.LifePoints.ToString ();
+		} else {
+			Debug.LogError ( "HUD : player not set" );
+		}
 	}
 }
