@@ -2226,6 +2226,7 @@ GameObject:
   - component: {fileID: 2070910480}
   - component: {fileID: 2070910482}
   - component: {fileID: 2070910481}
+  - component: {fileID: 2070910483}
   m_Layer: 5
   m_Name: pnl_commonData
   m_TagString: Untagged
@@ -2288,6 +2289,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2070910479}
+--- !u!114 &2070910483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2070910479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39baa95f5246d3848a95e65bae02dc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapName: 
+  mapSelect: {fileID: 0}
 --- !u!1 &2076222734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,13 +2383,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

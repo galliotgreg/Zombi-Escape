@@ -37,6 +37,8 @@ public class LobbyManager : MonoBehaviour {
     [SerializeField]
     private bool[] readyTab = { false, false, false, false };
 
+    private CommonPanel commonPanel;
+
     public GameObject PlayerPrefab
     {
         get
@@ -93,7 +95,7 @@ public class LobbyManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        commonPanel = GameObject.FindObjectOfType<CommonPanel>();
 	}
 	
 	// Update is called once per frame
@@ -101,7 +103,7 @@ public class LobbyManager : MonoBehaviour {
         if (isOnLobbyPhase && arePlayerReady())
         {
             isOnLobbyPhase = false;
-            NavigationManager.instance.LoadScene("testMultiScene");
+            NavigationManager.instance.LoadScene(commonPanel.MapName);
         }
     }
 

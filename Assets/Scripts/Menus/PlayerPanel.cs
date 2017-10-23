@@ -52,16 +52,6 @@ public class PlayerPanel : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void SetReady()
     {
         //Set widget uninteractable
