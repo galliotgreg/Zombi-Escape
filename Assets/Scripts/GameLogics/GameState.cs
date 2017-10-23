@@ -54,9 +54,17 @@ public class GameState : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        setupPlayers();
-        setupCameras();
-        Destroy(LobbyManager.instance);
+        LobbyManager lobbyManager = LobbyManager.instance;
+        if (lobbyManager != null)
+        {         // Come from Lobby
+            setupPlayers();
+            setupCameras();
+            Destroy(lobbyManager);
+        }
+        else                              // Stand Alone Scene
+        {
+            players = GameObject.FindGameObjectsWithTag("Player");
+        }
     }
 
     private void setupCameras()
