@@ -63,13 +63,13 @@ public class MultiCameraManager : MonoBehaviour {
 			}
 
 			// Spliting Screen
-			float x_split = (this.players.Count>1)?0.5f:1f;
-			float y_split = (this.players.Count>2)?0.5f:1f;
+			float x_split = (this.players.Count>2)?0.5f:1f;		// the screen splits in X only if there are more than 2 players
+			float y_split = (this.players.Count>1)?0.5f:1f;		// the screen splits in Y only if there are more than 1 players
 			float border = 0.001f;
 			for( int i=0; i<this.playerCameras.Count; i++ ){
 				Camera cameraComponent = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
 				if( cameraComponent != null ){
-					cameraComponent.rect = new Rect( (i%2)*x_split+border, (i/2)*y_split+border, x_split-2*border, y_split-2*border );
+					cameraComponent.rect = new Rect( (i/2)*x_split+border, ((i+(this.players.Count>1?1:0))%2)*y_split+border, ((this.players.Count==3&&i==1)?2*x_split:x_split)-2*border, y_split-2*border );
 				}else{
 					Debug.LogError("Camera prefab does not contain Camera component");
 				}

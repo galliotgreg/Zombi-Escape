@@ -71,7 +71,6 @@ public class GameState : MonoBehaviour {
 
     private void setupCameras()
     {
-		Debug.Log(this.players.Count);
 		if( this.cameraManagerPrefab != null ){
 			// Generate Manager based on prefab
 			this.cameraManager = GameObject.Instantiate( this.cameraManagerPrefab, this.transform );
@@ -80,7 +79,6 @@ public class GameState : MonoBehaviour {
 			if( cManager != null ){
 				ArrayList validPlayers = new ArrayList();
 				// Checking valid players
-				Debug.Log(this.players.Count);
 				foreach( GameObject player in this.players ){
 					if( player != null && player.GetComponent<PlayerKeyBoardInput>().KeyMapping != InputManager.KeyMapping.Disabled ){
 						validPlayers.Add(player);
