@@ -386,7 +386,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -532,6 +532,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 092a5004c50db4e0f8bc4d9b334003b4, type: 3}
   - {fileID: 8300000, guid: fb7d3c9dd846c44008878a64cd5e6f52, type: 3}
   victoryEndGameClips:
-  - {fileID: 8300000, guid: 7bc32505978bb42618b82935d8bd8f00, type: 3}
+  - {fileID: 8300000, guid: 583ba4fe1479d504c814d91b7f3dad1b, type: 3}
   gameOverEndGameClips:
-  - {fileID: 8300000, guid: b4ca459c38f1a44b4bd8b479beee0bb0, type: 3}
+  - {fileID: 8300000, guid: 7f0105a6956aa1249ba202b52f184cbb, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour {
 
@@ -46,6 +47,14 @@ public class SoundManager : MonoBehaviour {
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
+    }
+    void Start()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "menuScene" || scene.name == "lobbyScene")
+        {
+            mainMenu();
+        }
     }
 
     //public void PlaySingle(AudioClip clip)
@@ -95,6 +104,16 @@ public class SoundManager : MonoBehaviour {
     {
         RandomizeClips(ambienceClips,musicSource);
     }
+
+    public void victory()
+    {
+        RandomizeClips(victoryEndGameClips, musicSource);
+    }
+    public void defeat()
+    {
+        RandomizeClips(gameOverEndGameClips, musicSource);
+    }
+
 
     public void RandomizeClips(AudioClip[] clips,  AudioSource aSource)
     {
