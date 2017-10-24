@@ -187,8 +187,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &113028033
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.6124319
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.0853133
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316994308820442, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a7ec9402eec4b8744ac5ca89a834b251, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &209697580
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +392,7 @@ RectTransform:
   m_Children:
   - {fileID: 1199322284}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1514,7 +1556,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4674066950914702, guid: 3f6ee197a6969044a8b221c3796a6884, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114729164672245254, guid: 3f6ee197a6969044a8b221c3796a6884,
         type: 2}
@@ -1913,6 +1955,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 542058613}
     m_Modifications:
+    - target: {fileID: 114904770013749870, guid: a4bef240b755bc743b35816e2a113faf,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224410439734451652, guid: a4bef240b755bc743b35816e2a113faf,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -2006,6 +2053,31 @@ Prefab:
     - target: {fileID: 1291666140811202, guid: a4bef240b755bc743b35816e2a113faf, type: 2}
       propertyPath: m_Name
       value: pnl_player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904770013749870, guid: a4bef240b755bc743b35816e2a113faf,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[0].m_Text
+      value: XBox 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904770013749870, guid: a4bef240b755bc743b35816e2a113faf,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Text
+      value: XBox 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904770013749870, guid: a4bef240b755bc743b35816e2a113faf,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[2].m_Text
+      value: XBox 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904770013749870, guid: a4bef240b755bc743b35816e2a113faf,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Text
+      value: XBox 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904770013749870, guid: a4bef240b755bc743b35816e2a113faf,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[4].m_Text
+      value: XBox 360
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4bef240b755bc743b35816e2a113faf, type: 2}
@@ -2296,7 +2368,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648299502
 GameObject:
@@ -2730,7 +2802,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2070910479
 GameObject:

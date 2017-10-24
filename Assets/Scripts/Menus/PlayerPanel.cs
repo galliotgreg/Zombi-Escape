@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,6 +53,38 @@ public class PlayerPanel : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+        initControlDropDown();
+    }
+
+    private void initControlDropDown()
+    {
+        //Retreive DropDown
+        Dropdown playerControl = retreiveChild("slt_control").GetComponent<Dropdown>();
+        playerControl.ClearOptions();
+
+        //Get Joystick Name
+        String[] joystickNames = Input.GetJoystickNames();
+        String joystickName = null;
+        if (playerId < joystickNames.Length)
+        {
+            int joystickId = InputManager.instance.JoysticResTable[playerId];
+            if (joystickId != -1) {
+                joystickName = joystickNames[joystickId];
+            }
+        }
+
+        List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
+        options.Add(new Dropdown.OptionData(InputManager.KeyMapping.Disabled.ToString()));
+        options.Add(new Dropdown.OptionData(InputManager.KeyMapping.KeyBoard.ToString()));
+        if (joystickName != null && joystickName != "")
+        {
+            options.Add(new Dropdown.OptionData(InputManager.instance.GetKeymapFromJoytickName(joystickName).ToString()));
+        }
+        playerControl.AddOptions(options);
+    }
+
     public void SetReady()
     {
         //Set widget uninteractable
@@ -76,13 +109,8 @@ public class PlayerPanel : MonoBehaviour {
                 lobbyPlayer.KeyMap = InputManager.KeyMapping.KeyBoard;
                 break;
             case 2:
-                lobbyPlayer.KeyMap = InputManager.KeyMapping.LogitechDualAction;
-                break;
-            case 3:
-                lobbyPlayer.KeyMap = InputManager.KeyMapping.LogitechF310;
-                break;
-            case 4:
-                lobbyPlayer.KeyMap = InputManager.KeyMapping.XBox360;
+                lobbyPlayer.KeyMap = InputManager.instance.GetKeymapFromJoytickName(
+                    InputManager.instance.GetJoystickNameFromPlayerId(playerId));
                 break;
         }
 
