@@ -34,6 +34,8 @@ public class InputManager : MonoBehaviour {
         MoveBck,
         TurnRight,
         TurnLeft,
+        StraffRight,
+        StraffLeft,
         Fire,
         Reload,
         Heal
@@ -131,6 +133,10 @@ public class InputManager : MonoBehaviour {
                     case ActionControl.MoveFwd:
                         return 1;
                     case ActionControl.MoveBck:
+                        return -1;
+                    case ActionControl.StraffRight:
+                        return 1;
+                    case ActionControl.StraffLeft:
                         return -1;
                     case ActionControl.TurnRight:
                         return -1;
@@ -634,8 +640,12 @@ public class InputManager : MonoBehaviour {
             case ActionControl.MoveBck:
                 return KeyCode.S;
             case ActionControl.TurnRight:
-                return KeyCode.D;
+                return KeyCode.RightArrow;
             case ActionControl.TurnLeft:
+                return KeyCode.LeftArrow;
+            case ActionControl.StraffRight:
+                return KeyCode.D;
+            case ActionControl.StraffLeft:
                 return KeyCode.Q;
             case ActionControl.Fire:
                 return KeyCode.Space;

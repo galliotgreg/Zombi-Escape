@@ -71,7 +71,11 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         //Manage Motion 
         bool isMovingFwd = false;
         bool isMovingBck = false;
+        bool isMovingRight = false;
+        bool isMovingLeft = false;
         bool isTurning = false;
+
+        //FWD/BCK
         if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.MoveFwd) > axisThreshold)
         {         
             this.controller.moveFwd();
@@ -83,6 +87,19 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             isMovingBck = true;
         }
 
+        //STRAFFING
+        if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.StraffRight) > axisThreshold)
+        {
+            this.controller.straffRight();
+            isMovingRight = true;
+        }
+        else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.StraffLeft) < -axisThreshold)
+        {
+            this.controller.straffLeft();
+            isMovingLeft = true;
+        }
+
+        //TURNING
         if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
         {
             if (!isMovingBck)
@@ -107,7 +124,7 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             }
             isTurning = true;
         }
-        if(!(isTurning || isMovingFwd || isMovingBck))
+        if(!(isTurning || isMovingFwd || isMovingBck || isMovingRight || isMovingLeft))
         {           
             this.controller.idle();
         }
