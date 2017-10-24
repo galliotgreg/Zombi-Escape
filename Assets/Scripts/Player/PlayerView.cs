@@ -10,9 +10,12 @@ public class PlayerView : MonoBehaviour {
     public ParticleSystem playerBlood;
     public ParticleSystem playerHealed;
 
+    private GunFlash gunFlash;
+
     private void Awake()
     {
-        anim = GetComponent<Animator>();    
+        anim = GetComponent<Animator>();
+        gunFlash = GetComponentInChildren<GunFlash>();
     }
 
     private void Start()
@@ -33,7 +36,9 @@ public class PlayerView : MonoBehaviour {
 
         //audioSource.PlayOneShot(gunShot);
         SoundManager.instance.handGunShot();
-        
+
+        // Affiche le flash
+        gunFlash.Flash();
     }
 
     public void fireFail()
