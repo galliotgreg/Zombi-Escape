@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerModel : MonoBehaviour {
+	[SerializeField]
+	private int playerId = -1;              //Nb bullets / seconds
+	[SerializeField]
+	private string playerName = "Player";              //Nb bullets / seconds
+
     [SerializeField]
     private float hitRate = 1;              //Nb bullets / seconds
     [SerializeField]
@@ -30,7 +35,22 @@ public class PlayerModel : MonoBehaviour {
     // Nbre de balle dans l'arme
     private int nbBullets_in_gun = 8;
 
-
+	public int PlayerId {
+		get {
+			return playerId;
+		}
+		set {
+			playerId = value;
+		}
+	}
+	public string PlayerName {
+		get {
+			return playerName;
+		}
+		set {
+			playerName = value;
+		}
+	}
 
     public int NbBullets_in_gun
     {

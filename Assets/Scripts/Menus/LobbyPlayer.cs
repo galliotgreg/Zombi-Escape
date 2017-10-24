@@ -5,6 +5,8 @@ using UnityEngine;
 public class LobbyPlayer : MonoBehaviour {
     [SerializeField]
     private int playerId;
+	[SerializeField]
+	private string playerName;
     [SerializeField]
     private InputManager.KeyMapping keyMap;
 
@@ -20,6 +22,15 @@ public class LobbyPlayer : MonoBehaviour {
             playerId = value;
         }
     }
+
+	public string PlayerName {
+		get {
+			return playerName;
+		}
+		set {
+			playerName = value;
+		}
+	}
 
     public InputManager.KeyMapping KeyMap
     {

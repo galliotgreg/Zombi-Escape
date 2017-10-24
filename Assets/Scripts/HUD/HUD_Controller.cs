@@ -7,6 +7,10 @@ public class HUD_Controller : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject player = null;
+	// Name
+	[SerializeField]
+	private Text playerNameText = null;
+	// Life
 	[SerializeField]
 	private GameObject playerLifeImage = null;
 	// Bullets
@@ -25,6 +29,9 @@ public class HUD_Controller : MonoBehaviour {
 	void Update () {
 		if (player != null) {
 			PlayerModel playerModel = player.GetComponent<PlayerModel>();
+			// Name
+			playerNameText.text = playerModel.PlayerName;
+			// Life
 			playerLifeImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LifePoints/(float)playerModel.LifePoints_Max, playerLifeImage.GetComponent<RectTransform>().anchorMax.y );
 			// Bullets
 			playerBulletsInGunText.text = playerModel.NbBullets_in_gun.ToString();

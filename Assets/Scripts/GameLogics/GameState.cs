@@ -120,6 +120,8 @@ public class GameState : MonoBehaviour {
 
 				// Associating groupPlayer
 				player.GetComponent<PlayerBehaviour>().PlayerGroup = this.playerGroup;
+				player.GetComponent<PlayerBehaviour>().setPlayerId( lobbyPlayer.PlayerId );
+				player.GetComponent<PlayerBehaviour>().setPlayerName( lobbyPlayer.PlayerName );
 
 	            //Locate the player
 	            player.transform.position = spawner.transform.position;

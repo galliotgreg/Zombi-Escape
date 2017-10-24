@@ -23,14 +23,18 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField]
     private float hitCooldown = -1;
 
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
         this.model = this.gameObject.GetComponent<PlayerModel>();
         this.view = this.gameObject.GetComponent<PlayerView>();
         this.feetView = this.GetComponentInChildren<PlayerFeetView>();
 		this.detectPlayer = this.gameObject.GetComponentInChildren<DetectGrab>();
     }
+
+	void Start()
+	{
+		
+	}
 
     // Update is called once per frame
     void Update()
@@ -200,5 +204,19 @@ public class PlayerBehaviour : MonoBehaviour {
 				this.view.obtainItemBattery();
 				break;
 		}
+	}
+
+	public void setPlayerName( string name )
+	{
+		if( name != "" ){
+			this.model.PlayerName = name;
+		}
+		else{
+			this.model.PlayerName = "Player "+(this.model.PlayerId+1).ToString();
+		}
+	}
+	public void setPlayerId( int id )
+	{
+		this.model.PlayerId = id;
 	}
 }

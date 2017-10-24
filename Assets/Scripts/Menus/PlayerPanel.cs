@@ -99,6 +99,7 @@ public class PlayerPanel : MonoBehaviour {
         lobbyPlayerPrefab = Instantiate(lobbyPlayerPrefab);
         LobbyPlayer lobbyPlayer = lobbyPlayerPrefab.GetComponent<LobbyPlayer>();
         lobbyPlayer.PlayerId = playerId;
+		lobbyPlayer.PlayerName = playerName.text;
 
         switch(playerControl.value)
         {
