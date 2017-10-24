@@ -8,7 +8,12 @@ public class PlayerModel : MonoBehaviour {
     private float hitRate = 1;              //Nb bullets / seconds
     [SerializeField]
     private float lifePoints_max = 100;
-	private float lifePoints_current = 100;
+    [SerializeField]
+    private float lifePoints_current = 100;
+    [SerializeField]
+    private float lightBattery_max = 100;
+    [SerializeField]
+    private float lightBattery_current = 100;
     [SerializeField]
     private float moveSpeed = 1;
     [SerializeField]
@@ -154,6 +159,32 @@ public class PlayerModel : MonoBehaviour {
         set
         {
             hitDamage = value;
+        }
+    }
+
+    public float LightBattery_max
+    {
+        get
+        {
+            return lightBattery_max;
+        }
+
+        set
+        {
+            lightBattery_max = value;
+        }
+    }
+
+    public float LightBattery_current
+    {
+        get
+        {
+            return lightBattery_current;
+        }
+
+        set
+        {
+            lightBattery_current = value;
         }
     }
 

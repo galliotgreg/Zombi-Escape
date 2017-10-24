@@ -78,6 +78,10 @@ public class InputManager : MonoBehaviour {
         String[] joystickNames = Input.GetJoystickNames();
         for (int i = 0; i < joystickNames.Length; i++)
         {
+            if (curInd >= 4)
+            {
+                break;
+            }
             if (joystickNames[i] != null && joystickNames[i] != "")
             {
                 JoysticResTable[curInd++] = i;
@@ -532,7 +536,7 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.None;
                 }
             case ActionControl.Reload:
-                switch (playerId)
+                switch (JoysticResTable[playerId])
                 {
                     case 0:
                         return KeyCode.Joystick1Button4;
@@ -550,6 +554,28 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.Joystick7Button4;
                     case 7:
                         return KeyCode.Joystick8Button4;
+                    default:
+                        return KeyCode.None;
+                }
+            case ActionControl.Heal:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button1;
+                    case 1:
+                        return KeyCode.Joystick2Button1;
+                    case 2:
+                        return KeyCode.Joystick3Button1;
+                    case 3:
+                        return KeyCode.Joystick4Button1;
+                    case 4:
+                        return KeyCode.Joystick5Button1;
+                    case 5:
+                        return KeyCode.Joystick6Button1;
+                    case 6:
+                        return KeyCode.Joystick7Button1;
+                    case 7:
+                        return KeyCode.Joystick8Button1;
                     default:
                         return KeyCode.None;
                 }
@@ -584,7 +610,7 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.None;
                 }
             case ActionControl.Reload:
-                switch (playerId)
+                switch (JoysticResTable[playerId])
                 {
                     case 0:
                         return KeyCode.Joystick1Button4;
@@ -602,6 +628,28 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.Joystick7Button4;
                     case 7:
                         return KeyCode.Joystick8Button4;
+                    default:
+                        return KeyCode.None;
+                }
+            case ActionControl.Heal:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button1;
+                    case 1:
+                        return KeyCode.Joystick2Button1;
+                    case 2:
+                        return KeyCode.Joystick3Button1;
+                    case 3:
+                        return KeyCode.Joystick4Button1;
+                    case 4:
+                        return KeyCode.Joystick5Button1;
+                    case 5:
+                        return KeyCode.Joystick6Button1;
+                    case 6:
+                        return KeyCode.Joystick7Button1;
+                    case 7:
+                        return KeyCode.Joystick8Button1;
                     default:
                         return KeyCode.None;
                 }
@@ -636,7 +684,7 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.None;
                 }
             case ActionControl.Reload:
-                switch (playerId)
+                switch (JoysticResTable[playerId])
                 {
                     case 0:
                         return KeyCode.Joystick1Button4;
@@ -654,6 +702,28 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.Joystick7Button4;
                     case 7:
                         return KeyCode.Joystick8Button4;
+                    default:
+                        return KeyCode.None;
+                }
+            case ActionControl.Heal:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button2;
+                    case 1:
+                        return KeyCode.Joystick2Button2;
+                    case 2:
+                        return KeyCode.Joystick3Button2;
+                    case 3:
+                        return KeyCode.Joystick4Button2;
+                    case 4:
+                        return KeyCode.Joystick5Button2;
+                    case 5:
+                        return KeyCode.Joystick6Button2;
+                    case 6:
+                        return KeyCode.Joystick7Button2;
+                    case 7:
+                        return KeyCode.Joystick8Button2;
                     default:
                         return KeyCode.None;
                 }
