@@ -34,7 +34,8 @@ public class InputManager : MonoBehaviour {
         TurnRight,
         TurnLeft,
         Fire,
-        Reload
+        Reload,
+        Heal
     }
 
     public enum KeyMapping
@@ -390,6 +391,8 @@ public class InputManager : MonoBehaviour {
                 return KeyCode.Space;
             case ActionControl.Reload:
                 return KeyCode.R;
+            case ActionControl.Heal:
+                return KeyCode.E;
         }
         return KeyCode.None;
     }
