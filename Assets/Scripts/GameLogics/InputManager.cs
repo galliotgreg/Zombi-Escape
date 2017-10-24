@@ -282,21 +282,21 @@ public class InputManager : MonoBehaviour {
                 switch (JoysticResTable[playerId])
                 {
                     case 0:
-                        return "Joystick1_Turn";
+                        return "Logitech_F310_1_Turn";
                     case 1:
-                        return "Joystick2_Turn";
+                        return "Logitech_F310_2_Turn";
                     case 2:
-                        return "Joystick3_Turn";
+                        return "Logitech_F310_3_Turn";
                     case 3:
-                        return "Joystick4_Turn";
+                        return "Logitech_F310_4_Turn";
                     case 4:
-                        return "Joystick5_Turn";
+                        return "Logitech_F310_5_Turn";
                     case 5:
-                        return "Joystick6_Turn";
+                        return "Logitech_F310_6_Turn";
                     case 6:
-                        return "Joystick7_Turn";
+                        return "Logitech_F310_7_Turn";
                     case 7:
-                        return "Joystick8_Turn";
+                        return "Logitech_F310_8_Turn";
                 }
                 break;
         }
@@ -313,21 +313,21 @@ public class InputManager : MonoBehaviour {
                 switch (JoysticResTable[playerId])
                 {
                     case 0:
-                        return "Logitech_DualAction_1_Move";
+                        return "Joystick1_Move";
                     case 1:
-                        return "Logitech_DualAction_2_Move";
+                        return "Joystick2_Move";
                     case 2:
-                        return "Logitech_DualAction_3_Move";
+                        return "Joystick3_Move";
                     case 3:
-                        return "Logitech_DualAction_4_Move";
+                        return "Joystick4_Move";
                     case 4:
-                        return "Logitech_DualAction_5_Move";
+                        return "Joystick5_Move";
                     case 5:
-                        return "Logitech_DualAction_6_Move";
+                        return "Joystick6_Move";
                     case 6:
-                        return "Logitech_DualAction_7_Move";
+                        return "Joystick7_Move";
                     case 7:
-                        return "Logitech_DualAction_8_Move";
+                        return "Joystick8_Move";
                 }
                 break;
             case ActionControl.TurnRight:
