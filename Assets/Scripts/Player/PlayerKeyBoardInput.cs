@@ -102,26 +102,28 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         //TURNING
         if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
         {
-            if (!isMovingBck)
-            {
-                this.controller.turnLeft();
-            }
-            else
-            {
-                this.controller.turnRight();
-            }
+            this.controller.turnLeft();
+            //if (!isMovingBck)
+            //{
+            //    this.controller.turnLeft();
+            //}
+            //else
+            //{
+            //    this.controller.turnRight();
+            //}
             isTurning = true;
         }
         else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnRight) < -axisThreshold)
         {
-            if (!isMovingBck)
-            {
-                this.controller.turnRight();
-            }
-            else
-            {
-                this.controller.turnLeft();
-            }
+            this.controller.turnRight();
+            //if (!isMovingBck)
+            //{
+            //    this.controller.turnRight();
+            //}
+            //else
+            //{
+            //    this.controller.turnLeft();
+            //}
             isTurning = true;
         }
         if(!(isTurning || isMovingFwd || isMovingBck || isMovingRight || isMovingLeft))
