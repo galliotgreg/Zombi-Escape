@@ -87,6 +87,16 @@ public class PlayerView : MonoBehaviour {
         anim.SetBool("isWalking", false);
     }
 
+    public void straffLeft()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
+    public void straffRight()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
     public void die()
     {
         anim.SetBool("isDead", true);

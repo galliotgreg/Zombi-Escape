@@ -97,6 +97,26 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
+    public void straffLeft()
+    {
+        if (this.model.LifePoints > 0)
+        {
+            this.model.straffLeft();
+            this.view.straffLeft();
+            this.feetView.straffLeft();
+        }
+    }
+
+    public void straffRight()
+    {
+        if (this.model.LifePoints > 0)
+        {
+            this.model.straffRight();
+            this.view.straffRight();
+            this.feetView.straffRight();
+        }
+    }
+
     public void handleFire()
     {
         if (this.model.LifePoints > 0)

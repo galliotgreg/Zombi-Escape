@@ -9,8 +9,6 @@ public class HUD_Controller : MonoBehaviour {
 	private GameObject player = null;
 	[SerializeField]
 	private GameObject playerLifeImage = null;
-	[SerializeField]
-	private Text playerLifeCounterText = null;
 	// Bullets
 	[SerializeField]
 	private Text playerBulletsInGunText = null;
@@ -30,7 +28,7 @@ public class HUD_Controller : MonoBehaviour {
 			playerLifeImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LifePoints/(float)playerModel.LifePoints_Max, playerLifeImage.GetComponent<RectTransform>().anchorMax.y );
 			// Bullets
 			playerBulletsInGunText.text = playerModel.NbBullets_in_gun.ToString();
-			playerBulletsOutGunText.text = playerModel.NbBullets.ToString();
+			playerBulletsOutGunText.text = "/"+playerModel.NbBullets.ToString();
 		} else {
 			Debug.LogError ( "HUD : player not set" );
 		}

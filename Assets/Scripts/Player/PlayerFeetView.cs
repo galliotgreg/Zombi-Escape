@@ -45,4 +45,14 @@ public class PlayerFeetView : MonoBehaviour {
     {        
         anim.SetBool("isWalking", false);
     }
+
+    public void straffLeft()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
+    public void straffRight()
+    {
+        anim.SetBool("isWalking", true);
+    }
 }

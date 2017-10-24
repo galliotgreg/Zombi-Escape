@@ -167,6 +167,15 @@ public class PlayerModel : MonoBehaviour {
         this.transform.position -= this.transform.right * Time.deltaTime * this.moveSpeed;
     }
 
+    public void straffRight()
+    {
+        this.transform.position -= this.transform.up * Time.deltaTime * this.moveSpeed;
+    }
+    public void straffLeft()
+    {
+        this.transform.position += this.transform.up * Time.deltaTime * this.moveSpeed;
+    }
+
     public void turnLeft()
     {
         this.transform.Rotate(0, 0, Time.deltaTime * this.angularSpeed);

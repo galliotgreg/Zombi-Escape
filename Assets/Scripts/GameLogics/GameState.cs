@@ -59,6 +59,7 @@ public class GameState : MonoBehaviour {
     {
         LobbyManager lobbyManager = LobbyManager.instance;
 		this.playerGroup = new PlayerGroupModel();
+
         if (lobbyManager != null)
         {         // Come from Lobby
             setupPlayers();
@@ -78,6 +79,10 @@ public class GameState : MonoBehaviour {
 		if( this.cameraManagerPrefab != null ){
 			// Generate Manager based on prefab
 			this.cameraManager = GameObject.Instantiate( this.cameraManagerPrefab, this.transform );
+
+			// set PlayerGroup to general HUD
+			this.cameraManager.GetComponentInChildren<HUDGeneral_Controller>().setPlayerGroup( this.playerGroup );
+
 			// Set players to be tracked
 			MultiCameraManager cManager = this.cameraManager.GetComponent<MultiCameraManager>();
 			if( cManager != null ){
