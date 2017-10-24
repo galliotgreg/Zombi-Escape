@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour {
 
 
-    public AudioSource playeurSource;
+    public AudioSource playerFxSource;
+    public AudioSource playerWalkSource;
+    public AudioSource playerDeathSource;
+
     public AudioSource musicSource;
     public AudioSource zombieSource;
 
@@ -20,6 +24,7 @@ public class SoundManager : MonoBehaviour {
 
     public AudioClip[] handGunShotClips;
     public AudioClip[] handGunReloadClips;
+    public AudioClip[] handGunShotFailClips;
 
 
     public AudioClip[] zombieWalkClips;
@@ -43,6 +48,14 @@ public class SoundManager : MonoBehaviour {
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
     }
+    void Start()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "menuScene" || scene.name == "lobbyScene")
+        {
+            mainMenu();
+        }
+    }
 
     //public void PlaySingle(AudioClip clip)
     //{
@@ -52,21 +65,25 @@ public class SoundManager : MonoBehaviour {
 
     public void playeurWalk()
     {
-        RandomizeClips(playeurWalkClips, playeurSource);
+        RandomizeClips(playeurWalkClips, playerWalkSource);
     }
     public void playeurDeath()
     {
-        RandomizeClips(playeurDeathClips, playeurSource);
+        RandomizeClips(playeurDeathClips, playerDeathSource);
     }
+
     public void handGunShot()
     {
-        RandomizeClips(handGunShotClips,playeurSource);
+        RandomizeClips(handGunShotClips, playerFxSource);
     }
     public void handGunReload()
     {
-        RandomizeClips(handGunReloadClips, playeurSource);
+        RandomizeClips(handGunReloadClips, playerFxSource);
     }
-
+    public void handGunShotFail()
+    {
+        RandomizeClips(handGunShotFailClips, playerFxSource);
+    }
 
 
     public void zombieWalk()
@@ -88,6 +105,16 @@ public class SoundManager : MonoBehaviour {
         RandomizeClips(ambienceClips,musicSource);
     }
 
+    public void victory()
+    {
+        RandomizeClips(victoryEndGameClips, musicSource);
+    }
+    public void defeat()
+    {
+        RandomizeClips(gameOverEndGameClips, musicSource);
+    }
+
+
     public void RandomizeClips(AudioClip[] clips,  AudioSource aSource)
     {
         int randomIndex = Random.Range(0, clips.Length);
@@ -96,6 +123,6 @@ public class SoundManager : MonoBehaviour {
         aSource.pitch = randomPitch;
         aSource.clip = clips[randomIndex];
 
-        aSource.Play();
+        aSource.PlayOneShot(clips[randomIndex]);
     }   
 }

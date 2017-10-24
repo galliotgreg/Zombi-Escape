@@ -3730,7 +3730,8 @@ Prefab:
       propertyPath: orthographic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81457246718102390, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1260036733 stripped
@@ -5564,7 +5565,8 @@ Prefab:
       propertyPath: orthographic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81457246718102390, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1803718584
@@ -6050,7 +6052,8 @@ Prefab:
       propertyPath: orthographic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81457246718102390, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1899802081
@@ -6633,7 +6636,8 @@ Prefab:
       propertyPath: orthographic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81457246718102390, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 55d217baf78fa2f45956282f8ec03dcf, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2028933614

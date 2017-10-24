@@ -35,6 +35,11 @@ public class PlayerView : MonoBehaviour {
         
     }
 
+    public void fireFail()
+    {
+        SoundManager.instance.handGunShotFail();
+    }
+
     public void StopFire()
     {
         anim.SetBool("isShooting", false);
@@ -84,6 +89,7 @@ public class PlayerView : MonoBehaviour {
     public void die()
     {
         anim.SetBool("isDead", true);
+        SoundManager.instance.playeurDeath();
         //Debug.Log("TODO : Trigger die sprite animation");
     }
 
@@ -116,4 +122,14 @@ public class PlayerView : MonoBehaviour {
     {
         SoundManager.instance.handGunReload();
     }
+
+	public void beHealed( float aidAmount )
+	{
+		// Call animation
+		Debug.LogWarning( "Revive Here" );
+	}
+	public void heal()
+	{
+		// Call animation
+	}
 }

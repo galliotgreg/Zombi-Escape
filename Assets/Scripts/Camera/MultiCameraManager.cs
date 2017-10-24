@@ -74,7 +74,8 @@ public class MultiCameraManager : MonoBehaviour {
 					Debug.LogError("Camera prefab does not contain Camera component");
 				}
 				// disabling audio listener. Only the first one is enabled
-				if( i != 0 ){
+				if( i != 0 && cameraComponent.GetComponent<AudioListener>() != null)
+                {
 					cameraComponent.GetComponent<AudioListener>().enabled = false;
 				}
 			}

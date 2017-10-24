@@ -58,7 +58,6 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             this.controller.StopFire();
         }
 
-
         //Manage Reload
         if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Reload))
         {
@@ -112,5 +111,12 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         {           
             this.controller.idle();
         }
+			
+		// Manage Healing
+		if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Heal))
+		{
+			// Check if the player is close to an injured player
+			this.controller.executePlayerGroupHeal();
+		}
     }
 }

@@ -34,7 +34,8 @@ public class InputManager : MonoBehaviour {
         TurnRight,
         TurnLeft,
         Fire,
-        Reload
+        Reload,
+        Heal
     }
 
     public enum KeyMapping
@@ -48,8 +49,11 @@ public class InputManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        foreach (String joystickName in Input.GetJoystickNames())
+        {
+            Debug.Log(joystickName);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -387,6 +391,8 @@ public class InputManager : MonoBehaviour {
                 return KeyCode.Space;
             case ActionControl.Reload:
                 return KeyCode.R;
+            case ActionControl.Heal:
+                return KeyCode.E;
         }
         return KeyCode.None;
     }
