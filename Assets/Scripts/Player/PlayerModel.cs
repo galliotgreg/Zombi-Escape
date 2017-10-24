@@ -233,4 +233,18 @@ public class PlayerModel : MonoBehaviour {
 	void Update () {
 		
 	}
+		
+	public void beHealed( float aidAmount  )
+	{
+		// update life points
+		this.lifePoints_current = Math.Min( this.lifePoints_current+aidAmount, this.lifePoints_max );
+	}
+	public void heal()
+	{
+		// nothing to be done
+	}
+	public bool canBeHealed()
+	{
+		return this.lifePoints_current <= 0;
+	}
 }

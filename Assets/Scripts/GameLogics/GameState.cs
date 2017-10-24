@@ -32,6 +32,9 @@ public class GameState : MonoBehaviour {
 
 	private ArrayList players;				// players' gameobjects
 
+	// Group Values
+	private PlayerGroupModel playerGroup;
+
 	// Camera Manager
 	private GameObject cameraManager;	// Controls the generation of multiple cameras
 	[SerializeField]
@@ -55,6 +58,7 @@ public class GameState : MonoBehaviour {
     void Start ()
     {
         LobbyManager lobbyManager = LobbyManager.instance;
+		this.playerGroup = new PlayerGroupModel();
         if (lobbyManager != null)
         {         // Come from Lobby
             setupPlayers();
@@ -108,6 +112,9 @@ public class GameState : MonoBehaviour {
 	            PlayerKeyBoardInput input = player.GetComponent<PlayerKeyBoardInput>();
 	            input.PlayerId = lobbyPlayer.PlayerId;
 	            input.KeyMapping = lobbyPlayer.KeyMap;
+
+				// Associating groupPlayer
+				player.GetComponent<PlayerBehaviour>().PlayerGroup = this.playerGroup;
 
 	            //Locate the player
 	            player.transform.position = spawner.transform.position;

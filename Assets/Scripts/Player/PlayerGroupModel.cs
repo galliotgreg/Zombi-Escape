@@ -1,0 +1,26 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerGroupModel{
+	[SerializeField]
+	private int nLifes = 5;
+	[SerializeField]
+	private int aidPerLife = 50;
+
+	// Perfoms the action of aid a player
+	public void heal( PlayerBehaviour injuredlayer, PlayerBehaviour helperPlayer )
+	{
+		if( this.nLifes > 0 )
+		{
+			injuredlayer.beHealed( this.aidPerLife );
+			helperPlayer.heal();
+			this.nLifes--;
+		}
+	}
+
+	public int getNlifes()
+	{
+		return this.nLifes;
+	}
+}

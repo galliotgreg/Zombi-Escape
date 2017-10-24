@@ -122,4 +122,14 @@ public class PlayerView : MonoBehaviour {
     {
         SoundManager.instance.handGunReload();
     }
+
+	public void beHealed( float aidAmount )
+	{
+		// Call animation
+		Debug.LogWarning( "Revive Here" );
+	}
+	public void heal()
+	{
+		// Call animation
+	}
 }
