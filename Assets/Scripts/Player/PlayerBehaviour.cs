@@ -181,4 +181,24 @@ public class PlayerBehaviour : MonoBehaviour {
 		this.model.heal();
 		this.view.heal();
 	}
+
+	public void obtainItem( ItemBehaviour item )
+	{
+		Debug.Log("Get Item : "+item.getItemType().ToString());
+		switch( item.getItemType() ){
+			case ItemModel.ItemType.Heal :
+				this.playerGroup.obtainLife();
+				this.model.obtainItemHeal();
+				this.view.obtainItemHeal();
+				break;
+			case ItemModel.ItemType.Bullets :
+				this.model.obtainItemBullets();
+				this.view.obtainItemBullets();
+				break;
+			case ItemModel.ItemType.Battery : default :
+				this.model.obtainItemBattery();
+				this.view.obtainItemBattery();
+				break;
+		}
+	}
 }

@@ -243,7 +243,8 @@ public class PlayerModel : MonoBehaviour {
 	void Update () {
 		
 	}
-		
+
+	// Healing	
 	public void beHealed( float aidAmount  )
 	{
 		// update life points
@@ -256,5 +257,20 @@ public class PlayerModel : MonoBehaviour {
 	public bool canBeHealed()
 	{
 		return this.lifePoints_current <= 0;
+	}
+
+	// Items
+	// Heal
+	public void obtainItemHeal(){} // The effect is applicable over the Group
+	// Bullets
+	public void obtainItemBullets()
+	{
+		// Recharge the bullets
+		this.NbBullets = NbBullets_max;
+	}
+	// Battery
+	public void obtainItemBattery()
+	{
+		// Recharge the battery
 	}
 }

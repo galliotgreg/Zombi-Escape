@@ -18,6 +18,11 @@ public class PlayerGroupModel{
 			this.nLifes--;
 		}
 	}
+	// Add a lifePoint to the Group
+	public void obtainLife()
+	{
+		this.nLifes++;
+	}
 
 	public int getNlifes()
 	{

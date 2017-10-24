@@ -152,4 +152,12 @@ public class PlayerView : MonoBehaviour {
 	{
 		// Call animation
 	}
+
+	// Items
+	// Heal
+	public void obtainItemHeal(){}
+	// Bullets
+	public void obtainItemBullets(){}
+	// Batery
+	public void obtainItemBattery(){}
 }
