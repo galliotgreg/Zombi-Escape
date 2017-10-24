@@ -230,6 +230,28 @@ public class InputManager : MonoBehaviour {
                         return "Joystick8_Move";
                 }
                 break;
+            case ActionControl.StraffRight:
+            case ActionControl.StraffLeft:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return "Joystick1_Straff";
+                    case 1:
+                        return "Joystick2_Straff";
+                    case 2:
+                        return "Joystick3_Straff";
+                    case 3:
+                        return "Joystick4_Straff";
+                    case 4:
+                        return "Joystick5_Straff";
+                    case 5:
+                        return "Joystick6_Straff";
+                    case 6:
+                        return "Joystick7_Straff";
+                    case 7:
+                        return "Joystick8_Straff";
+                }
+                break;
             case ActionControl.TurnRight:
             case ActionControl.TurnLeft:
                 switch (JoysticResTable[playerId])
@@ -283,6 +305,28 @@ public class InputManager : MonoBehaviour {
                         return "Joystick8_Move";
                 }
                 break;
+            case ActionControl.StraffRight:
+            case ActionControl.StraffLeft:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return "Joystick1_Straff";
+                    case 1:
+                        return "Joystick2_Straff";
+                    case 2:
+                        return "Joystick3_Straff";
+                    case 3:
+                        return "Joystick4_Straff";
+                    case 4:
+                        return "Joystick5_Straff";
+                    case 5:
+                        return "Joystick6_Straff";
+                    case 6:
+                        return "Joystick7_Straff";
+                    case 7:
+                        return "Joystick8_Straff";
+                }
+                break;
             case ActionControl.TurnRight:
             case ActionControl.TurnLeft:
                 switch (JoysticResTable[playerId])
@@ -334,6 +378,28 @@ public class InputManager : MonoBehaviour {
                         return "Joystick7_Move";
                     case 7:
                         return "Joystick8_Move";
+                }
+                break;
+            case ActionControl.StraffRight:
+            case ActionControl.StraffLeft:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return "Joystick1_Straff";
+                    case 1:
+                        return "Joystick2_Straff";
+                    case 2:
+                        return "Joystick3_Straff";
+                    case 3:
+                        return "Joystick4_Straff";
+                    case 4:
+                        return "Joystick5_Straff";
+                    case 5:
+                        return "Joystick6_Straff";
+                    case 6:
+                        return "Joystick7_Straff";
+                    case 7:
+                        return "Joystick8_Straff";
                 }
                 break;
             case ActionControl.TurnRight:
