@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour {
 
     public AudioClip[] handGunShotClips;
     public AudioClip[] handGunReloadClips;
+    public AudioClip[] handGunShotFailClips;
 
 
     public AudioClip[] zombieWalkClips;
@@ -61,6 +62,7 @@ public class SoundManager : MonoBehaviour {
     {
         RandomizeClips(playeurDeathClips, playerDeathSource);
     }
+
     public void handGunShot()
     {
         RandomizeClips(handGunShotClips, playerFxSource);
@@ -69,7 +71,10 @@ public class SoundManager : MonoBehaviour {
     {
         RandomizeClips(handGunReloadClips, playerFxSource);
     }
-
+    public void handGunShotFail()
+    {
+        RandomizeClips(handGunShotFailClips, playerFxSource);
+    }
 
 
     public void zombieWalk()

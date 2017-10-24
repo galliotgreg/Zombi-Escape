@@ -35,6 +35,11 @@ public class PlayerView : MonoBehaviour {
         
     }
 
+    public void fireFail()
+    {
+        SoundManager.instance.handGunShotFail();
+    }
+
     public void StopFire()
     {
         anim.SetBool("isShooting", false);
