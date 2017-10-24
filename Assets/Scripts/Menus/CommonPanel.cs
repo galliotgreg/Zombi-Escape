@@ -49,7 +49,6 @@ public class CommonPanel : MonoBehaviour
             String[] tokens = scene.path.Split('/');
             if (tokens[tokens.Length - 2] == "Levels")
             {
-                Debug.Log(scene.path);
                 levelScenes.Add(scene);
             }
         }
