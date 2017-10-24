@@ -8,6 +8,7 @@ public class PlayerView : MonoBehaviour {
     private Animator anim;    
     public ParticleSystem gunFire;
     public ParticleSystem playerBlood;
+    public ParticleSystem playerHealed;
 
     private void Awake()
     {
@@ -103,18 +104,18 @@ public class PlayerView : MonoBehaviour {
         if (playerBlood.gameObject.active) {
             Debug.Log("Player blood particle is active");
         }
-        StartCoroutine(waitAndDisable());
+        StartCoroutine(waitAndDisable(playerBlood.gameObject));
 
         //Debug.Log("Hit : " + this.name);
     }
 
-    IEnumerator waitAndDisable()
+    IEnumerator waitAndDisable(GameObject gObject)
     {
         yield return new WaitForSeconds(0.6f);
-        playerBlood.gameObject.SetActive(false);
-        if (!playerBlood.gameObject.active)
+        gObject.SetActive(false);
+        if (!gObject.active)
         {
-            Debug.Log("Player blood particle is not active");
+            Debug.Log("System particle "+gObject.name +" is not active");
         }
     }
 
@@ -125,8 +126,17 @@ public class PlayerView : MonoBehaviour {
 
 	public void beHealed( float aidAmount )
 	{
-		// Call animation
-		Debug.LogWarning( "Revive Here" );
+        // Call animation
+        anim.SetTrigger("isHealed");
+        anim.SetBool("isDead", false);
+        playerHealed.Play();
+        //playerHealed.gameObject.SetActive(true);
+
+        Debug.LogWarning(playerHealed.gameObject.gameObject.active);
+        //StartCoroutine(waitAndDisable(playerHealed.gameObject));
+
+        //Debug.LogWarning( "Revive Here" );
+
 	}
 	public void heal()
 	{

@@ -186,6 +186,7 @@ public class PlayerModel : MonoBehaviour {
     public void dealDamage(float damages)
     {
 		this.lifePoints_current -= damages;
+        this.lifePoints_current = Math.Max(this.lifePoints_current, 0);
     }
 
     public void fire()
