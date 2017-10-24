@@ -48,7 +48,10 @@ public class InputManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Log(Input.GetJoystickNames());
+        foreach (String joystickName in Input.GetJoystickNames())
+        {
+            Debug.Log(joystickName);
+        }
     }
 	
 	// Update is called once per frame
