@@ -48,8 +48,8 @@ public class InputManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        Debug.Log(Input.GetJoystickNames());
+    }
 	
 	// Update is called once per frame
 	void Update () {
