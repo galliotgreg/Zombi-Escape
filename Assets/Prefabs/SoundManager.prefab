@@ -512,6 +512,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d3247579c549643a5b3a95f9224eaf3c, type: 3}
   handGunReloadClips:
   - {fileID: 8300000, guid: cef0fa03af5b747f0abe82cde0b2bccc, type: 3}
+  handGunShotFailClips:
+  - {fileID: 8300000, guid: 233bb24a3ca990e48ab72558ff52666a, type: 3}
   zombieWalkClips:
   - {fileID: 8300000, guid: 7b0f8b2d663cd4d6182273b36894bef9, type: 3}
   - {fileID: 8300000, guid: 934fe701a479b45289f84c86c7e812bf, type: 3}

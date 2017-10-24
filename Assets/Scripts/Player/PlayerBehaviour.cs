@@ -88,11 +88,18 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         if (this.model.LifePoints > 0)
         {
-            if (hitCooldown < 0)
+            if (this.model.NbBullets_in_gun > 0)
             {
-                this.model.fire();
-                this.view.fire();
-                hitCooldown = this.model.HitRate;
+                if (hitCooldown < 0)
+                {
+                    this.model.fire();
+                    this.view.fire();
+                    hitCooldown = this.model.HitRate;
+                }
+            }
+            else
+            {
+                this.view.fireFail();
             }
         }
     }
