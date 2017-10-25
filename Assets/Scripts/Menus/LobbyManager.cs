@@ -113,4 +113,9 @@ public class LobbyManager : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public void Kill()
+    {
+        Destroy(this);
+    }
 }
