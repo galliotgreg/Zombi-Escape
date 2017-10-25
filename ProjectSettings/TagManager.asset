@@ -21,7 +21,7 @@ TagManager:
   - ZombieTarget
   - ZombieGrabBox
   - PlayerHitBox
-  - 
+  - RadarDetection
   - 
   - 
   - 
