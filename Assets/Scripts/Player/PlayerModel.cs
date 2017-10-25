@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class PlayerModel : MonoBehaviour {
 	[SerializeField]
-	private int playerId = -1;              //Nb bullets / seconds
+	private int playerId = -1;              // Player's ID
 	[SerializeField]
-	private string playerName = "Player";              //Nb bullets / seconds
+	private string playerName = "Player";   // Player's Name
+	[SerializeField]
+	private int playerKilledZombies = 0;    // Amounnt of Zombies killed by the player
 
     [SerializeField]
     private float hitRate = 1;              //Nb bullets / seconds
@@ -49,6 +51,14 @@ public class PlayerModel : MonoBehaviour {
 		}
 		set {
 			playerName = value;
+		}
+	}
+	public int PlayerKilledZombies {
+		get {
+			return playerKilledZombies;
+		}
+		set {
+			playerKilledZombies = value;
 		}
 	}
 
@@ -259,7 +269,9 @@ public class PlayerModel : MonoBehaviour {
         {
             Debug.Log("Hit");
             ZombieBehaviour zombie = hit.collider.GetComponentInParent<ZombieBehaviour>();
-            zombie.handleDealDamage(this.HitDamage);
+			if (zombie.handleDealDamage (this.HitDamage)) {
+				this.playerKilledZombies++;
+			}
         }
         this.nbBullets_in_gun--;
     }
