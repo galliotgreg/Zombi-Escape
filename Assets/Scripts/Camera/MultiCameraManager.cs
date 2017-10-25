@@ -67,16 +67,19 @@ public class MultiCameraManager : MonoBehaviour {
 			float totalY = 1f - generalHUDheight;
 			float x_split = (this.players.Count>1)?0.5f:1f;					// the screen splits in X only if there are more than 1 players
 			float y_split = (this.players.Count>2)?totalY/2f:totalY;		// the screen splits in Y only if there are more than 2 players
-			float border = 0.001f;
+			float border = 0.002f;
+			float borderRadar = 0.01f;
+			float radarRatio = 1;	// w / h
 			for( int i=0; i<this.playerCameras.Count; i++ ){
 				Camera cameraComponent = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
+				Camera radarCamera = cameraComponent.GetComponentInChildren<HUD_Controller>().gameObject.GetComponentInChildren<Camera>();
 				if( cameraComponent != null ){
-					/*Debug.Log( "i:"+i.ToString() );
-					Debug.Log( "x:"+((i%2)*x_split+border).ToString() );
-					Debug.Log( "y:"+(((this.players.Count>2?3-i:i)/2)*y_split+border).ToString() );
-					Debug.Log( "w:"+(x_split-2*border).ToString() );
-					Debug.Log( "h:"+(y_split-2*border).ToString() );*/
-					cameraComponent.rect = new Rect( (i%2)*x_split+border, ((this.players.Count>2?3-i:i)/2)*y_split+border, x_split-2*border, y_split-2*border );
+					float x = (i % 2) * x_split + border;
+					float y = ((this.players.Count > 2 ? 3 - i : i) / 2) * y_split + border;
+					float w = x_split - 2 * border;
+					float h = y_split - 2 * border;
+					cameraComponent.rect = new Rect( x, y, w, h );
+					radarCamera.rect = new Rect ( x+borderRadar, y+borderRadar, Mathf.Max( w*0.2f, h*0.2f ), Mathf.Max( w*0.2f, h*0.2f ) );
 				}else{
 					Debug.LogError("Camera prefab does not contain Camera component");
 				}
