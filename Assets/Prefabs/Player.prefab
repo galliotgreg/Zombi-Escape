@@ -641,9 +641,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7
+  m_Intensity: 6
   m_Range: 15
-  m_SpotAngle: 40
+  m_SpotAngle: 70
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf6450535a5df343a3956dbbaa3232b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensityMax: 15
+  intensityMax: 10
   intensityMin: 0
   intensityLose: 1
 --- !u!114 &114559131511063178
@@ -839,6 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: -1
   playerName: Player
+  playerKilledZombies: 0
   hitRate: 0.3
   lifePoints_max: 100
   lifePoints_current: 100

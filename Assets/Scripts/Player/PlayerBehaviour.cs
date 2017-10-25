@@ -141,6 +141,14 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
+    public void toggleLight()
+    {
+        if (this.model.LifePoints > 0)
+        {
+            this.model.toggleLight();
+        }
+    }
+
     public void StopFire()
     {      
         this.view.StopFire();            
