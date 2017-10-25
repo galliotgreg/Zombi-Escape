@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prod/Levels/Scene1.unity
     guid: 911bf4ac71607f745bd1d83fb64964f5
+  - enabled: 1
+    path: Assets/Scenes/Prod/Levels/SpawnSceneTest.unity
+    guid: 95894d87423a0824fb5264fec665ba80
