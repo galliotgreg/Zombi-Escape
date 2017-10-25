@@ -71,22 +71,20 @@ public class MultiCameraManager : MonoBehaviour {
 			float borderRadar = 0.01f;
 			float radarRatio = 1;	// w / h
 			for( int i=0; i<this.playerCameras.Count; i++ ){
-				Camera cameraComponent = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
-				Camera radarCamera = cameraComponent.GetComponentInChildren<HUD_Controller>().gameObject.GetComponentInChildren<Camera>();
-				if( cameraComponent != null ){
-					float x = (i % 2) * x_split + border;
-					float y = ((this.players.Count > 2 ? 3 - i : i) / 2) * y_split + border;
-					float w = x_split - 2 * border;
-					float h = y_split - 2 * border;
-					cameraComponent.rect = new Rect( x, y, w, h );
-					radarCamera.rect = new Rect ( x+borderRadar, y+borderRadar, Mathf.Max( w*0.2f, h*0.2f ), Mathf.Max( w*0.2f, h*0.2f ) );
-				}else{
-					Debug.LogError("Camera prefab does not contain Camera component");
-				}
-				// disabling audio listener. Only the first one is enabled
-				if( i != 0 && cameraComponent.GetComponent<AudioListener>() != null)
-                {
-					cameraComponent.GetComponent<AudioListener>().enabled = false;
+				float x = (i % 2) * x_split + border;
+				float y = ((this.players.Count > 2 ? 3 - i : i) / 2) * y_split + border;
+				float w = x_split - 2 * border;
+				float h = y_split - 2 * border;
+
+				Camera[] cameras = ((GameObject)this.playerCameras[i]).GetComponentsInChildren<Camera>();
+				foreach (Camera c in cameras) {
+					if (c.tag == "PlayerCamera") {
+						c.rect = new Rect (x, y, w, h);
+					} else if (c.tag == "RadarCamera") {
+						// CameraRadar
+						c.rect = new Rect ( x+borderRadar, y+borderRadar, Mathf.Max( w*0.2f, h*0.2f ), Mathf.Max( w*0.2f, h*0.2f ) );
+						//c.transform.position.y = -;
+					}
 				}
 			}
 
