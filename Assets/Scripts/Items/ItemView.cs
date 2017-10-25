@@ -6,6 +6,13 @@ public class ItemView : MonoBehaviour {
 
 	private ItemModel item = null;
 
+	[SerializeField]
+	Sprite healSprite = null;		// sprite for Heal Item
+	[SerializeField]
+	Sprite bulletsSprite = null;	// sprite for Bullets Item
+	[SerializeField]
+	Sprite batterySprite = null;	// sprite for Battery Item
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,21 +26,23 @@ public class ItemView : MonoBehaviour {
 	public void setItem( ItemModel item )
 	{
 		this.item = item;
+		this.updateItem ();
+	}
+	public void updateItem(){
 		this.selectImage();
-
 	}
 	private void selectImage()
 	{
 		switch( this.item.Itemtype )
 		{
-			case ItemModel.ItemType.Heal:
-				this.GetComponent<SpriteRenderer>().color = new Color(1,0,0);
+		case ItemModel.ItemType.Heal:
+				this.GetComponent<SpriteRenderer> ().sprite = healSprite;
 				break;
 			case ItemModel.ItemType.Bullets:
-				this.GetComponent<SpriteRenderer>().color = new Color(0,1,0);
+				this.GetComponent<SpriteRenderer> ().sprite = bulletsSprite;
 				break;
 			case ItemModel.ItemType.Battery: default:
-				this.GetComponent<SpriteRenderer>().color = new Color(0,1,1);
+				this.GetComponent<SpriteRenderer> ().sprite = batterySprite;
 				break;
 		}
 	}

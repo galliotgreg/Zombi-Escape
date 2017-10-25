@@ -7,6 +7,7 @@ public class PlayerGroupModel{
 	private int nLifes = 5;
 	[SerializeField]
 	private int aidPerLife = 50;
+	private float score = 0;
 
 	// Perfoms the action of aid a player
 	public void heal( PlayerBehaviour injuredlayer, PlayerBehaviour helperPlayer )
@@ -24,8 +25,19 @@ public class PlayerGroupModel{
 		this.nLifes++;
 	}
 
+	public void addScore(float scoreToAdd){
+		this.score += scoreToAdd;
+	}
+	public void reduceScore(float scoreToReduce){
+		this.score = Mathf.Max( this.score-scoreToReduce, 0 );
+	}
+
 	public int getNlifes()
 	{
 		return this.nLifes;
+	}
+	public float getScore()
+	{
+		return this.score;
 	}
 }

@@ -129,15 +129,25 @@ public class PlayerBehaviour : MonoBehaviour {
             {
                 if (hitCooldown < 0)
                 {
-                    this.model.fire();
+                    float scoreFromFire = this.model.fire();
                     this.view.fire();
                     hitCooldown = this.model.HitRate;
+					this.playerGroup.addScore ( scoreFromFire );
                 }
             }
             else
             {
                 this.view.fireFail();
             }
+        }
+    }
+
+    public void toggleLight()
+    {
+        if (this.model.LifePoints > 0)
+        {
+            this.view.toggleLight();
+            this.model.toggleLight();
         }
     }
 
@@ -218,5 +228,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	public void setPlayerId( int id )
 	{
 		this.model.PlayerId = id;
+		this.view.updatePlayerId (id);
 	}
 }

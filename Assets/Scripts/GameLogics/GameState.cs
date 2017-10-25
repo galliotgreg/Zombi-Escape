@@ -53,6 +53,19 @@ public class GameState : MonoBehaviour {
         }
     }
 
+    public ArrayList Players
+    {
+        get
+        {
+            return players;
+        }
+
+        set
+        {
+            players = value;
+        }
+    }
+
 
     // Use this for initialization
     void Start ()
@@ -68,8 +81,8 @@ public class GameState : MonoBehaviour {
         }
         else                              // Stand Alone Scene
         {
-			players = new ArrayList(GameObject.FindGameObjectsWithTag("Player"));
-			nbPlayers = players.Count;
+			Players = new ArrayList(GameObject.FindGameObjectsWithTag("Player"));
+			nbPlayers = Players.Count;
 			setupCameras();
         }
     }
@@ -80,15 +93,16 @@ public class GameState : MonoBehaviour {
 			// Generate Manager based on prefab
 			this.cameraManager = GameObject.Instantiate( this.cameraManagerPrefab, this.transform );
 
-			// set PlayerGroup to general HUD
+			// set PlayerGroup and WavesManager to general HUD
 			this.cameraManager.GetComponentInChildren<HUDGeneral_Controller>().setPlayerGroup( this.playerGroup );
+			this.cameraManager.GetComponentInChildren<HUDGeneral_Controller>().setWavesManager( this.gameObject.GetComponent<WavesManager>() );
 
 			// Set players to be tracked
 			MultiCameraManager cManager = this.cameraManager.GetComponent<MultiCameraManager>();
 			if( cManager != null ){
 				ArrayList validPlayers = new ArrayList();
 				// Checking valid players
-				foreach( GameObject player in this.players ){
+				foreach( GameObject player in this.Players ){
 					if( player != null && player.GetComponent<PlayerKeyBoardInput>().KeyMapping != InputManager.KeyMapping.Disabled ){
 						validPlayers.Add(player);
 					}
@@ -106,7 +120,7 @@ public class GameState : MonoBehaviour {
     private void setupPlayers()
     {
         PlayerSpawner[] playerSpawners = GameObject.FindObjectsOfType<PlayerSpawner>();
-		this.players = new ArrayList();
+		this.Players = new ArrayList();
         foreach (PlayerSpawner spawner in playerSpawners)
         {
             //Create the player according to the values of the lobbyPlayer
@@ -125,10 +139,10 @@ public class GameState : MonoBehaviour {
 
 	            //Locate the player
 	            player.transform.position = spawner.transform.position;
-				this.players.Add( player );
+				this.Players.Add( player );
 			}
         }
-		this.nbPlayers = this.players.Count;
+		this.nbPlayers = this.Players.Count;
     }
 
     // Update is called once per frame
@@ -139,7 +153,7 @@ public class GameState : MonoBehaviour {
     private void handleGameOver()
     {
         PlayerModel playerModel;
-        foreach (GameObject player in  players)
+        foreach (GameObject player in  Players)
         {
             playerModel = player.GetComponent<PlayerModel>();
             if (playerModel.LifePoints > 0)

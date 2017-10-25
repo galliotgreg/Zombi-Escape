@@ -13,6 +13,12 @@ public class HUD_Controller : MonoBehaviour {
 	// Life
 	[SerializeField]
 	private GameObject playerLifeImage = null;
+	// Bqttery
+	[SerializeField]
+	private GameObject playerBatteryImage = null;
+	// Killed Zombies
+	[SerializeField]
+	private Text playerKilledZombiesText = null;
 	// Bullets
 	[SerializeField]
 	private Text playerBulletsInGunText = null;
@@ -33,6 +39,10 @@ public class HUD_Controller : MonoBehaviour {
 			playerNameText.text = playerModel.PlayerName;
 			// Life
 			playerLifeImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LifePoints/(float)playerModel.LifePoints_Max, playerLifeImage.GetComponent<RectTransform>().anchorMax.y );
+			// Battery
+			playerBatteryImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LightBattery_current/(float)playerModel.LightBattery_max, playerBatteryImage.GetComponent<RectTransform>().anchorMax.y );
+			// Killed Zombies
+			playerKilledZombiesText.text = playerModel.PlayerKilledZombies.ToString();
 			// Bullets
 			playerBulletsInGunText.text = playerModel.NbBullets_in_gun.ToString();
 			playerBulletsOutGunText.text = "/"+playerModel.NbBullets.ToString();

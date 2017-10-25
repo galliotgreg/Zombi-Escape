@@ -10,13 +10,16 @@ public class ItemBehaviour : MonoBehaviour {
 	ItemModel.ItemType type = ItemModel.ItemType.Heal;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		// generating item
 		this.itemModel = new ItemModel();
 		this.itemModel.Itemtype = type;
 		this.gameObject.GetComponentInChildren<ItemView>().setItem( this.itemModel );
 		// Collision to the player
 		this.detectPlayer = this.gameObject.GetComponentInChildren<DetectGrab>();
+	}
+
+	void Start(){
 	}
 	
 	// Update is called once per frame
@@ -28,6 +31,10 @@ public class ItemBehaviour : MonoBehaviour {
 
 	public ItemModel.ItemType getItemType(){
 		return this.itemModel.Itemtype;
+	}
+	public void setItemType( ItemModel.ItemType type ){
+		this.itemModel.Itemtype = type;
+		this.gameObject.GetComponentInChildren<ItemView>().updateItem();
 	}
 
 	public void activateItem()

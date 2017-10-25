@@ -86,6 +86,10 @@ public class NavigationManager : MonoBehaviour
 
     public void LoadScene(string lvlName)
     {
+        if (lvlName == "menuScene")
+        {
+            LobbyManager.instance.Kill();
+        }
         SceneManager.LoadScene(lvlName);
     }
 }

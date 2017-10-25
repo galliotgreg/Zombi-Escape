@@ -145,13 +145,10 @@ public class PlayerView : MonoBehaviour {
         anim.SetTrigger("isHealed");
         anim.SetBool("isDead", false);
         playerHealed.Play();
-        //playerHealed.gameObject.SetActive(true);
+
+        SoundManager.instance.healing();
 
         Debug.LogWarning(playerHealed.gameObject.gameObject.active);
-        //StartCoroutine(waitAndDisable(playerHealed.gameObject));
-
-        //Debug.LogWarning( "Revive Here" );
-
 	}
 	public void heal()
 	{
@@ -160,9 +157,30 @@ public class PlayerView : MonoBehaviour {
 
 	// Items
 	// Heal
-	public void obtainItemHeal(){}
+	public void obtainItemHeal(){
+        SoundManager.instance.seringuePickup();
+    }
 	// Bullets
-	public void obtainItemBullets(){}
+	public void obtainItemBullets(){
+        SoundManager.instance.chargerPickup();
+    }
 	// Batery
-	public void obtainItemBattery(){}
+	public void obtainItemBattery(){
+        SoundManager.instance.batteryPickup();
+    }
+
+    //Switch on / off the light
+    public void toggleLight()
+    {
+        SoundManager.instance.switchLight();
+    }
+
+	public void updatePlayerId( int playerId )
+	{
+		// Put a color distinguish the players
+		Color playerColor = new Color ( (playerId==1||playerId==3?1:0.6f), (playerId==2||playerId==3?1:0.6f), (playerId==0?1:0.6f));
+		GetComponent<SpriteRenderer> ().material.color = playerColor;
+		GetComponentInChildren<PlayerFeetView>().gameObject.GetComponent<SpriteRenderer> ().material.color = playerColor;
+		GetComponentInChildren<RadarDetectionBehaviour> ().setColor (playerColor);
+	}
 }

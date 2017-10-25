@@ -6,11 +6,13 @@ using UnityEngine;
 public class ZombieView : MonoBehaviour {
 
     private Animator anim;
+    private SpriteRenderer zombieRenderer;
     public ParticleSystem zombieBlood;
+    public GameObject zombieDeath;
 
 	// Use this for initialization
 	void Start () {
-        anim = this.GetComponent<Animator>();
+        anim = this.GetComponent<Animator>();        
 	}
 	
 	// Update is called once per frame
@@ -20,7 +22,9 @@ public class ZombieView : MonoBehaviour {
 
     public void die()
     {
-        //Debug.Log("TODO : Trigger die sprite animation");
+        //Explosion du zombie
+        SoundManager.instance.zombieExplosion();
+        Instantiate(zombieDeath, transform.position, transform.rotation);
     }
 
     public void moveFwd()
@@ -46,14 +50,14 @@ public class ZombieView : MonoBehaviour {
         // Affiche les particules de sang        
         zombieBlood.gameObject.SetActive(true);
 
-        StartCoroutine(waitAndDisable());
+        StartCoroutine(waitAndDisable(zombieBlood.gameObject, 0.6f));
         //Debug.Log("Hit : " + this.name);
     }
 
-    IEnumerator waitAndDisable()
+    IEnumerator waitAndDisable(GameObject gObject, float time)
     {
-        yield return new WaitForSeconds(0.6f);
-        zombieBlood.gameObject.SetActive(false);
+        yield return new WaitForSeconds(time);
+        gObject.SetActive(false);
     }
 
     public void walkClip()
