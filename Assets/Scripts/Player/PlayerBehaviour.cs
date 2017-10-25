@@ -227,5 +227,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	public void setPlayerId( int id )
 	{
 		this.model.PlayerId = id;
+		this.view.updatePlayerId (id);
 	}
 }
