@@ -88,6 +88,11 @@ public class WavesManager : MonoBehaviour {
 
     private void findSpawnersOnRange()
     {
+        if (players.Length == 0)
+        {
+            players = GameObject.FindGameObjectsWithTag("Player");
+        }
+
         //Create activation table
         bool[] isEnable = new bool[spawners.Length];
         for (int i = 0; i < spawners.Length; i++)
