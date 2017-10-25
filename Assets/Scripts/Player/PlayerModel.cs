@@ -275,8 +275,10 @@ public class PlayerModel : MonoBehaviour {
         this.lifePoints_current = Math.Max(this.lifePoints_current, 0);
     }
 
-    public void fire()
+	// returns the score of the fire
+	public float fire()
     {
+		float scoreFromFire = 0;
         int zombieHitBoxLayerMask = 1 << LayerMask.NameToLayer("ZombieHitbox");
         int wallLayerMask = 1 << LayerMask.NameToLayer("Walls");
         int mask = zombieHitBoxLayerMask | wallLayerMask;
@@ -285,11 +287,14 @@ public class PlayerModel : MonoBehaviour {
         {
             Debug.Log("Hit");
             ZombieBehaviour zombie = hit.collider.GetComponentInParent<ZombieBehaviour>();
-			if (zombie.handleDealDamage (this.HitDamage)) {
+			ZombieModel.DamageResult damageResult = zombie.handleDealDamage (this.HitDamage);
+			if( damageResult.killed ){
 				this.playerKilledZombies++;
 			}
+			scoreFromFire = damageResult.score;
         }
         this.nbBullets_in_gun--;
+		return scoreFromFire;
     }
 
     public void reload()

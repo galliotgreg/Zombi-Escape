@@ -32,6 +32,7 @@ public class HUDGeneral_Controller : MonoBehaviour {
 			playerGroupWaveTimeText.text = ((int)(this.wavesManager.getNextWaveTime()/60)).ToString("00")+":"+((int)(this.wavesManager.getNextWaveTime()%60)).ToString("00");
 			playerGroupWaveAmountText.text = ((int)this.wavesManager.getNextWaveAmountZombies ()).ToString();
 			// Score
+			playerGroupScoreText.text = ((int)this.playerGroup.getScore()).ToString();
 		} else {
 			Debug.LogError ( "HUD : playerGroup not set" );
 		}

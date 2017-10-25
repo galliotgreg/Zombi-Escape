@@ -107,15 +107,9 @@ public class ZombieBehaviour : MonoBehaviour {
     }
 
 	// execute the damage and returns if the zombie was killed
-	public bool handleDealDamage(float damages)
+	public ZombieModel.DamageResult handleDealDamage(float damages)
 	{
         this.view.dealDamage(damages);
-        this.model.dealDamage(damages);
-
-		if (this.model.LifePoints <= 0) {
-			return true;
-		} else {
-			return false;
-		}
+        return this.model.dealDamage(damages);
 	}
 }
