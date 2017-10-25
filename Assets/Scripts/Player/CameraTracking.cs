@@ -29,6 +29,8 @@ public class CameraTracking : MonoBehaviour {
         if (TrackedPlayer != null)
         {
             this.transform.position = new Vector3(TrackedPlayer.transform.position.x, TrackedPlayer.transform.position.y, this.transform.position.z);
+            this.transform.position += this.transform.up * 1.5f;
+            this.transform.eulerAngles = new Vector3(0, 0, TrackedPlayer.transform.eulerAngles.z - 90);
         }
 	}
 
