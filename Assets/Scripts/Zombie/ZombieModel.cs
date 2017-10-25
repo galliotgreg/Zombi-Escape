@@ -82,7 +82,7 @@ public class ZombieModel : MonoBehaviour {
 
     public void die()
     {
-        GameObject.Destroy(this.gameObject);
+        GameObject.Destroy(this.gameObject);                
     }
 
     public void turnLeft()
