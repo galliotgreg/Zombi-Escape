@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieBlood: {fileID: 198011336075235588}
+  zombieDeath: {fileID: 100006, guid: 95cb04c70e05847c0a30450e4c714700, type: 2}
 --- !u!114 &114373476812208378
 MonoBehaviour:
   m_ObjectHideFlags: 1
