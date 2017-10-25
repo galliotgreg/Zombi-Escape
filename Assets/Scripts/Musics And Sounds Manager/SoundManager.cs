@@ -11,7 +11,8 @@ public class SoundManager : MonoBehaviour {
     public AudioSource playerDeathSource;
 
     public AudioSource musicSource;
-    public AudioSource zombieSource;
+
+    public AudioSource[] zombieSources;
 
     public static SoundManager instance = null;
 
@@ -116,11 +117,13 @@ public class SoundManager : MonoBehaviour {
 
     public void zombieWalk()
     {
-        RandomizeClips(zombieWalkClips, zombieSource);
+        int randomIndex = Random.Range(0, zombieSources.Length);
+        RandomizeClips(zombieWalkClips, zombieSources[randomIndex]);
     }
     public void zombieAttack()
     {
-        RandomizeClips(zombieHitWalkClips, zombieSource);
+        int randomIndex = Random.Range(0, zombieSources.Length);
+        RandomizeClips(zombieHitWalkClips, zombieSources[randomIndex]);
     }
 
     public void mainMenu()

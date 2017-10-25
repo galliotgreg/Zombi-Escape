@@ -174,7 +174,6 @@ public class PlayerView : MonoBehaviour {
     {
         SoundManager.instance.switchLight();
     }
-	public void obtainItemBattery(){}
 
 	public void updatePlayerId( int playerId )
 	{
