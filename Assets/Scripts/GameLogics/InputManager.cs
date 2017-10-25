@@ -856,6 +856,8 @@ public class InputManager : MonoBehaviour {
                 return KeyCode.R;
             case ActionControl.Heal:
                 return KeyCode.E;
+            case ActionControl.ToggleLight:
+                return KeyCode.A;
         }
         return KeyCode.None;
     }
