@@ -11,7 +11,8 @@ public class SoundManager : MonoBehaviour {
     public AudioSource playerDeathSource;
 
     public AudioSource musicSource;
-    public AudioSource zombieSource;
+
+    public AudioSource[] zombieSources;
 
     public static SoundManager instance = null;
 
@@ -34,6 +35,14 @@ public class SoundManager : MonoBehaviour {
     public AudioClip[] mainMenuClips;
     public AudioClip[] victoryEndGameClips;
     public AudioClip[] gameOverEndGameClips;
+
+    public AudioClip[] healingClips;
+    public AudioClip[] switchLightClips;
+
+    public AudioClip[] batteryClips;
+    public AudioClip[] chargerClips;
+    public AudioClip[] seringueClips;
+
 
     void Awake() {
         //Check if there is already an instance of SoundManager
@@ -85,14 +94,36 @@ public class SoundManager : MonoBehaviour {
         RandomizeClips(handGunShotFailClips, playerFxSource);
     }
 
+    public void healing()
+    {
+        RandomizeClips(healingClips, playerFxSource);
+    }
+    public void switchLight()
+    {
+        RandomizeClips(switchLightClips, playerFxSource);
+    }
+    public void batteryPickup()
+    {
+        RandomizeClips(batteryClips, playerFxSource);
+    }
+    public void chargerPickup()
+    {
+        RandomizeClips(chargerClips, playerFxSource);
+    }
+    public void seringuePickup()
+    {
+        RandomizeClips(seringueClips, playerFxSource);
+    }
 
     public void zombieWalk()
     {
-        RandomizeClips(zombieWalkClips, zombieSource);
+        int randomIndex = Random.Range(0, zombieSources.Length);
+        RandomizeClips(zombieWalkClips, zombieSources[randomIndex]);
     }
     public void zombieAttack()
     {
-        RandomizeClips(zombieHitWalkClips, zombieSource);
+        int randomIndex = Random.Range(0, zombieSources.Length);
+        RandomizeClips(zombieHitWalkClips, zombieSources[randomIndex]);
     }
 
     public void mainMenu()
