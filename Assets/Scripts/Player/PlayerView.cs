@@ -169,7 +169,7 @@ public class PlayerView : MonoBehaviour {
 	public void updatePlayerId( int playerId )
 	{
 		// Put a color distinguish the players
-		Color playerColor = new Color ( (playerId==0||playerId==1?1:0.3f), (playerId==0||playerId==2||playerId==3?1:0.3f), (playerId==0||playerId==3?1:0.3f) );
+		Color playerColor = new Color ( (playerId!=2?1:0.3f), (playerId!=1?1:0.3f), (playerId==0?1:0.3f) );
 		GetComponent<SpriteRenderer> ().material.color = playerColor;
 		GetComponentInChildren<PlayerFeetView>().gameObject.GetComponent<SpriteRenderer> ().material.color = playerColor;
 	}
