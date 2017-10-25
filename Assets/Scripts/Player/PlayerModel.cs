@@ -323,5 +323,6 @@ public class PlayerModel : MonoBehaviour {
 	public void obtainItemBattery()
 	{
 		// Recharge the battery
+		this.lightBattery_current = this.lightBattery_max;
 	}
 }
