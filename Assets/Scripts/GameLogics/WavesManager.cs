@@ -142,4 +142,13 @@ public class WavesManager : MonoBehaviour {
         enabledSpawners = enabledList.ToArray();
         disabledSpawners = disabledList.ToArray();
     }
+
+	public float getNextWaveTime()
+	{
+		return this.timeUntilNextWave;
+	}
+	public float getNextWaveAmountZombies()
+	{
+		return this.nbZombiesOnNextWave;
+	}
 }

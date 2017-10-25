@@ -93,8 +93,9 @@ public class GameState : MonoBehaviour {
 			// Generate Manager based on prefab
 			this.cameraManager = GameObject.Instantiate( this.cameraManagerPrefab, this.transform );
 
-			// set PlayerGroup to general HUD
+			// set PlayerGroup and WavesManager to general HUD
 			this.cameraManager.GetComponentInChildren<HUDGeneral_Controller>().setPlayerGroup( this.playerGroup );
+			this.cameraManager.GetComponentInChildren<HUDGeneral_Controller>().setWavesManager( this.gameObject.GetComponent<WavesManager>() );
 
 			// Set players to be tracked
 			MultiCameraManager cManager = this.cameraManager.GetComponent<MultiCameraManager>();
