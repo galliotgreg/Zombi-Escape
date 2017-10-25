@@ -19,8 +19,10 @@ public class ItemView : MonoBehaviour {
 	public void setItem( ItemModel item )
 	{
 		this.item = item;
+		this.updateItem ();
+	}
+	public void updateItem(){
 		this.selectImage();
-
 	}
 	private void selectImage()
 	{
