@@ -192,6 +192,22 @@ public class PlayerModel : MonoBehaviour {
         }
     }
 
+    public void toggleLight()
+    {
+        LightFade lightFade = this.GetComponentInChildren<LightFade>();
+        GameObject flashLight = lightFade.gameObject;
+        Light lightSpot = flashLight.GetComponent<Light>();
+        if (lightSpot.enabled)
+        {
+            lightSpot.enabled = false;
+            lightFade.enabled = false;
+        } else
+        {
+            lightSpot.enabled = true;
+            lightFade.enabled = true;
+        }
+    }
+
     public float LightBattery_max
     {
         get

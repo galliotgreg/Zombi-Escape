@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbPlayers: 1
-  cameraManagerPrefab: {fileID: 0}
+  cameraManagerPrefab: {fileID: 1871927098575932, guid: 4d1034eefafddea44a2dd20f77d55c14,
+    type: 2}
 --- !u!114 &114992149155194492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,3 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4991bd8d77d9f854f8e9d87e43c1ca66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawners: []
+  players: []
+  enabledSpawners: []
+  disabledSpawners: []
+  activationRange_inf: 5
+  activationRange_sup: 10
+  timePerWave: 30
+  coefSupPerWave: 20
+  timeUntilNextWave: 3
+  nbZombiesOnNextWave: 5
