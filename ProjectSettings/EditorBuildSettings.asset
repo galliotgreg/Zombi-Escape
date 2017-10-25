@@ -29,3 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prod/Levels/Scene2.unity
     guid: e74fb7ed49734b24cb98c3cb15a46813
+  - enabled: 1
+    path: Assets/Scenes/Prod/Levels/LostInSewer.unity
+    guid: 95894d87423a0824fb5264fec665ba80
