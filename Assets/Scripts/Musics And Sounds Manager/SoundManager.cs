@@ -12,7 +12,8 @@ public class SoundManager : MonoBehaviour {
 
     public AudioSource musicSource;
 
-    public AudioSource[] zombieSources;
+    public AudioSource zombieSource;
+    public AudioSource zombieExplosionSource;
 
     public static SoundManager instance = null;
 
@@ -30,6 +31,7 @@ public class SoundManager : MonoBehaviour {
 
     public AudioClip[] zombieWalkClips;
     public AudioClip[] zombieHitWalkClips;
+    public AudioClip[] zombieExplosionClips;
 
     public AudioClip[] ambienceClips;
     public AudioClip[] mainMenuClips;
@@ -117,13 +119,18 @@ public class SoundManager : MonoBehaviour {
 
     public void zombieWalk()
     {
-        int randomIndex = Random.Range(0, zombieSources.Length);
-        RandomizeClips(zombieWalkClips, zombieSources[randomIndex]);
+        if (!zombieSource.isPlaying)
+        {
+            RandomizeClips(zombieWalkClips, zombieSource);
+        }
     }
     public void zombieAttack()
     {
-        int randomIndex = Random.Range(0, zombieSources.Length);
-        RandomizeClips(zombieHitWalkClips, zombieSources[randomIndex]);
+            RandomizeClips(zombieHitWalkClips, zombieSource);       
+    }
+    public void zombieExplosion()
+    {
+        RandomizeClips(zombieExplosionClips, zombieExplosionSource);
     }
 
     public void mainMenu()

@@ -22,6 +22,8 @@ public class ZombieView : MonoBehaviour {
 
     public void die()
     {
+        //Explosion du zombie
+        SoundManager.instance.zombieExplosion();
         Instantiate(zombieDeath, transform.position, transform.rotation);
     }
 

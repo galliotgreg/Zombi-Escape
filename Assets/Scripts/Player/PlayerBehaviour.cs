@@ -146,6 +146,7 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         if (this.model.LifePoints > 0)
         {
+            this.view.toggleLight();
             this.model.toggleLight();
         }
     }
