@@ -535,3 +535,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 583ba4fe1479d504c814d91b7f3dad1b, type: 3}
   gameOverEndGameClips:
   - {fileID: 8300000, guid: 7f0105a6956aa1249ba202b52f184cbb, type: 3}
+  healingClips:
+  - {fileID: 8300000, guid: f8efbbc4fdc038149b19ef63cb8afaad, type: 3}
+  switchLightClips:
+  - {fileID: 8300000, guid: 123ac7eacb44b864695eb469ef58f957, type: 3}
+  batteryClips:
+  - {fileID: 8300000, guid: 9ae57ae6abd743f40bd6978a457823b1, type: 3}
+  chargerClips:
+  - {fileID: 8300000, guid: 005f624fc4dfb0d47bb862199ee3b725, type: 3}
+  seringueClips:
+  - {fileID: 8300000, guid: 987197b6d6140ea4d98408c3c7ac95e1, type: 3}

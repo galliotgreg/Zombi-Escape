@@ -35,6 +35,14 @@ public class SoundManager : MonoBehaviour {
     public AudioClip[] victoryEndGameClips;
     public AudioClip[] gameOverEndGameClips;
 
+    public AudioClip[] healingClips;
+    public AudioClip[] switchLightClips;
+
+    public AudioClip[] batteryClips;
+    public AudioClip[] chargerClips;
+    public AudioClip[] seringueClips;
+
+
     void Awake() {
         //Check if there is already an instance of SoundManager
         if (instance == null)
@@ -85,6 +93,26 @@ public class SoundManager : MonoBehaviour {
         RandomizeClips(handGunShotFailClips, playerFxSource);
     }
 
+    public void healing()
+    {
+        RandomizeClips(healingClips, playerFxSource);
+    }
+    public void switchLight()
+    {
+        RandomizeClips(switchLightClips, playerFxSource);
+    }
+    public void batteryPickup()
+    {
+        RandomizeClips(batteryClips, playerFxSource);
+    }
+    public void chargerPickup()
+    {
+        RandomizeClips(chargerClips, playerFxSource);
+    }
+    public void seringuePickup()
+    {
+        RandomizeClips(seringueClips, playerFxSource);
+    }
 
     public void zombieWalk()
     {
