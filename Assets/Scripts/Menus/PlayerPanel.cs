@@ -90,8 +90,8 @@ public class PlayerPanel : MonoBehaviour {
         //Set widget uninteractable
         InputField playerName = retreiveChild("txt_playerName").GetComponent<InputField>();
         playerName.interactable = false;
-        Dropdown playerClass = retreiveChild("slt_class").GetComponent<Dropdown>();
-        playerClass.interactable = false;
+        //Dropdown playerClass = retreiveChild("slt_class").GetComponent<Dropdown>();
+        //playerClass.interactable = false;
         Dropdown playerControl = retreiveChild("slt_control").GetComponent<Dropdown>();
         playerControl.interactable = false;
 
