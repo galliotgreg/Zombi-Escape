@@ -99,7 +99,7 @@ public class LobbyManager : MonoBehaviour {
 			p.SetReady();
 		}
 		NavigationManager.instance.LoadScene(commonPanel.MapName);
-		//this.teamName = GameObject.Find ("").GetComponent<UnityEngine.UI.InputField> ().text;
+		this.teamName = GameObject.Find ("txt_teamName").GetComponent<UnityEngine.UI.InputField> ().text;
 	}
 	
 	// Update is called once per frame
