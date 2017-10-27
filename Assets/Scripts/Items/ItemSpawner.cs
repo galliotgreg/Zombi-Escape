@@ -25,9 +25,10 @@ public class ItemSpawner : MonoBehaviour {
 				// Create new item
 				if (itemPrefab != null) {
 					this.item = GameObject.Instantiate (itemPrefab, this.transform);
-					// set random item type
-					int randomIndex = Random.Range(0, System.Enum.GetNames( typeof(ItemModel.ItemType) ).Length );
-					this.item.GetComponent<ItemBehaviour>().setItemType( (ItemModel.ItemType)randomIndex );
+                    // set random item type
+                    //int randomIndex = Random.Range(0, System.Enum.GetNames( typeof(ItemModel.ItemType) ).Length );
+                    int randomIndex = randomIndexProba();
+                    this.item.GetComponent<ItemBehaviour>().setItemType( (ItemModel.ItemType)randomIndex );
 				} else {
 					Debug.LogError ( "ItemSpawner : missing item prefab" );
 				}
@@ -40,4 +41,27 @@ public class ItemSpawner : MonoBehaviour {
 			timeCounterInSeconds = timeToNewItemInSeconds;
 		}
 	}
+
+    private int randomIndexProba()
+    {
+        float rand = Random.Range(0f, 1f);
+        int randomIndex;
+
+        // Taux de drop du Heal à 20%
+        if (rand <= 0.2)
+        {
+            randomIndex = 0;
+        }
+        // Taux de drop de Bullets à 40%
+        else if (rand > 0.2 && rand <= 0.6)
+        {
+            randomIndex = 1;
+        }
+        else
+        // Taux de drop de Battery à 40%
+        {
+            randomIndex = 2;
+        }            
+        return randomIndex;
+    }
 }

@@ -73,10 +73,16 @@ public class ZombieBehaviour : MonoBehaviour {
         {
             //TODO : see how to give player in another way
             this.view.hitPlayer(player);
-            this.model.hitPlayer(player);
+            //this.model.hitPlayer(player);
 
             this.hitTimer = this.model.HitRateSec;
         }
+    }
+
+    private void handleAnimHitPlayer()
+    {
+        PlayerBehaviour player = this.detectGrab.InCollisionPlayer;
+        this.model.hitPlayer(player);
     }
 
     private void handleLifeState()
