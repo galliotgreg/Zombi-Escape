@@ -40,7 +40,8 @@ public class InputManager : MonoBehaviour {
         Reload,
         Heal,
         ToggleLight,
-        Run
+        Run,
+        SelfHeal
     }
 
     public enum KeyMapping
@@ -625,6 +626,28 @@ public class InputManager : MonoBehaviour {
                     default:
                         return KeyCode.None;
                 }
+            case ActionControl.SelfHeal:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button0;
+                    case 1:
+                        return KeyCode.Joystick2Button0;
+                    case 2:
+                        return KeyCode.Joystick3Button0;
+                    case 3:
+                        return KeyCode.Joystick4Button0;
+                    case 4:
+                        return KeyCode.Joystick5Button0;
+                    case 5:
+                        return KeyCode.Joystick6Button0;
+                    case 6:
+                        return KeyCode.Joystick7Button0;
+                    case 7:
+                        return KeyCode.Joystick8Button0;
+                    default:
+                        return KeyCode.None;
+                }
         }
         return KeyCode.None;
     }
@@ -740,6 +763,28 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.Joystick7Button4;
                     case 7:
                         return KeyCode.Joystick8Button4;
+                    default:
+                        return KeyCode.None;
+                }
+            case ActionControl.SelfHeal:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button0;
+                    case 1:
+                        return KeyCode.Joystick2Button0;
+                    case 2:
+                        return KeyCode.Joystick3Button0;
+                    case 3:
+                        return KeyCode.Joystick4Button0;
+                    case 4:
+                        return KeyCode.Joystick5Button0;
+                    case 5:
+                        return KeyCode.Joystick6Button0;
+                    case 6:
+                        return KeyCode.Joystick7Button0;
+                    case 7:
+                        return KeyCode.Joystick8Button0;
                     default:
                         return KeyCode.None;
                 }
@@ -861,6 +906,28 @@ public class InputManager : MonoBehaviour {
                     default:
                         return KeyCode.None;
                 }
+            case ActionControl.SelfHeal:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button1;
+                    case 1:
+                        return KeyCode.Joystick2Button1;
+                    case 2:
+                        return KeyCode.Joystick3Button1;
+                    case 3:
+                        return KeyCode.Joystick4Button1;
+                    case 4:
+                        return KeyCode.Joystick5Button1;
+                    case 5:
+                        return KeyCode.Joystick6Button1;
+                    case 6:
+                        return KeyCode.Joystick7Button1;
+                    case 7:
+                        return KeyCode.Joystick8Button1;
+                    default:
+                        return KeyCode.None;
+                }
         }
         return KeyCode.None;
     }
@@ -927,6 +994,8 @@ public class InputManager : MonoBehaviour {
                 return KeyCode.A;
             case ActionControl.Run:
                 return KeyCode.LeftShift;
+            case ActionControl.SelfHeal:
+                return KeyCode.H;
         }
         return KeyCode.None;
     }
