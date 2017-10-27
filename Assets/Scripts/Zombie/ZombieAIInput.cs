@@ -11,6 +11,8 @@ public class ZombieAIInput : MonoBehaviour {
 
     private Vector3 roamDirection = new Vector3(1, 0, 0);
 
+    private bool isTurning = false;
+
     public Vector3 RoamDirection
     {
         get
@@ -37,6 +39,19 @@ public class ZombieAIInput : MonoBehaviour {
         }
     }
 
+    public bool IsTurning
+    {
+        get
+        {
+            return isTurning;
+        }
+
+        set
+        {
+            isTurning = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         this.controller = this.gameObject.GetComponent<ZombieBehaviour>();
@@ -56,6 +71,7 @@ public class ZombieAIInput : MonoBehaviour {
 
     private void roamBehaviour()
     {
+
         //Compute signed angle betweed roam dir & zombi dir
         float angle = Vector3.Angle(roamDirection, this.transform.right);
         Vector3 cross = Vector3.Cross(roamDirection, this.transform.right);
@@ -68,18 +84,22 @@ public class ZombieAIInput : MonoBehaviour {
         if (angle > this.controller.AimThreshold && angle < 180 - this.controller.AimThreshold)
         {
             this.controller.turnLeft();
+            IsTurning = true;
         }
         else if (angle < -this.controller.AimThreshold && angle > -180 + this.controller.AimThreshold)
         {
             this.controller.turnRight();
+            IsTurning = true;
         }
         else if (Vector2.Dot(roamDirection, this.transform.right) < 0)
         {
             this.controller.turnRight();
+            IsTurning = true;
         }
         else
         {
             this.controller.moveFwd();
+            IsTurning = false;
         }
     }
 

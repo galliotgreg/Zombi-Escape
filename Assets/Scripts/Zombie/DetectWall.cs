@@ -13,7 +13,7 @@ public class DetectWall : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (zombiAIInput.AiState == ZombieAIInput.ZombieAIState.Roaming)
+        if (zombiAIInput.AiState == ZombieAIInput.ZombieAIState.Roaming && !zombiAIInput.IsTurning)
         {
             Vector2 normal = collision.contacts[0].normal;
             Vector2 inDir = new Vector2(transform.right.x, transform.right.y);
