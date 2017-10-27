@@ -18,11 +18,11 @@ public class WavesManager : MonoBehaviour {
     private float activationRange_sup = 15;
 
     [SerializeField]
-    private float timePerWave = 30;
+    private float timePerWave = 60;
     [SerializeField]
-    private float coefSupPerWave = 20;
+    private float coefSupPerWave = 10;
     [SerializeField]
-    private float timeUntilNextWave = 3;
+    private float timeUntilNextWave = 10;
     [SerializeField]
     private int nbZombiesOnNextWave = 5;
 
@@ -83,7 +83,8 @@ public class WavesManager : MonoBehaviour {
     private void initNextWaveParams()
     {
         timeUntilNextWave = timePerWave;
-        nbZombiesOnNextWave = (int) (nbZombiesOnNextWave * (1 + coefSupPerWave / 100));
+        float ratio = 1f + coefSupPerWave / 100f;
+        nbZombiesOnNextWave = (int) Mathf.Ceil(((float)nbZombiesOnNextWave * ratio));
     }
 
     private void findSpawnersOnRange()

@@ -7,6 +7,8 @@ public class ZombiSpawner : MonoBehaviour {
     [SerializeField]
     private float frequency = 0.2f;    // spawn frequecy given on zombie / sec
     [SerializeField]
+    private float timeToFlush = 10;
+    [SerializeField]
     private GameObject zombiePrefab = null;
     [SerializeField]
     private int nbActiveZombies = 0;
@@ -27,6 +29,7 @@ public class ZombiSpawner : MonoBehaviour {
         set
         {
             zombiesInQueue = value;
+            frequency = value / timeToFlush;
         }
     }
 
