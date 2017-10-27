@@ -79,7 +79,6 @@ public class MultiCameraManager : MonoBehaviour {
 				Camera c = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
 				c.rect = new Rect (x, y, w, h);
 				// Ajusting Radar
-				Debug.Log( c.GetComponentInChildren<UnityEngine.UI.Mask>().transform.GetComponent<Rect>() == null);
 				RectTransform radar = c.GetComponentInChildren<UnityEngine.UI.Mask>().rectTransform;
 				radar.anchorMin = new Vector2 ( border + borderRadar, border + borderRadar);
 				radar.anchorMax = new Vector2 ( border + borderRadar + 0.3f, border + borderRadar + 0.3f );
