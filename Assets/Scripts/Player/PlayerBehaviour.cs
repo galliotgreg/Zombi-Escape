@@ -163,8 +163,11 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void reloadGun()
     {
-        this.model.reload();
-        this.view.reload();
+        if (this.model.LifePoints <= 0)
+        {
+            this.model.reload();
+            this.view.reload();
+        }
     }
 
     public void StopReloadGun()
@@ -202,35 +205,43 @@ public class PlayerBehaviour : MonoBehaviour {
 		float points = this.model.beHealed( aidAmount );
 		this.view.beHealed( points );
 	}
-	public void heal()
-	{
-		this.model.heal();
-		this.view.heal();
+    public void heal()
+    {
+        if (this.model.LifePoints > 0) {
+            this.model.heal();
+            this.view.heal();
+        }
 	}
-	public void healItself()
-	{
-		float points = this.model.healItself();
-		this.view.beHealed( points );
+    public void healItself()
+    {
+        if (this.model.LifePoints > 0) {
+            float points = this.model.healItself();
+            this.view.beHealed(points);
+        }
 	}
 
 	public void obtainItem( ItemBehaviour item )
 	{
-		Debug.Log("Get Item : "+item.getItemType().ToString());
-		switch( item.getItemType() ){
-			case ItemModel.ItemType.Heal :
-				this.playerGroup.obtainLife();
-				this.model.obtainItemHeal();
-				this.view.obtainItemHeal();
-				break;
-			case ItemModel.ItemType.Bullets :
-				this.model.obtainItemBullets();
-				this.view.obtainItemBullets();
-				break;
-			case ItemModel.ItemType.Battery : default :
-				this.model.obtainItemBattery();
-				this.view.obtainItemBattery();
-				break;
-		}
+        if (this.model.LifePoints > 0)
+        {
+            switch (item.getItemType())
+            {
+                case ItemModel.ItemType.Heal:
+                    this.playerGroup.obtainLife();
+                    this.model.obtainItemHeal();
+                    this.view.obtainItemHeal();
+                    break;
+                case ItemModel.ItemType.Bullets:
+                    this.model.obtainItemBullets();
+                    this.view.obtainItemBullets();
+                    break;
+                case ItemModel.ItemType.Battery:
+                default:
+                    this.model.obtainItemBattery();
+                    this.view.obtainItemBattery();
+                    break;
+            }
+        }
 	}
 
 	public void setPlayerName( string name )
