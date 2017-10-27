@@ -24,7 +24,9 @@ public class HUD_Controller : MonoBehaviour {
 	private Text playerBulletsInGunText = null;
 	[SerializeField]
 	private Text playerBulletsOutGunText = null;
-
+	// MiniMap
+	[SerializeField]
+	private RawImage playerMinimapRawImage = null;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +48,8 @@ public class HUD_Controller : MonoBehaviour {
 			// Bullets
 			playerBulletsInGunText.text = playerModel.NbBullets_in_gun.ToString();
 			playerBulletsOutGunText.text = "/"+playerModel.NbBullets.ToString();
+			// Minimap
+			playerMinimapRawImage.color = new Color( 1f,1f,1f, playerModel.LightBattery_current/(float)playerModel.LightBattery_max * (playerModel.LightOn?1f:0f) );
 		} else {
 			Debug.LogError ( "HUD : player not set" );
 		}

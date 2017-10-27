@@ -27,6 +27,7 @@ public class PlayerModel : MonoBehaviour {
     private float angularSpeed = 90;
     [SerializeField]
     private float hitDamage = 20;
+	private bool lightOn = true;	// Indicates the state of the light
 
     // Nbre de balle max de la reserve
     private int nbBullets_max = 32;
@@ -192,6 +193,12 @@ public class PlayerModel : MonoBehaviour {
         }
     }
 
+	public bool LightOn {
+		get {
+			return lightOn;
+		}
+	}
+
     public void toggleLight()
     {
         LightFade lightFade = this.GetComponentInChildren<LightFade>();
@@ -201,10 +208,12 @@ public class PlayerModel : MonoBehaviour {
         {
             lightSpot.enabled = false;
             lightFade.enabled = false;
+			this.lightOn = false;
         } else
         {
             lightSpot.enabled = true;
             lightFade.enabled = true;
+			this.lightOn = true;
         }
     }
 

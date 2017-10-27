@@ -762,6 +762,7 @@ MonoBehaviour:
   playerKilledZombiesText: {fileID: 114764664006101436}
   playerBulletsInGunText: {fileID: 114930747965027992}
   playerBulletsOutGunText: {fileID: 114316901212034032}
+  playerMinimapRawImage: {fileID: 114615143079075230}
 --- !u!114 &114764664006101436
 MonoBehaviour:
   m_ObjectHideFlags: 1
