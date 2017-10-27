@@ -72,6 +72,7 @@ public class GameState : MonoBehaviour {
     {
         LobbyManager lobbyManager = LobbyManager.instance;
 		this.playerGroup = new PlayerGroupModel();
+		this.playerGroup.setTeamName ( lobbyManager.TeamName );
 
         if (lobbyManager != null)
         {         // Come from Lobby

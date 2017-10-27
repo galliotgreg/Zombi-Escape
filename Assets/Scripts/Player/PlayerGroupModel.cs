@@ -8,6 +8,7 @@ public class PlayerGroupModel{
 	[SerializeField]
 	private int aidPerLife = 100;
 	private float score = 0;
+	private string teamName = "";
 
 	// Perfoms the action of aid a player
 	public void heal( PlayerBehaviour injuredlayer, PlayerBehaviour helperPlayer )
@@ -31,6 +32,10 @@ public class PlayerGroupModel{
 	public void reduceScore(float scoreToReduce){
 		this.score = Mathf.Max( this.score-scoreToReduce, 0 );
 	}
+	public void setTeamName( string teamName )
+	{
+		this.teamName = teamName;
+	}
 
 	public int getNlifes()
 	{
@@ -39,5 +44,9 @@ public class PlayerGroupModel{
 	public float getScore()
 	{
 		return this.score;
+	}
+	public string getTeamName()
+	{
+		return this.teamName;
 	}
 }
