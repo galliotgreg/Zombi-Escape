@@ -286,18 +286,22 @@ public class PlayerModel : MonoBehaviour {
 
     public void moveBck()
     {
-        isMovingX = true;
+        isMovingY = true;
         float speed = walkSpeed;
         if (isRuning)
         {
             speed = runSpeed;
+        }
+        if (isMovingX && isMovingY)
+        {
+            speed *= Mathf.Sqrt(2) / 2;
         }
         this.transform.position -= this.transform.right * Time.deltaTime * speed;
     }
 
     public void straffRight()
     {
-        isMovingY = true;
+        isMovingX = true;
         float speed = walkSpeed;
         if (isRuning)
         {
@@ -311,11 +315,15 @@ public class PlayerModel : MonoBehaviour {
     }
     public void straffLeft()
     {
-        isMovingY = true;
+        isMovingX = true;
         float speed = walkSpeed;
         if (isRuning)
         {
             speed = runSpeed;
+        }
+        if (isMovingX && isMovingY)
+        {
+            speed *= Mathf.Sqrt(2) / 2;
         }
         this.transform.position += this.transform.up * Time.deltaTime * speed;
     }
