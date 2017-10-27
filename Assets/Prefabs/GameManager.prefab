@@ -73,6 +73,6 @@ MonoBehaviour:
   activationRange_inf: 5
   activationRange_sup: 10
   timePerWave: 30
-  coefSupPerWave: 20
-  timeUntilNextWave: 3
+  coefSupPerWave: 10
+  timeUntilNextWave: 10
   nbZombiesOnNextWave: 5
