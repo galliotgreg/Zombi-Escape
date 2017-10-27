@@ -77,18 +77,20 @@ public class MultiCameraManager : MonoBehaviour {
 				c.rect = new Rect (x, y, w, h);
 				// Ajusting Radar
 				RectTransform radar = c.GetComponentInChildren<UnityEngine.UI.Mask>().rectTransform;
-				radar.anchorMin = new Vector2 ( border + borderRadar, border + borderRadar);
+				radar.anchorMin = new Vector2 ( borderRadar, borderRadar);
 				// size = initial*w; size = factor*h => factor = initial*w/h (w<h, since we search for the smallest)
 				float initialFactor = 0.3f;
+				float radarWidth = Screen.width*w;
+				float radarHeight = Screen.height*h;
 				if( w<h )
 				{
-					float factor = initialFactor*w/h;
-					radar.anchorMax = new Vector2 ( border + borderRadar + initialFactor, border + borderRadar + factor );
+					float factor = initialFactor*radarWidth/radarHeight;
+					radar.anchorMax = new Vector2 ( borderRadar + initialFactor, borderRadar + factor );
 				}
 				else
 				{
-					float factor = initialFactor*h/w;
-					radar.anchorMax = new Vector2 ( border + borderRadar + factor, border + borderRadar + initialFactor );
+					float factor = initialFactor*radarHeight/radarWidth;
+					radar.anchorMax = new Vector2 ( borderRadar + factor, borderRadar + initialFactor );
 				}
 			}
 

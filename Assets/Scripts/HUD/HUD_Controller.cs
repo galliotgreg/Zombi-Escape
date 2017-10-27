@@ -56,7 +56,6 @@ public class HUD_Controller : MonoBehaviour {
 			Vector2 playerFront = this.player.transform.right.normalized;
 			Vector2 north = Vector2.up.normalized;
 			float angle = Mathf.Acos( Vector2.Dot( north, playerFront ) );
-			Debug.Log(angle.ToString());
 			playerMinimapCompass.transform.rotation = Quaternion.AngleAxis( angle, new Vector3(0,0,1) );
 		} else {
 			Debug.LogError ( "HUD : player not set" );
