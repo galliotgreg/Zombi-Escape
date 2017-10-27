@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MultiCameraManager : MonoBehaviour {
 
-	// TODO Deal with audio listener. only one can be activated
-
 	[SerializeField]
 	private GameObject playerCamera_prefab;	// PlayerCamera Prefab to be instantiated for each player
 
@@ -69,7 +67,6 @@ public class MultiCameraManager : MonoBehaviour {
 			float y_split = (this.players.Count>2)?totalY/2f:totalY;		// the screen splits in Y only if there are more than 2 players
 			float border = 0.002f;
 			float borderRadar = 0.01f;
-			float radarRatio = 1;	// w / h
 			for( int i=0; i<this.playerCameras.Count; i++ ){
 				float x = (i % 2) * x_split + border;
 				float y = ((this.players.Count > 2 ? 3 - i : i) / 2) * y_split + border;
@@ -79,9 +76,12 @@ public class MultiCameraManager : MonoBehaviour {
 				Camera c = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
 				c.rect = new Rect (x, y, w, h);
 				// Ajusting Radar
+				float screenRatio = w/h;
+				float radarSize = ((this.players.Count>1)?0.5f:0.3f); // increase the size of the radar when there are 2 players
+				float radarRatio = (w>h?w/h:h/w);
 				RectTransform radar = c.GetComponentInChildren<UnityEngine.UI.Mask>().rectTransform;
 				radar.anchorMin = new Vector2 ( border + borderRadar, border + borderRadar);
-				radar.anchorMax = new Vector2 ( border + borderRadar + 0.3f, border + borderRadar + 0.3f );
+				radar.anchorMax = new Vector2 ( border + borderRadar + radarSize*h/radarRatio, border + borderRadar + radarSize*w/radarRatio );
 			}
 
 		}else{
