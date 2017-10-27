@@ -27,6 +27,8 @@ public class HUD_Controller : MonoBehaviour {
 	// MiniMap
 	[SerializeField]
 	private RawImage playerMinimapRawImage = null;
+	[SerializeField]
+	private GameObject playerMinimapCompass = null;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +52,12 @@ public class HUD_Controller : MonoBehaviour {
 			playerBulletsOutGunText.text = "/"+playerModel.NbBullets.ToString();
 			// Minimap
 			playerMinimapRawImage.color = new Color( 1f,1f,1f, playerModel.LightBattery_current/(float)playerModel.LightBattery_max * (playerModel.LightOn?1f:0f) );
+			// Compass
+			Vector2 playerFront = this.player.transform.right.normalized;
+			Vector2 north = Vector2.up.normalized;
+			float angle = Mathf.Acos( Vector2.Dot( north, playerFront ) );
+			Debug.Log(angle.ToString());
+			playerMinimapCompass.transform.rotation = Quaternion.AngleAxis( angle, new Vector3(0,0,1) );
 		} else {
 			Debug.LogError ( "HUD : player not set" );
 		}
