@@ -68,6 +68,12 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             this.controller.StopReloadGun();
         }
 
+        //Manage Light
+        if (InputManager.instance.GetKeyUp(PlayerId, KeyMapping, InputManager.ActionControl.ToggleLight))
+        {
+            this.controller.toggleLight();
+        }
+
         //Manage Motion 
         bool isMovingFwd = false;
         bool isMovingBck = false;

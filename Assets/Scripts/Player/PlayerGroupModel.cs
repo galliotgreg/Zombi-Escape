@@ -6,7 +6,7 @@ public class PlayerGroupModel{
 	[SerializeField]
 	private int nLifes = 5;
 	[SerializeField]
-	private int aidPerLife = 50;
+	private int aidPerLife = 100;
 	private float score = 0;
 
 	// Perfoms the action of aid a player
