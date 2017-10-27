@@ -12,7 +12,7 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     private InputManager.KeyMapping keyMapping = InputManager.KeyMapping.KeyBoard;
 
     [SerializeField]
-    private float axisThreshold = 0.01f;
+    private float axisThreshold = 0.1f;
 
     public int PlayerId
     {
@@ -74,6 +74,15 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             this.controller.toggleLight();
         }
 
+        //Manage Run
+        if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Run))
+        {
+            this.controller.SetRuning(true);Debug.Log("Run");
+        } else if (InputManager.instance.GetKeyUp(PlayerId, KeyMapping, InputManager.ActionControl.Run))
+        {
+            this.controller.SetRuning(false); Debug.Log("Walk");
+        }
+
         //Manage Motion 
         bool isMovingFwd = false;
         bool isMovingBck = false;
@@ -109,27 +118,11 @@ public class PlayerKeyBoardInput : MonoBehaviour {
         if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
         {
             this.controller.turnLeft();
-            //if (!isMovingBck)
-            //{
-            //    this.controller.turnLeft();
-            //}
-            //else
-            //{
-            //    this.controller.turnRight();
-            //}
             isTurning = true;
         }
         else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnRight) < -axisThreshold)
         {
             this.controller.turnRight();
-            //if (!isMovingBck)
-            //{
-            //    this.controller.turnRight();
-            //}
-            //else
-            //{
-            //    this.controller.turnLeft();
-            //}
             isTurning = true;
         }
         if(!(isTurning || isMovingFwd || isMovingBck || isMovingRight || isMovingLeft))
