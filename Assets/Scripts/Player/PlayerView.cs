@@ -147,8 +147,6 @@ public class PlayerView : MonoBehaviour {
         playerHealed.Play();
 
         SoundManager.instance.healing();
-
-        Debug.LogWarning(playerHealed.gameObject.gameObject.active);
 	}
 	public void heal()
 	{

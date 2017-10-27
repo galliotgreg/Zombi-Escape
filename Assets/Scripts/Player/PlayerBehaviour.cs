@@ -191,15 +191,26 @@ public class PlayerBehaviour : MonoBehaviour {
 			this.playerGroup.heal( this.detectPlayer.InCollisionPlayer, this );
 		}
 	}
+	public void executePlayerGroupHealItself()
+	{
+		if (this.model.canBeHealedItself ()) {
+			this.playerGroup.healItself (this);
+		}
+	}
 	public void beHealed( float aidAmount )
 	{
-		this.model.beHealed( aidAmount );
-		this.view.beHealed( aidAmount );
+		float points = this.model.beHealed( aidAmount );
+		this.view.beHealed( points );
 	}
 	public void heal()
 	{
 		this.model.heal();
 		this.view.heal();
+	}
+	public void healItself()
+	{
+		float points = this.model.healItself();
+		this.view.beHealed( points );
 	}
 
 	public void obtainItem( ItemBehaviour item )
