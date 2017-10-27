@@ -135,21 +135,21 @@ public class SoundManager : MonoBehaviour {
 
     public void mainMenu()
     {
-        RandomizeClips(mainMenuClips,musicSource);
+        RandomizeClipsMusic(mainMenuClips,musicSource);
     }
 
     public void inGameAmbienceClip()
     {
-        RandomizeClips(ambienceClips,musicSource);
+        RandomizeClipsMusic(ambienceClips,musicSource);
     }
 
     public void victory()
     {
-        RandomizeClips(victoryEndGameClips, musicSource);
+        RandomizeClipsMusic(victoryEndGameClips, musicSource);
     }
     public void defeat()
     {
-        RandomizeClips(gameOverEndGameClips, musicSource);
+        RandomizeClipsMusic(gameOverEndGameClips, musicSource);
     }
 
 
@@ -162,5 +162,16 @@ public class SoundManager : MonoBehaviour {
         aSource.clip = clips[randomIndex];
 
         aSource.PlayOneShot(clips[randomIndex]);
-    }   
+    }
+
+    public void RandomizeClipsMusic(AudioClip[] clips, AudioSource aSource)
+    {
+        int randomIndex = Random.Range(0, clips.Length);
+        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+
+        aSource.pitch = randomPitch;
+        aSource.clip = clips[randomIndex];
+
+        aSource.Play();
+    }
 }
