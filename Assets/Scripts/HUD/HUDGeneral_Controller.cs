@@ -31,8 +31,6 @@ public class HUDGeneral_Controller : MonoBehaviour {
 			// Lifes
 			playerGroupHealsText.text = this.playerGroup.getNlifes().ToString();
 			// TeamName
-			Debug.Log(this.playerGroup.getTeamName());
-			Debug.Log(this.playerGroup.getTeamName().Length);
 			playerTeamNameText.text = (this.playerGroup.getTeamName().Length != 0?this.playerGroup.getTeamName():"Ghostbusters");
 			// Wave
 			playerGroupWaveTimeText.text = ((int)(this.wavesManager.getNextWaveTime()/60)).ToString("00")+":"+((int)(this.wavesManager.getNextWaveTime()%60)).ToString("00");
