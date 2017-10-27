@@ -76,12 +76,20 @@ public class MultiCameraManager : MonoBehaviour {
 				Camera c = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
 				c.rect = new Rect (x, y, w, h);
 				// Ajusting Radar
-				float screenRatio = w/h;
-				float radarSize = ((this.players.Count>1)?0.5f:0.3f); // increase the size of the radar when there are 2 players
-				float radarRatio = (w>h?w/h:h/w);
 				RectTransform radar = c.GetComponentInChildren<UnityEngine.UI.Mask>().rectTransform;
 				radar.anchorMin = new Vector2 ( border + borderRadar, border + borderRadar);
-				radar.anchorMax = new Vector2 ( border + borderRadar + radarSize*h/radarRatio, border + borderRadar + radarSize*w/radarRatio );
+				// size = initial*w; size = factor*h => factor = initial*w/h (w<h, since we search for the smallest)
+				float initialFactor = 0.3f;
+				if( w<h )
+				{
+					float factor = initialFactor*w/h;
+					radar.anchorMax = new Vector2 ( border + borderRadar + initialFactor, border + borderRadar + factor );
+				}
+				else
+				{
+					float factor = initialFactor*h/w;
+					radar.anchorMax = new Vector2 ( border + borderRadar + factor, border + borderRadar + initialFactor );
+				}
 			}
 
 		}else{
