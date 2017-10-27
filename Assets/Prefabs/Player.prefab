@@ -1037,9 +1037,11 @@ MonoBehaviour:
   lifePoints_current: 100
   lightBattery_max: 100
   lightBattery_current: 100
-  moveSpeed: 2
+  walkSpeed: 2
+  runSpeed: 4
   angularSpeed: 180
   hitDamage: 50
+  isRuning: 0
 --- !u!114 &114782816667274050
 MonoBehaviour:
   m_ObjectHideFlags: 1

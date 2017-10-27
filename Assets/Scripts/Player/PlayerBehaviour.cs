@@ -9,7 +9,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private PlayerFeetView feetView = null;
 	private DetectGrab detectPlayer = null;
 
-	private PlayerGroupModel playerGroup;	// Collective data
+    private PlayerGroupModel playerGroup;	// Collective data
 	// Property
 	public PlayerGroupModel PlayerGroup {
 		get {
@@ -101,6 +101,11 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
+    public void SetRuning(bool isRuning)
+    {
+        this.model.IsRuning = isRuning;
+    }
+
     public void straffLeft()
     {
         if (this.model.LifePoints > 0)
@@ -123,7 +128,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void handleFire()
     {
-        if (this.model.LifePoints > 0)
+        if (this.model.LifePoints > 0 && !this.model.IsRuning)
         {
             if (this.model.NbBullets_in_gun > 0)
             {
@@ -174,7 +179,8 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     public void idle()
-    {        
+    {
+        this.model.idle();
         this.view.idle();
         this.feetView.idle();
     }

@@ -22,12 +22,19 @@ public class PlayerModel : MonoBehaviour {
     [SerializeField]
     private float lightBattery_current = 100;
     [SerializeField]
-    private float moveSpeed = 1;
+    private float walkSpeed = 1;
+    [SerializeField]
+    private float runSpeed = 2;
     [SerializeField]
     private float angularSpeed = 90;
     [SerializeField]
     private float hitDamage = 20;
-	private bool lightOn = true;	// Indicates the state of the light
+    [SerializeField]
+    private bool isRuning = false;
+    private bool lightOn = true;	// Indicates the state of the light
+
+    private bool isMovingX = false;
+    private bool isMovingY = false;
 
     // Nbre de balle max de la reserve
     private int nbBullets_max = 32;
@@ -46,7 +53,20 @@ public class PlayerModel : MonoBehaviour {
 			playerId = value;
 		}
 	}
-	public string PlayerName {
+    public bool IsRuning
+    {
+        get
+        {
+            return isRuning;
+        }
+
+        set
+        {
+            isRuning = value;
+        }
+    }
+
+    public string PlayerName {
 		get {
 			return playerName;
 		}
@@ -158,12 +178,12 @@ public class PlayerModel : MonoBehaviour {
     {
         get
         {
-            return moveSpeed;
+            return walkSpeed;
         }
 
         set
         {
-            moveSpeed = value;
+            walkSpeed = value;
         }
     }
 
@@ -243,23 +263,61 @@ public class PlayerModel : MonoBehaviour {
         }
     }
 
+    public void idle()
+    {
+        isMovingX = false;
+        isMovingY = false;
+    }
+
     public void moveFwd()
     {
-        this.transform.position += this.transform.right * Time.deltaTime * this.moveSpeed;
+        isMovingY = true;
+        float speed = walkSpeed;
+        if (isRuning)
+        {
+            speed = runSpeed;
+        }
+        if (isMovingX && isMovingY)
+        {
+            speed *= Mathf.Sqrt(2) / 2;
+        }
+        this.transform.position += this.transform.right * Time.deltaTime * speed;
     }
 
     public void moveBck()
     {
-        this.transform.position -= this.transform.right * Time.deltaTime * this.moveSpeed;
+        isMovingX = true;
+        float speed = walkSpeed;
+        if (isRuning)
+        {
+            speed = runSpeed;
+        }
+        this.transform.position -= this.transform.right * Time.deltaTime * speed;
     }
 
     public void straffRight()
     {
-        this.transform.position -= this.transform.up * Time.deltaTime * this.moveSpeed;
+        isMovingY = true;
+        float speed = walkSpeed;
+        if (isRuning)
+        {
+            speed = runSpeed;
+        }
+        if (isMovingX && isMovingY)
+        {
+            speed *= Mathf.Sqrt(2) / 2;
+        }
+        this.transform.position -= this.transform.up * Time.deltaTime * speed;
     }
     public void straffLeft()
     {
-        this.transform.position += this.transform.up * Time.deltaTime * this.moveSpeed;
+        isMovingY = true;
+        float speed = walkSpeed;
+        if (isRuning)
+        {
+            speed = runSpeed;
+        }
+        this.transform.position += this.transform.up * Time.deltaTime * speed;
     }
 
     public void turnLeft()
