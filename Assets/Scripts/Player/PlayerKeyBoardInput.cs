@@ -136,5 +136,11 @@ public class PlayerKeyBoardInput : MonoBehaviour {
 			// Check if the player is close to an injured player
 			this.controller.executePlayerGroupHeal();
 		}
+		// Manage Healing itself
+		if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.SelfHeal))
+		{
+			// Check if the player is close to an injured player
+			this.controller.executePlayerGroupHealItself();
+		}
     }
 }

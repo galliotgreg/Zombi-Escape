@@ -395,19 +395,32 @@ public class PlayerModel : MonoBehaviour {
 		
 	}
 
-	// Healing	
-	public void beHealed( float aidAmount  )
+	// Healing : return the actual number of points add to the player
+	public float beHealed( float aidAmount  )
 	{
+		float oldPoints = this.lifePoints_current;
 		// update life points
 		this.lifePoints_current = Math.Min( this.lifePoints_current+aidAmount, this.lifePoints_max );
+		return lifePoints_current - oldPoints;
 	}
 	public void heal()
 	{
 		// nothing to be done
 	}
+	// HealingIlself : return the actual number of points add to the player
+	public float healItself()
+	{
+		float oldPoints = this.lifePoints_current;
+		this.lifePoints_current = Math.Min( this.lifePoints_current+(this.lifePoints_max/2f), this.lifePoints_max );
+		return lifePoints_current - oldPoints;
+	}
 	public bool canBeHealed()
 	{
 		return this.lifePoints_current <= 0;
+	}
+	public bool canBeHealedItself()
+	{
+		return this.lifePoints_current > 0 && this.lifePoints_current <= this.lifePoints_max/2f;
 	}
 
 	// Items

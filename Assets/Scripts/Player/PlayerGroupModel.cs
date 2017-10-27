@@ -11,12 +11,21 @@ public class PlayerGroupModel{
 	private string teamName = "";
 
 	// Perfoms the action of aid a player
-	public void heal( PlayerBehaviour injuredlayer, PlayerBehaviour helperPlayer )
+	public void heal( PlayerBehaviour injuredPlayer, PlayerBehaviour helperPlayer )
 	{
 		if( this.nLifes > 0 )
 		{
-			injuredlayer.beHealed( this.aidPerLife );
+			injuredPlayer.beHealed( this.aidPerLife );
 			helperPlayer.heal();
+			this.nLifes--;
+		}
+	}
+	// Perfoms the action of aid itself
+	public void healItself( PlayerBehaviour injuredPlayer )
+	{
+		if( this.nLifes > 0 )
+		{
+			injuredPlayer.healItself();
 			this.nLifes--;
 		}
 	}
