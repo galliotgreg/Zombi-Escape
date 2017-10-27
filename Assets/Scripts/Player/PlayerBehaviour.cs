@@ -163,7 +163,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void reloadGun()
     {
-        if (this.model.LifePoints <= 0)
+        if (this.model.LifePoints > 0)
         {
             this.model.reload();
             this.view.reload();
