@@ -76,16 +76,13 @@ public class MultiCameraManager : MonoBehaviour {
 				float w = x_split - 2 * border;
 				float h = y_split - 2 * border;
 
-				Camera[] cameras = ((GameObject)this.playerCameras[i]).GetComponentsInChildren<Camera>();
-				foreach (Camera c in cameras) {
-					if (c.tag == "PlayerCamera") {
-						c.rect = new Rect (x, y, w, h);
-					} else if (c.tag == "RadarCamera") {
-						// CameraRadar
-						c.rect = new Rect ( x+borderRadar, y+borderRadar, Mathf.Max( w*0.2f, h*0.2f ), Mathf.Max( w*0.2f, h*0.2f ) );
-						//c.transform.position.y = -;
-					}
-				}
+				Camera c = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
+				c.rect = new Rect (x, y, w, h);
+				// Ajusting Radar
+				Debug.Log( c.GetComponentInChildren<UnityEngine.UI.Mask>().transform.GetComponent<Rect>() == null);
+				RectTransform radar = c.GetComponentInChildren<UnityEngine.UI.Mask>().rectTransform;
+				radar.anchorMin = new Vector2 ( border + borderRadar, border + borderRadar);
+				radar.anchorMax = new Vector2 ( border + borderRadar + 0.3f, border + borderRadar + 0.3f );
 			}
 
 		}else{
