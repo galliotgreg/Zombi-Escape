@@ -41,7 +41,8 @@ public class InputManager : MonoBehaviour {
         Heal,
         ToggleLight,
         Run,
-        SelfHeal
+        SelfHeal,
+        Pause
     }
 
     public enum KeyMapping
@@ -996,6 +997,8 @@ public class InputManager : MonoBehaviour {
                 return KeyCode.LeftShift;
             case ActionControl.SelfHeal:
                 return KeyCode.H;
+            case ActionControl.Pause:
+                return KeyCode.Escape;
         }
         return KeyCode.None;
     }

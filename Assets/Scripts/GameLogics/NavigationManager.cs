@@ -18,6 +18,10 @@ public class NavigationManager : MonoBehaviour
     /// </summary>
     public static NavigationManager instance = null;
 
+    [SerializeField]
+    private Canvas canvasPause;
+    private bool isActive = false;// the apuse menu is active 
+
     /// <summary>
     /// Enforce Singleton properties
     /// </summary>
@@ -91,5 +95,30 @@ public class NavigationManager : MonoBehaviour
             LobbyManager.instance.Kill();
         }
         SceneManager.LoadScene(lvlName);
+    }
+
+    public void pauseMenu()
+    {      
+        if (!isActive)
+        {            
+            Time.timeScale = 0f;
+            canvasPause.gameObject.SetActive(true);
+        }
+            else
+        {            
+            Time.timeScale = 1f;
+            canvasPause.gameObject.SetActive(false);
+        }
+        isActive = !isActive;
+    }
+    public void resumeGame()
+    {
+        Time.timeScale = 1f;
+        canvasPause.gameObject.SetActive(false);
+    }
+    public void quitMenu()
+    {
+        Time.timeScale = 0f;
+        Exit();
     }
 }

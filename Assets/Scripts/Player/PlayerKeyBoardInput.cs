@@ -48,6 +48,11 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //Show the pause menu in game
+        if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Pause))
+        {
+            NavigationManager.instance.pauseMenu();
+        }
         //Manage Fire
         if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Fire))
         {            
