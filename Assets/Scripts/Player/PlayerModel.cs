@@ -12,6 +12,9 @@ public class PlayerModel : MonoBehaviour {
     public int STAT_nbDead = 0;
     public int STAT_batteryUsed = 1;
     public float STAT_batteryTime = 0;
+	public float STAT_scoreByDamage = 0;
+
+	private float playerScore = 0;	// Player's score
 
     [SerializeField]
 	private int playerId = -1;              // Player's ID
@@ -384,6 +387,9 @@ public class PlayerModel : MonoBehaviour {
 			scoreFromFire = damageResult.score;
         }
         this.nbBullets_in_gun--;
+
+		this.STAT_scoreByDamage += scoreFromFire;
+
 		return scoreFromFire;
     }
 
@@ -469,5 +475,22 @@ public class PlayerModel : MonoBehaviour {
         STAT_batteryUsed++;
         // Recharge the battery
         this.lightBattery_current = this.lightBattery_max;
+	}
+
+	// Calculate Score
+	public float getPlayerPartialScore()
+	{
+		return this.STAT_scoreByDamage;
+	}
+	public float getPlayerFinalScore()
+	{
+		// Score during the match
+		float usedBullets = STAT_bulletsFired;
+		float usedBattery = STAT_batteryTime;
+		float isHelper = STAT_healedSomeone;
+		float isHelped = STAT_nbDead;
+		// Score after the match
+		// final score
+		return 0;
 	}
 }

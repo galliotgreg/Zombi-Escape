@@ -34,9 +34,12 @@ public class GameState : MonoBehaviour {
 
 	// Group Values
 	private PlayerGroupModel playerGroup;
-	// Name for the PlayerPref that stores the HighScore
-	public static string HighScorePlayerPrefName = "high_score";
-	public static string HighScoreTeamPlayerPrefName = "high_score_team";
+	// Name for the PlayerPref that stores the Group HighScore
+	public static string GroupHighScorePlayerPrefName = "team_high_score";
+	public static string GroupHighScoreTeamPlayerPrefName = "team_high_score_name";
+	// Name for the PlayerPref that stores the Individual HighScore
+	public static string PlayerHighScorePlayerPrefName = "player_high_score";
+	public static string PlayerHighScoreNamePlayerPrefName = "player_high_score_name";
 
 	// Camera Manager
 	private GameObject cameraManager;	// Controls the generation of multiple cameras
@@ -73,6 +76,9 @@ public class GameState : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+		// Clear Player Prefs
+		//PlayerPrefs.DeleteAll();
+
         LobbyManager lobbyManager = LobbyManager.instance;
 		this.playerGroup = new PlayerGroupModel();
 		this.playerGroup.setTeamName ( lobbyManager.TeamName );
@@ -137,6 +143,7 @@ public class GameState : MonoBehaviour {
 	            input.KeyMapping = lobbyPlayer.KeyMap;
 
 				// Associating groupPlayer
+				this.playerGroup.addPlayer(player.GetComponent<PlayerBehaviour>());	
 				player.GetComponent<PlayerBehaviour>().PlayerGroup = this.playerGroup;
 				player.GetComponent<PlayerBehaviour>().setPlayerId( lobbyPlayer.PlayerId );
 				player.GetComponent<PlayerBehaviour>().setPlayerName( lobbyPlayer.PlayerName );
@@ -153,13 +160,20 @@ public class GameState : MonoBehaviour {
     void Update () {
         handleGameOver();
 
-		// Score associated to the time : number of seconds since the start of the match
-		this.playerGroup.addScorePerTime( Time.deltaTime );
 		// Update high score
-		if( PlayerPrefs.GetInt( GameState.HighScorePlayerPrefName, 0 ) < Mathf.FloorToInt( this.playerGroup.getTotalScore() ) )
+		if( PlayerPrefs.GetInt( GameState.GroupHighScorePlayerPrefName, 0 ) < Mathf.FloorToInt( this.playerGroup.getPartialScore() ) )
 		{
-			PlayerPrefs.SetInt( GameState.HighScorePlayerPrefName, Mathf.FloorToInt( this.playerGroup.getTotalScore() ) );
-			PlayerPrefs.SetString( GameState.HighScoreTeamPlayerPrefName, this.playerGroup.getTeamName() );
+			PlayerPrefs.SetInt( GameState.GroupHighScorePlayerPrefName, Mathf.FloorToInt( this.playerGroup.getPartialScore() ) );
+			PlayerPrefs.SetString( GameState.GroupHighScoreTeamPlayerPrefName, this.playerGroup.getTeamName() );
+		}
+		foreach (GameObject player in  Players)
+		{
+			PlayerModel pModel = player.GetComponent<PlayerBehaviour>().Model;
+			if( PlayerPrefs.GetInt( GameState.PlayerHighScorePlayerPrefName, 0 ) < Mathf.FloorToInt( pModel.getPlayerPartialScore() ) )
+			{
+				PlayerPrefs.SetInt( GameState.PlayerHighScorePlayerPrefName, Mathf.FloorToInt( pModel.getPlayerPartialScore() ) );
+				PlayerPrefs.SetString( GameState.PlayerHighScoreNamePlayerPrefName, pModel.PlayerName );
+			}
 		}
 	}
 

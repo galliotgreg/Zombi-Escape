@@ -163,7 +163,6 @@ public class PlayerBehaviour : MonoBehaviour {
                     float scoreFromFire = this.model.fire();
                     this.view.fire();
                     hitCooldown = this.model.HitRate;
-					this.playerGroup.addScore ( scoreFromFire );
                 }
             }
             else

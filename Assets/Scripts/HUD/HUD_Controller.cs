@@ -16,6 +16,8 @@ public class HUD_Controller : MonoBehaviour {
 	// Bqttery
 	[SerializeField]
 	private GameObject playerBatteryImage = null;
+	[SerializeField]
+	private Text playerScoreText = null;
 	// Killed Zombies
 	[SerializeField]
 	private Text playerKilledZombiesText = null;
@@ -45,6 +47,8 @@ public class HUD_Controller : MonoBehaviour {
 			playerLifeImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LifePoints/(float)playerModel.LifePoints_Max, playerLifeImage.GetComponent<RectTransform>().anchorMax.y );
 			// Battery
 			playerBatteryImage.GetComponent<RectTransform>().anchorMax = new Vector2( playerModel.LightBattery_current/(float)playerModel.LightBattery_max, playerBatteryImage.GetComponent<RectTransform>().anchorMax.y );
+			// Killed Zombies
+			playerScoreText.text = playerModel.getPlayerPartialScore().ToString();
 			// Killed Zombies
 			playerKilledZombiesText.text = playerModel.PlayerKilledZombies.ToString();
 			// Bullets

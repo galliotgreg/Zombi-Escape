@@ -7,9 +7,10 @@ public class PlayerGroupModel{
 	private int nLifes = 5;
 	[SerializeField]
 	private int aidPerLife = 100;
-	private float score = 0;
-	private float scorePerTime = 0;
+	// Team Name
 	private string teamName = "";
+	// list of players
+	ArrayList players = new ArrayList();
 
 	// Perfoms the action of aid a player
 	public void heal( PlayerBehaviour injuredPlayer, PlayerBehaviour helperPlayer )
@@ -36,35 +37,27 @@ public class PlayerGroupModel{
 		this.nLifes++;
 	}
 
-	public void addScore(float scoreToAdd){
-		this.score += scoreToAdd;
-	}
-	public void reduceScore(float scoreToReduce){
-		this.score = Mathf.Max( this.score-scoreToReduce, 0 );
-	}
-	public void addScorePerTime(float scorePerTimeToAdd){
-		this.scorePerTime += scorePerTimeToAdd;
-	}
 	public void setTeamName( string teamName )
 	{
 		this.teamName = teamName;
+	}
+	public void addPlayer( PlayerBehaviour player )
+	{
+		this.players.Add( player );
 	}
 
 	public int getNlifes()
 	{
 		return this.nLifes;
 	}
-	public float getScore()
+	public float getPartialScore()
 	{
-		return this.score;
-	}
-	public float getScorePerTime()
-	{
-		return this.scorePerTime;
-	}
-	public float getTotalScore()
-	{
-		return this.score+this.scorePerTime;
+		float score = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			score += p.Model.getPlayerPartialScore();
+		}
+		return score;
 	}
 	public string getTeamName()
 	{

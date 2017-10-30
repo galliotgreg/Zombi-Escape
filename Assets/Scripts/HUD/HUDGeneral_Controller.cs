@@ -23,6 +23,10 @@ public class HUDGeneral_Controller : MonoBehaviour {
 	private Text playerGroupHighScoreText = null;
 	[SerializeField]
 	private Text playerGroupHighScoreTeamText = null;
+	[SerializeField]
+	private Text playerHighScoreText = null;
+	[SerializeField]
+	private Text playerHighScoreNameText = null;
 
 	// Use this for initialization
 	void Start () {
@@ -40,10 +44,13 @@ public class HUDGeneral_Controller : MonoBehaviour {
 			playerGroupWaveTimeText.text = ((int)(this.wavesManager.getNextWaveTime()/60)).ToString("00")+":"+((int)(this.wavesManager.getNextWaveTime()%60)).ToString("00");
 			playerGroupWaveAmountText.text = ((int)this.wavesManager.getNextWaveAmountZombies ()).ToString();
 			// Score
-			playerGroupScoreText.text = ((int)this.playerGroup.getTotalScore()).ToString();
+			playerGroupScoreText.text = ((int)this.playerGroup.getPartialScore()).ToString();
 			// HighScore
-			playerGroupHighScoreText.text = ((int)PlayerPrefs.GetInt(GameState.HighScorePlayerPrefName,0)).ToString();
-			playerGroupHighScoreTeamText.text = PlayerPrefs.GetString(GameState.HighScoreTeamPlayerPrefName,"-");
+			playerGroupHighScoreText.text = ((int)PlayerPrefs.GetInt(GameState.GroupHighScorePlayerPrefName,0)).ToString();
+			playerGroupHighScoreTeamText.text = PlayerPrefs.GetString(GameState.GroupHighScoreTeamPlayerPrefName,"-");
+			// Player HighScore
+			playerHighScoreText.text = ((int)PlayerPrefs.GetInt(GameState.PlayerHighScorePlayerPrefName,0)).ToString();
+			playerHighScoreNameText.text = PlayerPrefs.GetString(GameState.PlayerHighScoreNamePlayerPrefName,"-");
 		} else {
 			Debug.LogError ( "HUD : playerGroup not set" );
 		}
