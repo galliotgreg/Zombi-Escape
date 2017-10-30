@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerModel : MonoBehaviour {
     public int STAT_bulletsFired = 0;
+    public int STAT_bulletsHits = 0;
     public int STAT_selfHeal = 0;
     public int STAT_beHealed = 0;
     public int STAT_healedSomeone = 0;
@@ -375,7 +376,9 @@ public class PlayerModel : MonoBehaviour {
             Debug.Log("Hit");
             ZombieBehaviour zombie = hit.collider.GetComponentInParent<ZombieBehaviour>();
 			ZombieModel.DamageResult damageResult = zombie.handleDealDamage (this.HitDamage);
-			if( damageResult.killed ){
+            STAT_bulletsHits++;
+
+            if ( damageResult.killed ){
 				this.playerKilledZombies++;
 			}
 			scoreFromFire = damageResult.score;
