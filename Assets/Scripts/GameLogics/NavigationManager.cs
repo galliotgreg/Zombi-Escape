@@ -54,7 +54,10 @@ public class NavigationManager : MonoBehaviour
         {
             page.SetActive(false);
         }
-        pages[0].SetActive(true);
+        if (pages.Count > 0)
+        {
+            pages[0].SetActive(true);
+        }
     }
 
     /// <summary>
