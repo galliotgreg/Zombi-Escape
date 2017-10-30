@@ -450,7 +450,7 @@ public class PlayerModel : MonoBehaviour {
 	}
 	public void heal()
 	{
-		// nothing to be done
+		STAT_healedSomeone++;
 	}
 	// HealingIlself : return the actual number of points add to the player
 	public float healItself()
