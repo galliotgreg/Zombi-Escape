@@ -59,7 +59,7 @@ public class GameoverPlayerInfoController : MonoBehaviour {
 		}
 
 		// Player Color
-		Color playerColor = new Color ( (pModel.PlayerId==1||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==2||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==0?1:0.6f), 0.9f);
+		Color playerColor = new Color ( (pModel.PlayerId==1||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==2||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==0?1:0.6f), 0.7f);
 		background.color = playerColor;
 		// Score
 		playerName.text = pModel.PlayerName;
