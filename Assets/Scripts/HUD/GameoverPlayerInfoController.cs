@@ -51,8 +51,15 @@ public class GameoverPlayerInfoController : MonoBehaviour {
 	public void updateValues(){
 		PlayerModel pModel = player.Model;
 
+		// Updating HighScore
+		if( PlayerPrefs.GetInt( GameState.PlayerHighScorePlayerPrefName, 0 ) < ((int)pModel.getPlayerFinalScore()) )
+		{
+			PlayerPrefs.SetInt( GameState.PlayerHighScorePlayerPrefName, ((int)pModel.getPlayerFinalScore()) );
+			PlayerPrefs.SetString( GameState.PlayerHighScoreNamePlayerPrefName, pModel.PlayerName );
+		}
+
 		// Player Color
-		Color playerColor = new Color ( (pModel.PlayerId==1||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==2||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==0?1:0.6f), 0.5f);
+		Color playerColor = new Color ( (pModel.PlayerId==1||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==2||pModel.PlayerId==3?1:0.6f), (pModel.PlayerId==0?1:0.6f), 0.9f);
 		background.color = playerColor;
 		// Score
 		playerName.text = pModel.PlayerName;

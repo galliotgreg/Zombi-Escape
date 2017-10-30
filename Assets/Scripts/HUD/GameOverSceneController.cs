@@ -66,9 +66,15 @@ public class GameOverSceneController : MonoBehaviour {
 
 	void updateValues()
 	{
-		updateValuesHighScore();
-
 		PlayerGroupModel playerGroup = GameoverState.instance.PlayerGroup;
+
+		// Evaluating High Score
+		if( PlayerPrefs.GetInt( GameState.GroupHighScorePlayerPrefName, 0 ) < ((int)playerGroup.getFinalScore()) )
+		{
+			PlayerPrefs.SetInt( GameState.GroupHighScorePlayerPrefName, ((int)playerGroup.getFinalScore()) );
+			PlayerPrefs.SetString( GameState.GroupHighScoreTeamPlayerPrefName, playerGroup.getTeamName() );
+		}
+
 		// Team
 		teamName.text = playerGroup.getTeamName();
 		teamScore.text = ((int)playerGroup.getFinalScore()).ToString();
@@ -85,5 +91,6 @@ public class GameOverSceneController : MonoBehaviour {
 			GameObject pInfo = Instantiate( playerInfoPrefab, playerInfoContainer.transform );
 			pInfo.GetComponent<GameoverPlayerInfoController>().Player = player;
 		}
+		updateValuesHighScore();
 	}
 }
