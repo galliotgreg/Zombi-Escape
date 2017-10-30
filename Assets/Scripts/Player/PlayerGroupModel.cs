@@ -46,6 +46,12 @@ public class PlayerGroupModel{
 		this.players.Add( player );
 	}
 
+	public ArrayList Players {
+		get {
+			return players;
+		}
+	}
+
 	public int getNlifes()
 	{
 		return this.nLifes;
@@ -58,6 +64,64 @@ public class PlayerGroupModel{
 			score += p.Model.getPlayerPartialScore();
 		}
 		return score;
+	}
+	public float getFinalScore()
+	{
+		float score = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			score += p.Model.getPlayerFinalScore();
+		}
+		return score;
+	}
+	public int getBulletsFired()
+	{
+		int result = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			result += p.Model.STAT_bulletsFired;
+		}
+		return result;
+	}
+	public int getBulletsHit()
+	{
+		int result = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			result += p.Model.STAT_bulletsHits;
+		}
+		return result;
+	}
+	public float getPrecision()
+	{
+		return (getBulletsFired()>0?getBulletsHit()/(float)getBulletsFired():0);
+	}
+	public int getUsedBatteries()
+	{
+		int result = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			result += p.Model.STAT_batteryUsed;
+		}
+		return result;
+	}
+	public int getUsedLifes()
+	{
+		int result = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			result += p.Model.STAT_selfHeal + p.Model.STAT_healedSomeone;
+		}
+		return result;
+	}
+	public int getKilledZombies()
+	{
+		int result = 0;
+		foreach( PlayerBehaviour p in this.players )
+		{
+			result += p.Model.PlayerKilledZombies;
+		}
+		return result;
 	}
 	public string getTeamName()
 	{

@@ -72,6 +72,11 @@ public class GameState : MonoBehaviour {
         }
     }
 
+	public PlayerGroupModel PlayerGroup {
+		get {
+			return playerGroup;
+		}
+	}
 
     // Use this for initialization
     void Start ()
@@ -189,6 +194,9 @@ public class GameState : MonoBehaviour {
             }
         }
 
+		// Create a GameoverState for sending players information
+		GameObject goState = new GameObject("GameOverState");
+		goState.AddComponent<GameoverState>().PlayerGroup = this.playerGroup;
         NavigationManager.instance.LoadScene("gameOverScene");
     }
 }

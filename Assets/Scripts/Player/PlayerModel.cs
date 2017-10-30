@@ -484,13 +484,15 @@ public class PlayerModel : MonoBehaviour {
 	}
 	public float getPlayerFinalScore()
 	{
-		// Score during the match
-		float usedBullets = STAT_bulletsFired;
-		float usedBattery = STAT_batteryTime;
-		float isHelper = STAT_healedSomeone;
-		float isHelped = STAT_nbDead;
+		float extraScore = 0;
 		// Score after the match
+		// precision
+		float precisionScore = (STAT_bulletsFired>0?(STAT_bulletsHits/(float)STAT_bulletsFired) * 1000f:0);
+		float diedScore = STAT_nbDead * -250f;
+		float zombiesScore = playerKilledZombies * 100f;
+		float heroScore = STAT_healedSomeone * 150f;
+		float autoHealScore = STAT_selfHeal * -50f;
 		// final score
-		return 0;
+		return getPlayerPartialScore() + precisionScore + diedScore + zombiesScore + heroScore + autoHealScore;
 	}
 }
