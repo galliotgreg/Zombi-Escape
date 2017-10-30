@@ -8,6 +8,9 @@ public class PlayerModel : MonoBehaviour {
     public int STAT_selfHeal = 0;
     public int STAT_beHealed = 0;
     public int STAT_healedSomeone = 0;
+    public int STAT_nbDead = 0;
+    public int STAT_batteryUsed = 1;
+    public float STAT_batteryTime = 0;
 
     [SerializeField]
 	private int playerId = -1;              // Player's ID
@@ -346,6 +349,7 @@ public class PlayerModel : MonoBehaviour {
 
     public void die()
     {
+        STAT_nbDead++;
         SoundManager.instance.playeurDeath();
         //GameObject.Destroy(this.gameObject);
     }
@@ -408,8 +412,12 @@ public class PlayerModel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        LightFade lightFade = this.GetComponentInChildren<LightFade>();
+        if (lightFade.enabled && LightBattery_current > 0)
+        {
+            STAT_batteryTime += Time.deltaTime;
+        }
+    }
 
 	// Healing : return the actual number of points add to the player
 	public float beHealed( float aidAmount  )
@@ -455,7 +463,8 @@ public class PlayerModel : MonoBehaviour {
 	// Battery
 	public void obtainItemBattery()
 	{
-		// Recharge the battery
-		this.lightBattery_current = this.lightBattery_max;
+        STAT_batteryUsed++;
+        // Recharge the battery
+        this.lightBattery_current = this.lightBattery_max;
 	}
 }
