@@ -44,7 +44,7 @@ public class CommonPanel : MonoBehaviour
 		mapSelect = GameObject.Find("slt_map").GetComponent<Dropdown>();
 
         //Get Level Scenes In Dev
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         EditorBuildSettingsScene[] allScenes = EditorBuildSettings.scenes;
         List<EditorBuildSettingsScene> levelScenes = new List<EditorBuildSettingsScene>();
         foreach (EditorBuildSettingsScene scene in allScenes)
@@ -69,7 +69,11 @@ public class CommonPanel : MonoBehaviour
             options.Add(new Dropdown.OptionData(sceneName));
             mapSelect.AddOptions(options);
         }
-        #endif
+#else
+         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
+            options.Add(new Dropdown.OptionData("LostInSewer"));
+            mapSelect.AddOptions(options);
+#endif
     }
 
     private GameObject retreiveChild(string name)
