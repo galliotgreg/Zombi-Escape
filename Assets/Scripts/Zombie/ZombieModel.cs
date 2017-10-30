@@ -82,7 +82,7 @@ public class ZombieModel : MonoBehaviour {
 
     public void die()
     {
-        GameObject.Destroy(this.gameObject);
+        GameObject.Destroy(this.gameObject);                
     }
 
     public void turnLeft()
@@ -115,8 +115,22 @@ public class ZombieModel : MonoBehaviour {
 		
 	}
 
-    public void dealDamage(float damages)
-    {
-        this.lifePoints -= damages;
+	public struct DamageResult{
+		public float score;
+		public bool killed;
+	}
+	public DamageResult dealDamage(float damages)
+	{
+		float lifePointsToRemove = Math.Min (damages, this.lifePoints);
+
+		this.lifePoints -= lifePointsToRemove;
+
+		DamageResult dResult;
+		dResult.score = lifePointsToRemove;
+		dResult.killed = false;
+		if (this.lifePoints <= 0) {
+			dResult.killed = true;
+		}
+		return dResult;
     }
 }

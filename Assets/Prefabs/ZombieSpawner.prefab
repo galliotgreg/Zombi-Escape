@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 0.3
+  timeToFlush: 1
   zombiePrefab: {fileID: 1678513198478470, guid: 837d8852ffe777249b5cd6d9cbd50031,
     type: 2}
   nbActiveZombies: 0
+  zombiesInQueue: 0

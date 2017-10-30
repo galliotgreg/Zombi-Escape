@@ -36,6 +36,7 @@ public class LobbyManager : MonoBehaviour {
     private GameObject[] lobbyPlayers = new GameObject[4];
 	[SerializeField]
 	private UnityEngine.UI.Dropdown[] controlDropdowns;
+	private string teamName = "";
 
     private CommonPanel commonPanel;
 
@@ -78,6 +79,12 @@ public class LobbyManager : MonoBehaviour {
         }
     }
 
+	public string TeamName {
+		get {
+			return teamName;
+		}
+	}
+
     private bool isOnLobbyPhase = true;
 
     // Use this for initialization
@@ -92,6 +99,7 @@ public class LobbyManager : MonoBehaviour {
 			p.SetReady();
 		}
 		NavigationManager.instance.LoadScene(commonPanel.MapName);
+		this.teamName = GameObject.Find ("txt_teamName").GetComponent<UnityEngine.UI.InputField> ().text;
 	}
 	
 	// Update is called once per frame
@@ -113,4 +121,9 @@ public class LobbyManager : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public void Kill()
+    {
+        Destroy(this);
+    }
 }

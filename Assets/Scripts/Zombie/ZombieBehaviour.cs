@@ -73,10 +73,16 @@ public class ZombieBehaviour : MonoBehaviour {
         {
             //TODO : see how to give player in another way
             this.view.hitPlayer(player);
-            this.model.hitPlayer(player);
+            //this.model.hitPlayer(player);
 
             this.hitTimer = this.model.HitRateSec;
         }
+    }
+
+    private void handleAnimHitPlayer()
+    {
+        PlayerBehaviour player = this.detectGrab.InCollisionPlayer;
+        this.model.hitPlayer(player);
     }
 
     private void handleLifeState()
@@ -106,9 +112,10 @@ public class ZombieBehaviour : MonoBehaviour {
         this.model.moveFwd();
     }
 
-	public void handleDealDamage(float damages)
+	// execute the damage and returns if the zombie was killed
+	public ZombieModel.DamageResult handleDealDamage(float damages)
 	{
         this.view.dealDamage(damages);
-        this.model.dealDamage(damages);
+        return this.model.dealDamage(damages);
 	}
 }

@@ -8,10 +8,14 @@ public class PlayerView : MonoBehaviour {
     private Animator anim;    
     public ParticleSystem gunFire;
     public ParticleSystem playerBlood;
+    public ParticleSystem playerHealed;
+
+    private GunFlash gunFlash;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();    
+        anim = GetComponent<Animator>();
+        gunFlash = GetComponentInChildren<GunFlash>();
     }
 
     private void Start()
@@ -32,7 +36,9 @@ public class PlayerView : MonoBehaviour {
 
         //audioSource.PlayOneShot(gunShot);
         SoundManager.instance.handGunShot();
-        
+
+        // Affiche le flash
+        gunFlash.Flash();
     }
 
     public void fireFail()
@@ -86,6 +92,16 @@ public class PlayerView : MonoBehaviour {
         anim.SetBool("isWalking", false);
     }
 
+    public void straffLeft()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
+    public void straffRight()
+    {
+        anim.SetBool("isWalking", true);
+    }
+
     public void die()
     {
         anim.SetBool("isDead", true);
@@ -103,18 +119,18 @@ public class PlayerView : MonoBehaviour {
         if (playerBlood.gameObject.active) {
             Debug.Log("Player blood particle is active");
         }
-        StartCoroutine(waitAndDisable());
+        StartCoroutine(waitAndDisable(playerBlood.gameObject));
 
         //Debug.Log("Hit : " + this.name);
     }
 
-    IEnumerator waitAndDisable()
+    IEnumerator waitAndDisable(GameObject gObject)
     {
         yield return new WaitForSeconds(0.6f);
-        playerBlood.gameObject.SetActive(false);
-        if (!playerBlood.gameObject.active)
+        gObject.SetActive(false);
+        if (!gObject.active)
         {
-            Debug.Log("Player blood particle is not active");
+            Debug.Log("System particle "+gObject.name +" is not active");
         }
     }
 
@@ -125,11 +141,44 @@ public class PlayerView : MonoBehaviour {
 
 	public void beHealed( float aidAmount )
 	{
-		// Call animation
-		Debug.LogWarning( "Revive Here" );
+        // Call animation
+        anim.SetTrigger("isHealed");
+        anim.SetBool("isDead", false);
+        playerHealed.Play();
+
+        SoundManager.instance.healing();
 	}
 	public void heal()
 	{
 		// Call animation
+	}
+
+	// Items
+	// Heal
+	public void obtainItemHeal(){
+        SoundManager.instance.seringuePickup();
+    }
+	// Bullets
+	public void obtainItemBullets(){
+        SoundManager.instance.chargerPickup();
+    }
+	// Batery
+	public void obtainItemBattery(){
+        SoundManager.instance.batteryPickup();
+    }
+
+    //Switch on / off the light
+    public void toggleLight()
+    {
+        SoundManager.instance.switchLight();
+    }
+
+	public void updatePlayerId( int playerId )
+	{
+		// Put a color distinguish the players
+		Color playerColor = new Color ( (playerId==1||playerId==3?1:0.6f), (playerId==2||playerId==3?1:0.6f), (playerId==0?1:0.6f));
+		GetComponent<SpriteRenderer> ().material.color = playerColor;
+		GetComponentInChildren<PlayerFeetView>().gameObject.GetComponent<SpriteRenderer> ().material.color = playerColor;
+		GetComponentInChildren<RadarDetectionBehaviour> ().setColor (playerColor);
 	}
 }

@@ -12,7 +12,7 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     private InputManager.KeyMapping keyMapping = InputManager.KeyMapping.KeyBoard;
 
     [SerializeField]
-    private float axisThreshold = 0.01f;
+    private float axisThreshold = 0.1f;
 
     public int PlayerId
     {
@@ -48,6 +48,11 @@ public class PlayerKeyBoardInput : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //Show the pause menu in game
+        if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Pause))
+        {
+            NavigationManager.instance.pauseMenu();
+        }
         //Manage Fire
         if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Fire))
         {            
@@ -68,10 +73,29 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             this.controller.StopReloadGun();
         }
 
+        //Manage Light
+        if (InputManager.instance.GetKeyUp(PlayerId, KeyMapping, InputManager.ActionControl.ToggleLight))
+        {
+            this.controller.toggleLight();
+        }
+
+        //Manage Run
+        if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Run))
+        {
+            this.controller.SetRuning(true);Debug.Log("Run");
+        } else if (InputManager.instance.GetKeyUp(PlayerId, KeyMapping, InputManager.ActionControl.Run))
+        {
+            this.controller.SetRuning(false); Debug.Log("Walk");
+        }
+
         //Manage Motion 
         bool isMovingFwd = false;
         bool isMovingBck = false;
+        bool isMovingRight = false;
+        bool isMovingLeft = false;
         bool isTurning = false;
+
+        //FWD/BCK
         if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.MoveFwd) > axisThreshold)
         {         
             this.controller.moveFwd();
@@ -83,31 +107,30 @@ public class PlayerKeyBoardInput : MonoBehaviour {
             isMovingBck = true;
         }
 
+        //STRAFFING
+        if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.StraffRight) > axisThreshold)
+        {
+            this.controller.straffRight();
+            isMovingRight = true;
+        }
+        else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.StraffLeft) < -axisThreshold)
+        {
+            this.controller.straffLeft();
+            isMovingLeft = true;
+        }
+
+        //TURNING
         if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnLeft) > axisThreshold)
         {
-            if (!isMovingBck)
-            {
-                this.controller.turnLeft();
-            }
-            else
-            {
-                this.controller.turnRight();
-            }
+            this.controller.turnLeft();
             isTurning = true;
         }
         else if (InputManager.instance.GetAxis(PlayerId, KeyMapping, InputManager.ActionControl.TurnRight) < -axisThreshold)
         {
-            if (!isMovingBck)
-            {
-                this.controller.turnRight();
-            }
-            else
-            {
-                this.controller.turnLeft();
-            }
+            this.controller.turnRight();
             isTurning = true;
         }
-        if(!(isTurning || isMovingFwd || isMovingBck))
+        if(!(isTurning || isMovingFwd || isMovingBck || isMovingRight || isMovingLeft))
         {           
             this.controller.idle();
         }
@@ -117,6 +140,12 @@ public class PlayerKeyBoardInput : MonoBehaviour {
 		{
 			// Check if the player is close to an injured player
 			this.controller.executePlayerGroupHeal();
+		}
+		// Manage Healing itself
+		if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.SelfHeal))
+		{
+			// Check if the player is close to an injured player
+			this.controller.executePlayerGroupHealItself();
 		}
     }
 }

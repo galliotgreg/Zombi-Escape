@@ -9,7 +9,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private PlayerFeetView feetView = null;
 	private DetectGrab detectPlayer = null;
 
-	private PlayerGroupModel playerGroup;	// Collective data
+    private PlayerGroupModel playerGroup;	// Collective data
 	// Property
 	public PlayerGroupModel PlayerGroup {
 		get {
@@ -23,14 +23,18 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField]
     private float hitCooldown = -1;
 
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
         this.model = this.gameObject.GetComponent<PlayerModel>();
         this.view = this.gameObject.GetComponent<PlayerView>();
         this.feetView = this.GetComponentInChildren<PlayerFeetView>();
 		this.detectPlayer = this.gameObject.GetComponentInChildren<DetectGrab>();
     }
+
+	void Start()
+	{
+		
+	}
 
     // Update is called once per frame
     void Update()
@@ -97,23 +101,58 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
-    public void handleFire()
+    public void SetRuning(bool isRuning)
+    {
+        this.model.IsRuning = isRuning;
+    }
+
+    public void straffLeft()
     {
         if (this.model.LifePoints > 0)
+        {
+            this.model.straffLeft();
+            this.view.straffLeft();
+            this.feetView.straffLeft();
+        }
+    }
+
+    public void straffRight()
+    {
+        if (this.model.LifePoints > 0)
+        {
+            this.model.straffRight();
+            this.view.straffRight();
+            this.feetView.straffRight();
+        }
+    }
+
+    public void handleFire()
+    {
+        if (this.model.LifePoints > 0 && !this.model.IsRuning)
         {
             if (this.model.NbBullets_in_gun > 0)
             {
                 if (hitCooldown < 0)
                 {
-                    this.model.fire();
+                    float scoreFromFire = this.model.fire();
                     this.view.fire();
                     hitCooldown = this.model.HitRate;
+					this.playerGroup.addScore ( scoreFromFire );
                 }
             }
             else
             {
                 this.view.fireFail();
             }
+        }
+    }
+
+    public void toggleLight()
+    {
+        if (this.model.LifePoints > 0)
+        {
+            this.view.toggleLight();
+            this.model.toggleLight();
         }
     }
 
@@ -124,8 +163,11 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void reloadGun()
     {
-        this.model.reload();
-        this.view.reload();
+        if (this.model.LifePoints > 0)
+        {
+            this.model.reload();
+            this.view.reload();
+        }
     }
 
     public void StopReloadGun()
@@ -140,7 +182,8 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     public void idle()
-    {        
+    {
+        this.model.idle();
         this.view.idle();
         this.feetView.idle();
     }
@@ -151,14 +194,68 @@ public class PlayerBehaviour : MonoBehaviour {
 			this.playerGroup.heal( this.detectPlayer.InCollisionPlayer, this );
 		}
 	}
+	public void executePlayerGroupHealItself()
+	{
+		if (this.model.canBeHealedItself ()) {
+			this.playerGroup.healItself (this);
+		}
+	}
 	public void beHealed( float aidAmount )
 	{
-		this.model.beHealed( aidAmount );
-		this.view.beHealed( aidAmount );
+		float points = this.model.beHealed( aidAmount );
+		this.view.beHealed( points );
 	}
-	public void heal()
+    public void heal()
+    {
+        if (this.model.LifePoints > 0) {
+            this.model.heal();
+            this.view.heal();
+        }
+	}
+    public void healItself()
+    {
+        if (this.model.LifePoints > 0) {
+            float points = this.model.healItself();
+            this.view.beHealed(points);
+        }
+	}
+
+	public void obtainItem( ItemBehaviour item )
 	{
-		this.model.heal();
-		this.view.heal();
+        if (this.model.LifePoints > 0)
+        {
+            switch (item.getItemType())
+            {
+                case ItemModel.ItemType.Heal:
+                    this.playerGroup.obtainLife();
+                    this.model.obtainItemHeal();
+                    this.view.obtainItemHeal();
+                    break;
+                case ItemModel.ItemType.Bullets:
+                    this.model.obtainItemBullets();
+                    this.view.obtainItemBullets();
+                    break;
+                case ItemModel.ItemType.Battery:
+                default:
+                    this.model.obtainItemBattery();
+                    this.view.obtainItemBattery();
+                    break;
+            }
+        }
+	}
+
+	public void setPlayerName( string name )
+	{
+		if( name != "" ){
+			this.model.PlayerName = name;
+		}
+		else{
+			this.model.PlayerName = "Player "+(this.model.PlayerId+1).ToString();
+		}
+	}
+	public void setPlayerId( int id )
+	{
+		this.model.PlayerId = id;
+		this.view.updatePlayerId (id);
 	}
 }

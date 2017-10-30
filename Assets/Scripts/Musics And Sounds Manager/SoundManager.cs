@@ -11,7 +11,9 @@ public class SoundManager : MonoBehaviour {
     public AudioSource playerDeathSource;
 
     public AudioSource musicSource;
+
     public AudioSource zombieSource;
+    public AudioSource zombieExplosionSource;
 
     public static SoundManager instance = null;
 
@@ -29,11 +31,20 @@ public class SoundManager : MonoBehaviour {
 
     public AudioClip[] zombieWalkClips;
     public AudioClip[] zombieHitWalkClips;
+    public AudioClip[] zombieExplosionClips;
 
     public AudioClip[] ambienceClips;
     public AudioClip[] mainMenuClips;
     public AudioClip[] victoryEndGameClips;
     public AudioClip[] gameOverEndGameClips;
+
+    public AudioClip[] healingClips;
+    public AudioClip[] switchLightClips;
+
+    public AudioClip[] batteryClips;
+    public AudioClip[] chargerClips;
+    public AudioClip[] seringueClips;
+
 
     void Awake() {
         //Check if there is already an instance of SoundManager
@@ -85,33 +96,60 @@ public class SoundManager : MonoBehaviour {
         RandomizeClips(handGunShotFailClips, playerFxSource);
     }
 
+    public void healing()
+    {
+        RandomizeClips(healingClips, playerFxSource);
+    }
+    public void switchLight()
+    {
+        RandomizeClips(switchLightClips, playerFxSource);
+    }
+    public void batteryPickup()
+    {
+        RandomizeClips(batteryClips, playerFxSource);
+    }
+    public void chargerPickup()
+    {
+        RandomizeClips(chargerClips, playerFxSource);
+    }
+    public void seringuePickup()
+    {
+        RandomizeClips(seringueClips, playerFxSource);
+    }
 
     public void zombieWalk()
     {
-        RandomizeClips(zombieWalkClips, zombieSource);
+        if (!zombieSource.isPlaying)
+        {
+            RandomizeClips(zombieWalkClips, zombieSource);
+        }
     }
     public void zombieAttack()
     {
-        RandomizeClips(zombieHitWalkClips, zombieSource);
+            RandomizeClips(zombieHitWalkClips, zombieSource);       
+    }
+    public void zombieExplosion()
+    {
+        RandomizeClips(zombieExplosionClips, zombieExplosionSource);
     }
 
     public void mainMenu()
     {
-        RandomizeClips(mainMenuClips,musicSource);
+        RandomizeClipsMusic(mainMenuClips,musicSource);
     }
 
     public void inGameAmbienceClip()
     {
-        RandomizeClips(ambienceClips,musicSource);
+        RandomizeClipsMusic(ambienceClips,musicSource);
     }
 
     public void victory()
     {
-        RandomizeClips(victoryEndGameClips, musicSource);
+        RandomizeClipsMusic(victoryEndGameClips, musicSource);
     }
     public void defeat()
     {
-        RandomizeClips(gameOverEndGameClips, musicSource);
+        RandomizeClipsMusic(gameOverEndGameClips, musicSource);
     }
 
 
@@ -124,5 +162,16 @@ public class SoundManager : MonoBehaviour {
         aSource.clip = clips[randomIndex];
 
         aSource.PlayOneShot(clips[randomIndex]);
-    }   
+    }
+
+    public void RandomizeClipsMusic(AudioClip[] clips, AudioSource aSource)
+    {
+        int randomIndex = Random.Range(0, clips.Length);
+        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+
+        aSource.pitch = randomPitch;
+        aSource.clip = clips[randomIndex];
+
+        aSource.Play();
+    }
 }

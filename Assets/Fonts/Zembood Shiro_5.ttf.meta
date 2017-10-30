@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 536299d3a7335804eacc8de65fd9abc6
+timeCreated: 1509105741
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ZEMBOOD
+  fontNames:
+  - ZEMBOOD
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MultiCameraManager : MonoBehaviour {
 
-	// TODO Deal with audio listener. only one can be activated
-
 	[SerializeField]
 	private GameObject playerCamera_prefab;	// PlayerCamera Prefab to be instantiated for each player
 
@@ -62,21 +60,37 @@ public class MultiCameraManager : MonoBehaviour {
 				}
 			}
 
-			// Spliting Screen
-			float x_split = (this.players.Count>2)?0.5f:1f;		// the screen splits in X only if there are more than 2 players
-			float y_split = (this.players.Count>1)?0.5f:1f;		// the screen splits in Y only if there are more than 1 players
-			float border = 0.001f;
+			// Spliting Screen : to split vertically, switch x_split and y_split, i/2 and i%2
+			float generalHUDheight = 0.07f;
+			float totalY = 1f - generalHUDheight;
+			float x_split = (this.players.Count>1)?0.5f:1f;					// the screen splits in X only if there are more than 1 players
+			float y_split = (this.players.Count>2)?totalY/2f:totalY;		// the screen splits in Y only if there are more than 2 players
+			float border = 0.002f;
+			float borderRadar = 0.01f;
 			for( int i=0; i<this.playerCameras.Count; i++ ){
-				Camera cameraComponent = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
-				if( cameraComponent != null ){
-					cameraComponent.rect = new Rect( (i/2)*x_split+border, ((i+(this.players.Count>1?1:0))%2)*y_split+border, ((this.players.Count==3&&i==1)?2*x_split:x_split)-2*border, y_split-2*border );
-				}else{
-					Debug.LogError("Camera prefab does not contain Camera component");
+				float x = (i % 2) * x_split + border;
+				float y = ((this.players.Count > 2 ? 3 - i : i) / 2) * y_split + border;
+				float w = x_split - 2 * border;
+				float h = y_split - 2 * border;
+
+				Camera c = ((GameObject)this.playerCameras[i]).GetComponent<Camera>();
+				c.rect = new Rect (x, y, w, h);
+				// Ajusting Radar
+				RectTransform radar = c.GetComponentInChildren<UnityEngine.UI.Mask>().rectTransform;
+				radar.anchorMin = new Vector2 ( borderRadar, borderRadar);
+				// size = initial*w; size = factor*h => factor = initial*w/h (w<h, since we search for the smallest)
+				float initialFactor = 0.3f;
+				float radarWidth = Screen.width*w;
+				float radarHeight = Screen.height*h;
+				if( w<h )
+				{
+					float factor = initialFactor*radarWidth/radarHeight;
+					radar.anchorMax = new Vector2 ( borderRadar + initialFactor, borderRadar + factor );
 				}
-				// disabling audio listener. Only the first one is enabled
-				if( i != 0 && cameraComponent.GetComponent<AudioListener>() != null)
-                {
-					cameraComponent.GetComponent<AudioListener>().enabled = false;
+				else
+				{
+					float factor = initialFactor*radarHeight/radarWidth;
+					radar.anchorMax = new Vector2 ( borderRadar + factor, borderRadar + initialFactor );
 				}
 			}
 
