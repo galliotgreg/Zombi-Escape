@@ -19,6 +19,10 @@ public class HUDGeneral_Controller : MonoBehaviour {
 	private Text playerGroupWaveAmountText = null;
 	[SerializeField]
 	private Text playerGroupScoreText = null;
+	[SerializeField]
+	private Text playerGroupHighScoreText = null;
+	[SerializeField]
+	private Text playerGroupHighScoreTeamText = null;
 
 	// Use this for initialization
 	void Start () {
@@ -31,12 +35,15 @@ public class HUDGeneral_Controller : MonoBehaviour {
 			// Lifes
 			playerGroupHealsText.text = this.playerGroup.getNlifes().ToString();
 			// TeamName
-			playerTeamNameText.text = (this.playerGroup.getTeamName().Length != 0?this.playerGroup.getTeamName():"Ghostbusters");
+			playerTeamNameText.text = this.playerGroup.getTeamName();
 			// Wave
 			playerGroupWaveTimeText.text = ((int)(this.wavesManager.getNextWaveTime()/60)).ToString("00")+":"+((int)(this.wavesManager.getNextWaveTime()%60)).ToString("00");
 			playerGroupWaveAmountText.text = ((int)this.wavesManager.getNextWaveAmountZombies ()).ToString();
 			// Score
-			playerGroupScoreText.text = ((int)this.playerGroup.getScore()).ToString();
+			playerGroupScoreText.text = ((int)this.playerGroup.getTotalScore()).ToString();
+			// HighScore
+			playerGroupHighScoreText.text = ((int)PlayerPrefs.GetInt(GameState.HighScorePlayerPrefName,0)).ToString();
+			playerGroupHighScoreTeamText.text = PlayerPrefs.GetString(GameState.HighScoreTeamPlayerPrefName,"-");
 		} else {
 			Debug.LogError ( "HUD : playerGroup not set" );
 		}

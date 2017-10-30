@@ -34,6 +34,9 @@ public class GameState : MonoBehaviour {
 
 	// Group Values
 	private PlayerGroupModel playerGroup;
+	// Name for the PlayerPref that stores the HighScore
+	public static string HighScorePlayerPrefName = "high_score";
+	public static string HighScoreTeamPlayerPrefName = "high_score_team";
 
 	// Camera Manager
 	private GameObject cameraManager;	// Controls the generation of multiple cameras
@@ -149,6 +152,15 @@ public class GameState : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         handleGameOver();
+
+		// Score associated to the time : number of seconds since the start of the match
+		this.playerGroup.addScorePerTime( Time.deltaTime );
+		// Update high score
+		if( PlayerPrefs.GetInt( GameState.HighScorePlayerPrefName, 0 ) < Mathf.FloorToInt( this.playerGroup.getTotalScore() ) )
+		{
+			PlayerPrefs.SetInt( GameState.HighScorePlayerPrefName, Mathf.FloorToInt( this.playerGroup.getTotalScore() ) );
+			PlayerPrefs.SetString( GameState.HighScoreTeamPlayerPrefName, this.playerGroup.getTeamName() );
+		}
 	}
 
     private void handleGameOver()

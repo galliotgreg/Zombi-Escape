@@ -8,6 +8,7 @@ public class PlayerGroupModel{
 	[SerializeField]
 	private int aidPerLife = 100;
 	private float score = 0;
+	private float scorePerTime = 0;
 	private string teamName = "";
 
 	// Perfoms the action of aid a player
@@ -41,6 +42,9 @@ public class PlayerGroupModel{
 	public void reduceScore(float scoreToReduce){
 		this.score = Mathf.Max( this.score-scoreToReduce, 0 );
 	}
+	public void addScorePerTime(float scorePerTimeToAdd){
+		this.scorePerTime += scorePerTimeToAdd;
+	}
 	public void setTeamName( string teamName )
 	{
 		this.teamName = teamName;
@@ -53,6 +57,14 @@ public class PlayerGroupModel{
 	public float getScore()
 	{
 		return this.score;
+	}
+	public float getScorePerTime()
+	{
+		return this.scorePerTime;
+	}
+	public float getTotalScore()
+	{
+		return this.score+this.scorePerTime;
 	}
 	public string getTeamName()
 	{
