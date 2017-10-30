@@ -649,6 +649,28 @@ public class InputManager : MonoBehaviour {
                     default:
                         return KeyCode.None;
                 }
+            case ActionControl.Pause:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button7;
+                    case 1:
+                        return KeyCode.Joystick2Button7;
+                    case 2:
+                        return KeyCode.Joystick3Button7;
+                    case 3:
+                        return KeyCode.Joystick4Button7;
+                    case 4:
+                        return KeyCode.Joystick5Button7;
+                    case 5:
+                        return KeyCode.Joystick6Button7;
+                    case 6:
+                        return KeyCode.Joystick7Button7;
+                    case 7:
+                        return KeyCode.Joystick8Button7;
+                    default:
+                        return KeyCode.None;
+                }
         }
         return KeyCode.None;
     }
@@ -789,6 +811,28 @@ public class InputManager : MonoBehaviour {
                     default:
                         return KeyCode.None;
                 }
+            case ActionControl.Pause:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button7;
+                    case 1:
+                        return KeyCode.Joystick2Button7;
+                    case 2:
+                        return KeyCode.Joystick3Button7;
+                    case 3:
+                        return KeyCode.Joystick4Button7;
+                    case 4:
+                        return KeyCode.Joystick5Button7;
+                    case 5:
+                        return KeyCode.Joystick6Button7;
+                    case 6:
+                        return KeyCode.Joystick7Button7;
+                    case 7:
+                        return KeyCode.Joystick8Button7;
+                    default:
+                        return KeyCode.None;
+                }
         }
         return KeyCode.None;
     }
@@ -926,6 +970,28 @@ public class InputManager : MonoBehaviour {
                         return KeyCode.Joystick7Button1;
                     case 7:
                         return KeyCode.Joystick8Button1;
+                    default:
+                        return KeyCode.None;
+                }
+            case ActionControl.Pause:
+                switch (JoysticResTable[playerId])
+                {
+                    case 0:
+                        return KeyCode.Joystick1Button9;
+                    case 1:
+                        return KeyCode.Joystick2Button9;
+                    case 2:
+                        return KeyCode.Joystick3Button9;
+                    case 3:
+                        return KeyCode.Joystick4Button9;
+                    case 4:
+                        return KeyCode.Joystick5Button9;
+                    case 5:
+                        return KeyCode.Joystick6Button9;
+                    case 6:
+                        return KeyCode.Joystick7Button9;
+                    case 7:
+                        return KeyCode.Joystick8Button9;
                     default:
                         return KeyCode.None;
                 }
