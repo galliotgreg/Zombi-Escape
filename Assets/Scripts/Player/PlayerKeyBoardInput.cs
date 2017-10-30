@@ -138,8 +138,9 @@ public class PlayerKeyBoardInput : MonoBehaviour {
 		// Manage Healing
 		if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.Heal))
 		{
-			// Check if the player is close to an injured player
-			this.controller.executePlayerGroupHeal();
+            // Check if the player is close to an injured player
+            this.controller.Model.STAT_healedSomeone1++;
+            this.controller.executePlayerGroupHeal();
 		}
 		// Manage Healing itself
 		if (InputManager.instance.GetKeyDown(PlayerId, KeyMapping, InputManager.ActionControl.SelfHeal))

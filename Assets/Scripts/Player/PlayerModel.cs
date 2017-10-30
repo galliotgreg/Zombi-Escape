@@ -4,7 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerModel : MonoBehaviour {
-	[SerializeField]
+    public int STAT_bulletsFired = 0;
+    public int STAT_selfHeal = 0;
+    public int STAT_beHealed = 0;
+    public int STAT_healedSomeone = 0;
+
+    [SerializeField]
 	private int playerId = -1;              // Player's ID
 	[SerializeField]
 	private string playerName = "Player";   // Player's Name
@@ -263,6 +268,7 @@ public class PlayerModel : MonoBehaviour {
         }
     }
 
+
     public void idle()
     {
         isMovingX = false;
@@ -353,7 +359,9 @@ public class PlayerModel : MonoBehaviour {
 	// returns the score of the fire
 	public float fire()
     {
-		float scoreFromFire = 0;
+        STAT_bulletsFired++;
+
+        float scoreFromFire = 0;
         int zombieHitBoxLayerMask = 1 << LayerMask.NameToLayer("ZombieHitbox");
         int wallLayerMask = 1 << LayerMask.NameToLayer("Walls");
         int mask = zombieHitBoxLayerMask | wallLayerMask;
@@ -406,7 +414,9 @@ public class PlayerModel : MonoBehaviour {
 	// Healing : return the actual number of points add to the player
 	public float beHealed( float aidAmount  )
 	{
-		float oldPoints = this.lifePoints_current;
+        STAT_beHealed++;
+
+        float oldPoints = this.lifePoints_current;
 		// update life points
 		this.lifePoints_current = Math.Min( this.lifePoints_current+aidAmount, this.lifePoints_max );
 		return lifePoints_current - oldPoints;
@@ -418,7 +428,9 @@ public class PlayerModel : MonoBehaviour {
 	// HealingIlself : return the actual number of points add to the player
 	public float healItself()
 	{
-		float oldPoints = this.lifePoints_current;
+        STAT_selfHeal++;
+
+        float oldPoints = this.lifePoints_current;
 		this.lifePoints_current = Math.Min( this.lifePoints_current+(this.lifePoints_max/2f), this.lifePoints_max );
 		return lifePoints_current - oldPoints;
 	}

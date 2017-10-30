@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WavesManager : MonoBehaviour {
+    public int STAT_nbWaves = 0;
+
     [SerializeField]
     private ZombiSpawner[] spawners;
     [SerializeField]
@@ -26,8 +28,8 @@ public class WavesManager : MonoBehaviour {
     [SerializeField]
     private int nbZombiesOnNextWave = 5;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         spawners = FindObjectsOfType<ZombiSpawner>();
         players = GameObject.FindGameObjectsWithTag("Player");
     }
@@ -38,6 +40,7 @@ public class WavesManager : MonoBehaviour {
 
         if (timeUntilNextWave < 0)
         {
+            STAT_nbWaves++;
             releaseWave();
         }
 	}

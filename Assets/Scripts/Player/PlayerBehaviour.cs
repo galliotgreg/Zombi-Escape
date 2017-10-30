@@ -20,6 +20,32 @@ public class PlayerBehaviour : MonoBehaviour {
 		}
 	}
 
+    public PlayerModel Model
+    {
+        get
+        {
+            return model;
+        }
+
+        set
+        {
+            model = value;
+        }
+    }
+
+    public PlayerView View
+    {
+        get
+        {
+            return view;
+        }
+
+        set
+        {
+            view = value;
+        }
+    }
+
     [SerializeField]
     private float hitCooldown = -1;
 
