@@ -57,6 +57,9 @@ public class PlayerModel : MonoBehaviour {
     // Nbre de balle dans l'arme
     private int nbBullets_in_gun = 8;
 
+	// Indicates if a player is dead. It means lifePoints <= 0. It avoids the repetition of Die event
+	private bool isDead = false;
+
 	public int PlayerId {
 		get {
 			return playerId;
@@ -353,7 +356,10 @@ public class PlayerModel : MonoBehaviour {
 
     public void die()
     {
-        STAT_nbDead++;
+		if( !isDead ){
+			STAT_nbDead++;
+			isDead = true;
+		}
         SoundManager.instance.playeurDeath();
         //GameObject.Destroy(this.gameObject);
     }
@@ -436,6 +442,10 @@ public class PlayerModel : MonoBehaviour {
         float oldPoints = this.lifePoints_current;
 		// update life points
 		this.lifePoints_current = Math.Min( this.lifePoints_current+aidAmount, this.lifePoints_max );
+
+		// indicates that the player is alive
+		isDead = false;
+
 		return lifePoints_current - oldPoints;
 	}
 	public void heal()
