@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour {
         LogitechDualAction,
         LogitechF310,
         XBox360,
-        PS3,
+        PS3,    //Non supporté
     }
 
     [SerializeField]
