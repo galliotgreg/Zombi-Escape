@@ -1351,7 +1351,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -1360,9 +1360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enter your team name...
-
-'
+  m_Text: Enter your team name...
 --- !u!222 &338775961
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2166,6 +2164,21 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114145874250904408, guid: f5fefe2003294ca4b9e8b2212f28f291,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960400493108564, guid: f5fefe2003294ca4b9e8b2212f28f291,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114145874250904408, guid: f5fefe2003294ca4b9e8b2212f28f291,
+        type: 2}
+      propertyPath: m_Text
+      value: Enter your name...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5fefe2003294ca4b9e8b2212f28f291, type: 2}
@@ -3407,7 +3420,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -3416,9 +3429,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enter your name...
-
-'
+  m_Text: Enter your name...
 --- !u!222 &833227051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3764,7 +3775,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -3773,9 +3784,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enter your name...
-
-'
+  m_Text: Enter your name...
 --- !u!222 &918546679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3915,7 +3924,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -4907,7 +4916,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -6425,7 +6434,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -6434,9 +6443,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enter your name...
-
-'
+  m_Text: Enter your name...
 --- !u!222 &1704465756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6579,7 +6586,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -6829,7 +6836,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 536299d3a7335804eacc8de65fd9abc6, type: 3}
     m_FontSize: 18
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
@@ -7419,6 +7426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff474843dbc25342b10171203e686a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPause: {fileID: 0}
   pages:
   - {fileID: 1199322283}
 --- !u!4 &2035102571
