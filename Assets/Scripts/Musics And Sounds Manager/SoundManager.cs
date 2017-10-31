@@ -149,7 +149,7 @@ public class SoundManager : MonoBehaviour {
     }
     public void defeat()
     {
-        RandomizeClipsMusic(gameOverEndGameClips, musicSource);
+        RandomizeClipsMusic(gameOverEndGameClips, playerFxSource);
     }
 
 
