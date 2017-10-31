@@ -106,11 +106,13 @@ public class NavigationManager : MonoBehaviour
         {            
             Time.timeScale = 0f;
             canvasPause.gameObject.SetActive(true);
+            Debug.Log("Menu pause activé");
         }
             else
         {            
             Time.timeScale = 1f;
             canvasPause.gameObject.SetActive(false);
+            Debug.Log("Menu pause desactivé");
         }
         isActive = !isActive;
     }

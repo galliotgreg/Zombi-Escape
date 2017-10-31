@@ -699,6 +699,8 @@ MonoBehaviour:
   victoryEndGameClips:
   - {fileID: 8300000, guid: 583ba4fe1479d504c814d91b7f3dad1b, type: 3}
   gameOverEndGameClips:
+  - {fileID: 8300000, guid: 2fe5ebb02a9ad43bd9b96a0bd45fa0af, type: 3}
+  - {fileID: 8300000, guid: b4ca459c38f1a44b4bd8b479beee0bb0, type: 3}
   - {fileID: 8300000, guid: 7f0105a6956aa1249ba202b52f184cbb, type: 3}
   healingClips:
   - {fileID: 8300000, guid: f8efbbc4fdc038149b19ef63cb8afaad, type: 3}
